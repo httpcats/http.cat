@@ -5,8 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "mkdir -p dist && cp -R index.html catala images favicon.ico dist/"
+    "build": "mkdir -p dist && cp -R catala images favicon.ico dist/",
+    "min": "html-minifier -c htmlmin.conf index.html > dist/index.html"
   },
   "author": "rogeriopvl",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "html-minifier": "^0.7.2"
+  }
 }
