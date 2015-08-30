@@ -1,5 +1,7 @@
 # HTTP Cats API
 
+![HTTP Cat picture](https://http.cat/204)
+
 ## About
 
 This is static site hosted at [https://http.cat](https://http.cat).
