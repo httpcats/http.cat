@@ -4,7 +4,7 @@
 
 ## About
 
-This is static site hosted at [https://http.cat](https://http.cat).
+This is the static site that is hosted at [https://http.cat](https://http.cat).
 
 The code for the older version hosted at the heroku platform is at the [http-status-cats-api](https://github.com/rogeriopvl/http-status-cats-api) repo.
 
