@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "mkdir -p dist && cp -R catala images favicon.ico dist/",
-    "min": "html-minifier -c htmlmin.conf index.html > dist/index.html"
+    "min": "html-minifier -c htmlmin.conf index.html > dist/index.html && html-minifier -c htmlmin.conf notfound.html > dist/notfound.html"
   },
   "author": "rogeriopvl",
   "license": "MIT",
