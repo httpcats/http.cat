@@ -1,0 +1,625 @@
+/** Compass **/
+/** Main styles **/
+/* line 7, ../sass/_main.scss */
+body, input, textarea, select, button {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -moz-font-feature-settings: "liga", "kern";
+}
+
+/* line 13, ../sass/_main.scss */
+.content {
+  /* Track Chrome */
+  /* Track Firefox */
+  /* Handle Chrome */
+  /* Handle Firefox */
+}
+/* line 14, ../sass/_main.scss */
+.content::-webkit-scrollbar {
+  width: 4px;
+}
+/* line 18, ../sass/_main.scss */
+.content::-moz-scrollbar {
+  width: 4px;
+}
+/* line 22, ../sass/_main.scss */
+.content::-webkit-scrollbar-track {
+  -webkit-border-radius: 999em;
+  border-radius: 999em;
+  background: #212a2f;
+  opacity: 0;
+}
+/* line 29, ../sass/_main.scss */
+.content::-moz-scrollbar-track {
+  -moz-border-radius: 999em;
+  border-radius: 999em;
+  background: #212a2f;
+  opacity: 0;
+}
+/* line 36, ../sass/_main.scss */
+.content::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 999em;
+  border-radius: 999em;
+  background: #212a2f;
+  background: #acb1b4;
+}
+/* line 43, ../sass/_main.scss */
+.content::-moz-scrollbar-thumb {
+  -moz-border-radius: 999em;
+  border-radius: 999em;
+  background: #212a2f;
+  background: #acb1b4;
+}
+/* line 49, ../sass/_main.scss */
+.content::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+}
+/* line 53, ../sass/_main.scss */
+.content::-webkit-scrollbar-button:horizontal:decrement:hover {
+  border: 1px solid #acb1b4;
+}
+/* line 56, ../sass/_main.scss */
+.content::-moz-scrollbar-thumb:window-inactive {
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+}
+/* line 60, ../sass/_main.scss */
+.content::-moz-scrollbar-button:horizontal:decrement:hover {
+  border: 1px solid #acb1b4;
+}
+
+/* line 66, ../sass/_main.scss */
+body {
+  color: black;
+  font-style: normal;
+  font-weight: 400;
+  position: relative;
+  background: #dcdfdf;
+  /* Old browsers */
+  /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2RjZGZkZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjY1JSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+  background: -moz-linear-gradient(top, #dcdfdf 0%, white 65%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #dcdfdf), color-stop(65%, white));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #dcdfdf 0%, white 65%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #dcdfdf 0%, white 65%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #dcdfdf 0%, white 65%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #dcdfdf 0%, #ffffff 65%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dcdfdf', endColorstr='#ffffff',GradientType=0 );
+  /* IE6-8 */
+  background-repeat: no-repeat;
+}
+
+/* line 85, ../sass/_main.scss */
+a {
+  -moz-transition-property: all;
+  -o-transition-property: all;
+  -webkit-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.25s;
+  -o-transition-duration: 0.25s;
+  -webkit-transition-duration: 0.25s;
+  transition-duration: 0.25s;
+  -moz-transition-timing-function: ease-in-out;
+  -o-transition-timing-function: ease-in-out;
+  -webkit-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+  text-decoration: none;
+}
+
+/* line 92, ../sass/_main.scss */
+.ink-grid {
+  max-width: 1200px;
+}
+
+/* line 95, ../sass/_main.scss */
+.fixed-height {
+  min-height: 710px;
+}
+
+/* line 99, ../sass/_main.scss */
+.mobile-mask {
+  background: transparent url(../imgs/sprite-device.png) no-repeat 0 0;
+  width: 382px;
+  height: 801px;
+  float: right;
+  top: 20px;
+  position: absolute;
+  right: 0;
+  z-index: 3;
+}
+
+/* line 109, ../sass/_main.scss */
+.sprite {
+  float: left;
+  position: relative;
+}
+/* line 112, ../sass/_main.scss */
+.sprite.mobile-phone {
+  background: transparent url(../svg/icon-phone.svg) no-repeat 0 0;
+  background-size: 100%;
+  width: 26px;
+  height: 41px;
+  margin-right: 15px;
+  top: -1px;
+}
+/* line 120, ../sass/_main.scss */
+.sprite.brand-logo {
+  background: transparent url(../svg/brand-logo.svg) no-repeat 0 0;
+  background-size: 100%;
+  width: 532px;
+  height: 533px;
+  position: absolute;
+  top: 172px;
+  right: -419px;
+  z-index: -1;
+}
+/* line 130, ../sass/_main.scss */
+.sprite.icon-download {
+  background: transparent url(../svg/icon-download.svg) no-repeat 0 0;
+  background-size: 100%;
+  width: 33px;
+  height: 33px;
+  float: left;
+  top: -5px;
+  left: -6px;
+  margin-right: 7px;
+}
+/* line 140, ../sass/_main.scss */
+.sprite.icon-desktop {
+  background: transparent url(../svg/icon-desktop.svg) no-repeat 0 0;
+  background-size: 100%;
+  width: 40px;
+  height: 37px;
+  margin-right: 15px;
+  top: -1px;
+}
+
+/* line 150, ../sass/_main.scss */
+.rwd-header, .ink-modal .desktop-header {
+  padding-top: 2.1em;
+  text-transform: uppercase;
+  font-size: 1.1em;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+/* line 156, ../sass/_main.scss */
+.rwd-header .version, .ink-modal .desktop-header .version {
+  display: block;
+  font-size: .6em;
+  padding-top: 2px;
+  left: 2px;
+  position: relative;
+}
+
+/* line 164, ../sass/_main.scss */
+.project-name {
+  font-size: 3em;
+  color: black;
+  margin-top: -13px;
+}
+
+/* line 169, ../sass/_main.scss */
+.project-description {
+  font-size: 0.9em;
+}
+
+/* line 172, ../sass/_main.scss */
+.left-side {
+  position: relative;
+}
+
+/* line 176, ../sass/_main.scss */
+.right-side {
+  position: relative;
+}
+
+/* line 180, ../sass/_main.scss */
+.ink-mobile-container {
+  width: 100%;
+  float: right;
+  position: relative;
+  min-height: 710px;
+}
+/* line 185, ../sass/_main.scss */
+.ink-mobile-container .ink-tabs {
+  position: relative;
+  margin-top: 112px;
+}
+/* line 188, ../sass/_main.scss */
+.ink-mobile-container .ink-tabs .tabs-content {
+  position: absolute;
+  top: -25px;
+  right: 29px;
+  padding: 0;
+  background-color: black;
+  width: 320px;
+  height: 568px;
+  overflow: hidden;
+  overflow-y: auto;
+  z-index: 5;
+}
+/* line 201, ../sass/_main.scss */
+.ink-mobile-container .tabs-nav {
+  position: relative;
+  width: 100%;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  margin: 8em 0;
+  clear: both;
+}
+/* line 208, ../sass/_main.scss */
+.ink-mobile-container .tabs-nav li {
+  width: 50%;
+  background: red;
+  display: block;
+  padding-left: 73px;
+}
+/* line 214, ../sass/_main.scss */
+.ink-mobile-container .tabs-nav li.active a {
+  background: white;
+  color: black;
+  z-index: 2;
+  border: 0;
+}
+/* line 219, ../sass/_main.scss */
+.ink-mobile-container .tabs-nav li.active a:before {
+  background-color: black;
+}
+/* line 222, ../sass/_main.scss */
+.ink-mobile-container .tabs-nav li.active a:hover {
+  background: white;
+  color: black;
+}
+/* line 228, ../sass/_main.scss */
+.ink-mobile-container .tabs-nav li a {
+  background: #fdfdfd;
+  padding: 12px 20px 0;
+  position: relative;
+  float: right;
+  width: 100%;
+  height: 48px;
+  margin-bottom: 4px;
+  color: #acb1b4;
+  border: 0;
+  -moz-transition-property: all;
+  -o-transition-property: all;
+  -webkit-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.25s;
+  -o-transition-duration: 0.25s;
+  -webkit-transition-duration: 0.25s;
+  transition-duration: 0.25s;
+  -moz-transition-timing-function: ease-in-out;
+  -o-transition-timing-function: ease-in-out;
+  -webkit-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+}
+/* line 241, ../sass/_main.scss */
+.ink-mobile-container .tabs-nav li a:before {
+  content: '';
+  width: 4px;
+  height: 48px;
+  background-color: #acb1b4;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+/* line 251, ../sass/_main.scss */
+.ink-mobile-container .tabs-nav li a:hover {
+  background: #acb1b4;
+  color: white;
+  text-decoration: none;
+}
+/* line 256, ../sass/_main.scss */
+.ink-mobile-container .tabs-nav li a:focus {
+  background: white;
+  color: white;
+  background-color: black;
+}
+/* line 260, ../sass/_main.scss */
+.ink-mobile-container .tabs-nav li a:focus:before {
+  background-color: black;
+}
+
+/* line 269, ../sass/_main.scss */
+.download {
+  position: absolute;
+  bottom: 3px;
+  right: 377px;
+  background: #acb1b4;
+  color: white;
+  padding: 12px 20px;
+  position: absolute;
+  width: 178px;
+  height: 48px;
+  -moz-transition-property: right;
+  -o-transition-property: right;
+  -webkit-transition-property: right;
+  transition-property: right;
+  right: 259px;
+}
+/* line 282, ../sass/_main.scss */
+.download:hover {
+  background: black;
+  text-decoration: none;
+  color: white;
+  right: 377px;
+}
+
+/* line 289, ../sass/_main.scss */
+footer {
+  margin-bottom: 4em;
+  margin-top: -13px;
+}
+
+/* line 293, ../sass/_main.scss */
+.credits {
+  font-size: .85em;
+  color: #acb1b4;
+  font-weight: 400;
+}
+/* line 297, ../sass/_main.scss */
+.credits a {
+  color: black;
+}
+
+/* line 303, ../sass/_main.scss */
+.ink-modal {
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
+/* line 305, ../sass/_main.scss */
+.ink-modal .desktop-header {
+  padding-top: 0.6em;
+}
+/* line 309, ../sass/_main.scss */
+.ink-modal .modal-header {
+  padding: .4em 1em .2em;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-bottom: 1px solid #e2e2e2;
+  background-color: #fdfdfd;
+  position: relative;
+}
+/* line 316, ../sass/_main.scss */
+.ink-modal .modal-body {
+  padding: 0;
+  margin: 0 auto;
+}
+/* line 319, ../sass/_main.scss */
+.ink-modal .modal-body img {
+  border-left: 1px solid #e2e2e2;
+  border-right: 1px solid #e2e2e2;
+}
+/* line 324, ../sass/_main.scss */
+.ink-modal .btn-close {
+  text-indent: -99999em;
+  width: 21px;
+  height: 21px;
+  position: absolute;
+  top: 1.5em;
+  right: 1.5em;
+  background: transparent url(../svg/icon-close.svg) no-repeat 0 0;
+  background-size: 100%;
+}
+/* line 333, ../sass/_main.scss */
+.ink-modal .btn-close:hover {
+  background: transparent url(../svg/icon-close-hover.svg) no-repeat 0 0;
+}
+
+/* line 19, ../sass/_animations.scss */
+.download {
+  -webkit-transition: all 300ms ease-in-out;
+  -moz-transition: all 300ms ease-in-out;
+  -o-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+}
+
+/* line 26, ../sass/_animations.scss */
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+/* line 32, ../sass/_animations.scss */
+.delay {
+  -webkit-animation-delay: 0.3s;
+  animation-delay: 0.3s;
+}
+
+/* line 37, ../sass/_animations.scss */
+.animated.infinite {
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
+/* line 42, ../sass/_animations.scss */
+.animated.hinge {
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+}
+
+@-webkit-keyframes fadeIn {
+  /* line 48, ../sass/_animations.scss */
+  0% {
+    opacity: 0;
+  }
+
+  /* line 52, ../sass/_animations.scss */
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  /* line 58, ../sass/_animations.scss */
+  0% {
+    opacity: 0;
+  }
+
+  /* line 62, ../sass/_animations.scss */
+  100% {
+    opacity: 1;
+  }
+}
+/* line 67, ../sass/_animations.scss */
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+
+@-webkit-keyframes fadeInUp {
+  /* line 73, ../sass/_animations.scss */
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+
+  /* line 79, ../sass/_animations.scss */
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+@keyframes fadeInUp {
+  /* line 87, ../sass/_animations.scss */
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+
+  /* line 93, ../sass/_animations.scss */
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+/* line 100, ../sass/_animations.scss */
+.fadeInUp {
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+}
+
+@-webkit-keyframes fadeInDown {
+  /* line 106, ../sass/_animations.scss */
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+
+  /* line 112, ../sass/_animations.scss */
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+@keyframes fadeInDown {
+  /* line 120, ../sass/_animations.scss */
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+
+  /* line 126, ../sass/_animations.scss */
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+/* line 133, ../sass/_animations.scss */
+.fadeInDown {
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+}
+
+@-webkit-keyframes fadeInLeft {
+  /* line 139, ../sass/_animations.scss */
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  /* line 145, ../sass/_animations.scss */
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+@keyframes fadeInLeft {
+  /* line 153, ../sass/_animations.scss */
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  /* line 159, ../sass/_animations.scss */
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+/* line 166, ../sass/_animations.scss */
+.fadeInLeft {
+  -webkit-animation-name: fadeInLeft;
+  animation-name: fadeInLeft;
+}
+
+@-webkit-keyframes fadeInRight {
+  /* line 172, ../sass/_animations.scss */
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+  }
+
+  /* line 178, ../sass/_animations.scss */
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+@keyframes fadeInRight {
+  /* line 186, ../sass/_animations.scss */
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+  }
+
+  /* line 192, ../sass/_animations.scss */
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+/* line 199, ../sass/_animations.scss */
+.fadeInRight {
+  -webkit-animation-name: fadeInRight;
+  animation-name: fadeInRight;
+}

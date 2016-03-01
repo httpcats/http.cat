@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>RWD Prototype</title>
+        <meta name="description" content="A prototype for mobile mockups showcase.">
+        <meta name="author" content="Pedro Borges">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+        <!-- Place favicon.ico and apple-touch-icon(s) here  -->
+
+        <link rel="shortcut icon" href="http://ink.sapo.pt/assets/img/ink-favicon.ico">
+        <link rel="apple-touch-icon" href="http://ink.sapo.pt/assets/img/touch-icon-iphone.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="http://ink.sapo.pt/assets/img/touch-icon-ipad.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="http://ink.sapo.pt/assets/img/touch-icon-iphone-retina.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="http://ink.sapo.pt/assets/img/touch-icon-ipad-retina.png">
+        <link rel="apple-touch-startup-image" href="http://ink.sapo.pt/assets/img/splash.320x460.png" media="screen and (min-device-width: 200px) and (max-device-width: 320px) and (orientation:portrait)">
+        <link rel="apple-touch-startup-image" href="http://ink.sapo.pt/assets/img/splash.768x1004.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
+        <link rel="apple-touch-startup-image" href="http://ink.sapo.pt/assets/img/splash.1024x748.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
+
+        <!-- load Ink's css from the cdn -->
+        <link rel="stylesheet" type="text/css" href="http://cdn.ink.sapo.pt/3.1.7/css/ink-flex.min.css">
+        <link rel="stylesheet" type="text/css" href="http://cdn.ink.sapo.pt/3.1.7/css/font-awesome.min.css">
+
+        <!-- RWD Prototype main styles -->
+        <link rel="stylesheet" type="text/css" href="assets/css/style.min.css">
+
+        <!-- load Ink's css for IE8 -->
+        <!--[if lt IE 9 ]>
+            <link rel="stylesheet" href="http://cdn.ink.sapo.pt/3.1.7/css/ink-ie.min.css" type="text/css" media="screen" title="no title" charset="utf-8">
+        <![endif]-->
+
+        <!--[if gte IE 9]>
+          <style type="text/css">
+            .gradient {
+               filter: none;
+            }
+          </style>
+        <![endif]-->
+
+        <!-- test browser flexbox support and load legacy grid if unsupported -->
+        <script type="text/javascript" src="http://cdn.ink.sapo.pt/3.1.7/js/modernizr.js"></script>
+        <script type="text/javascript">
+            Modernizr.load({
+              test: Modernizr.flexbox,
+              nope : 'http://cdn.ink.sapo.pt/3.1.7/css/ink-legacy.min.css'
+            });
+        </script>
+
+        <!-- load Ink's javascript files from the cdn -->
+        <script type="text/javascript" src="http://cdn.ink.sapo.pt/3.1.7/js/holder.js"></script>
+        <script type="text/javascript" src="http://cdn.ink.sapo.pt/3.1.7/js/ink-all.min.js"></script>
+        <script type="text/javascript" src="http://cdn.ink.sapo.pt/3.1.7/js/autoload.js"></script>
+
+    </head>
+
+    <body>
+
+        <div class="ink-grid main-container">
+
+            <!--[if lte IE 9 ]>
+            <div class="ink-alert basic" role="alert">
+                <button class="ink-dismiss">&times;</button>
+                <p>
+                    <strong>You are using an outdated Internet Explorer version.</strong>
+                    Please <a href="http://browsehappy.com/">upgrade to a modern browser</a> to improve your web experience.
+                </p>
+            </div>
+            -->
+
+            <div class="column-group gutters">
+                <div class="all-35 left-side fixed-height">
+                    <div class="sprite brand-logo"></div>
+                    <header class="vertical-space">
+                        <h3 class="rwd-header">
+                            <icon class="sprite mobile-phone"></icon>
+                            RWD Prototype
+                            <span class="version small">V - 1.0</span>
+                        </h3>
+                    </header>
+                    <h1 class="project-name tiny-top-space">Project Name</h1>
+                    <p class="project-description">
+                        <b>A description for the project.</b> <br />
+                        Mauris iaculis porttitor posuere. Praesent id metus massa, ut blandit odio. Proin quis tortor orci. Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum laoreet. Nunc eu ullamcorper orci.
+                    </p>
+                </div>
+                <div class="all-65 push-right right-side">
+                    <div class="mobile-mask"></div>
+
+                    <div class="ink-mobile-container">
+                        <div id="protoTabs" class="ink-tabs">
+                            <ul class="tabs-nav">
+                                <li><a class="tabs-tab" href="#internalPage">Internal page</a></li>
+                                <li><a class="tabs-tab" href="#menuMobile">Menu mobile</a></li>
+                                <li><a id="RWDProtoModal" href="#">Desktop version</a></li>
+                            </ul>
+
+                            <!-- Now just place your content -->
+                            <div id="internalPage" class="tabs-content">
+                                <img src="assets/imgs/iphone_screen_main.jpg" alt="Mobile Screenshot of a internal page">
+                            </div>
+                            <div id="menuMobile" class="tabs-content">
+                                <img src="assets/imgs/iphone_screen_menu.jpg" alt="Mobile Screenshot of the menu">
+                            </div>
+                        </div>
+                        <a class="download" href="https://meocloud.pt/link/ded7dc5a-25c0-465e-89e8-132ae05bab4a/RWD-Prototype.zip/" target="_blank">
+                            <span class="sprite icon-download"></span>
+                            Download
+                        </a>
+                    </div>
+                </div>  <!-- END .right-side -->
+            
+                <footer class="clearfix">
+                    <p class="credits">2015 // <a href="mailto:pedrodavidborges@gmail.com?Subject=RWD Prototype">Pedro Borges</a> - UI/UX Designer & Front-end Developer</p>
+                </footer>
+
+            </div>
+        </div>
+
+
+        <a href="https://github.com/pfdborges/rwd-prototype" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
+        
+
+        <!-- Modal -->
+        <div class="ink-shade fade">
+            <div id="desktopModal" class="ink-modal fade" data-trigger="#RWDProtoModal" data-width="90%" data-height="90%" role="dialog" aria-hidden="true" aria-labelled-by="modal-title">
+                <div class="modal-header">
+                    <a href="#" class="sprite btn-close ink-dismiss">Close Modal</a>
+                    <h2 class="desktop-header">
+                        <icon class="sprite icon-desktop"></icon>
+                        Desktop Screenshot
+                        <span class="version small">Internal page</span>
+                    </h2>
+                </div>
+                <div class="modal-body" id="modalContent">
+                    <img src="assets/imgs/desktop-screen.jpg" alt="Desktop Screenshot">
+                </div>
+            </div>
+        </div>
+
+        <!-- Scripts -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="assets/js/scripts.js"></script>
+
+    </body>
+</html>

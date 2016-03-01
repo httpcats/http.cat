@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="icon-desktop" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="37px" enable-background="new 0 0 40 37" xml:space="preserve">
+<g id="Desktop">
+	<path fill="#ACB1B4" d="M37.694,0H2.181C0.978,0,0,1.047,0,2.337v23.986c0,1.29,0.978,2.337,2.181,2.337h14.019v2.492
+		c0,1.376-1.116,2.492-2.492,2.492h-2.492c-0.688,0-1.246,0.559-1.246,1.246c0,0.688,0.558,1.246,1.246,1.246H28.66
+		c0.688,0,1.246-0.558,1.246-1.246c0-0.688-0.558-1.246-1.246-1.246h-2.492c-1.376,0-2.492-1.116-2.492-2.492V28.66h14.019
+		c1.203,0,2.181-1.047,2.181-2.337V2.337C39.875,1.047,38.897,0,37.694,0z M37.383,26.168H2.492V2.492h34.891V26.168z"/>
+</g>
+</svg>
