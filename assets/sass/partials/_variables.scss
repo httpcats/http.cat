@@ -1,0 +1,81 @@
+/*********************************************************************************************
+
+Project : Lxpixel - starterkit - Sass variables
+URI: http://lxpixel.com
+Version: 1.0
+Author: Pedro Borges
+Author URI: https://github.com/pfdborges
+Github URI: https://github.com/pfdborges
+
+**********************************************************************************************
+
+1.  General units
+2.  General colors
+3.  Brand colors
+4.  Fonts
+5.  Links & Buttons
+6.
+
+**********************************************************************************************/
+
+$RWDProto-grey: #acb1b4;
+$RWDProto-light-grey: #FDFDFD;
+$color-temp: rgba(255,0,0,.2);
+$color-temp-green: rgba(0,255,0,.2);
+
+/*********************************************************************************************
+1.  General units
+*********************************************************************************************/
+
+$unit_base-font-size: 18px;
+$unit_base-line-height: 1.45;
+$unit_half-em: 0.5em;
+$unit_one-em: 1em;
+$unit_two-em: 2em;
+
+
+/*********************************************************************************************
+2.  General colors
+*********************************************************************************************/
+
+$input-color:             #94969f;
+$light-grey:              #d2d3db;
+$note-color:              #a0a1a9;
+$primary-grey:            #2b2c32;
+$thumbs-bg:               #323338;
+$close-btn-color:         #585a61;
+$poweredby-grey:          #4a4b51;
+$modal-bg:                #202024;
+$watermark-color:         #25262a;
+
+// temp color
+$color-temp:              rgba(255,0,0,.2);
+
+/*********************************************************************************************
+3.  Brand colors
+*********************************************************************************************/
+$primary-color:           #d64147;
+$secundary-color:         #2b2c32;
+$terciary-color:          #3d5350;
+$primary-color-opacity:   rgba(214,65,71,.6);
+
+// Social brand colors
+$brand-facebook:          #3b5998;
+$brand-twitter:           #55acee;
+$brand-google:            #dc4e41;
+$brand-youtube:           #cd201f;
+
+/*********************************************************************************************
+4.  Fonts
+*********************************************************************************************/
+
+$primary-font: 'Montserrat', 'sans-serif';
+$secundary-font: Menlo, Monaco, Consolas, 'Courier New', monospace;
+$text-font: 'sans-serif';
+
+/*********************************************************************************************
+5.  Links & Buttons
+*********************************************************************************************/
+
+$link-normal: $primary-color;
+$link-over: darken($link-normal, 20%);

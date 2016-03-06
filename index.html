@@ -5,6 +5,7 @@
         <meta name="author" content="Rogério Vicente">
         <meta name="description" content="An API for the awesome HTTP Cats! Use it in your website to show funny error messages.">
         <meta name="keywords" content="httpcats, cats, error, http, lolcats">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <meta property="og:title" content="HTTP Status Cats API">
         <meta property="og:type" content="website">
@@ -20,243 +21,1116 @@
         <meta name="twitter:description" content="API for HTTP Cats">
         <meta name="twitter:image" content="https://http.cat/100">
 
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <link href='favicon.ico' rel='shortcut icon' type='image/ico'>
+        <link rel='shortcut icon'href='assets/imgs/favicon.png' type="image/x-icon">
+        <link rel="apple-touch-icon-precomposed" href="assets/imgs/apple-touch-icon.png">
 
         <title>HTTP Status Cats API</title>
 
-        <!--[if lt IE 9]>
-            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+        <!--[if lt IE 9]> <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script> <![endif]-->
+        <!--[if gte IE 9]> <style type="text/css"> .gradient { filter: none;} </style> <![endif]-->
 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/uikit/uikit.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
         <style type="text/css">
-            h1 {
-                font-weight: bold;
-                font-size: 350%;
+            ::-moz-selection {
+                color: #ffffff !important;
+                background: rgba(214, 65, 71, .8) !important;
             }
-            ul, li {
-                list-style-type: none;
+            ::selection {
+                color: #ffffff !important;
+                background: rgba(214, 65, 71, .8) !important;
             }
-
-            ul a:hover {
-                text-decoration: none;
-            }
-
-            li {
-                width: auto;
-                padding: 1em;
-                border: 1px solid #333;
-                border-radius: 5px;
-                background-position: 65% 30%;
-                margin-bottom: 1em;
-            }
-
-            li:hover {
-                background-position: 66% 31%;
-            }
-
-            li span {
-                padding: 0.1em;
-                background-color: rgba(0, 0, 0, 0.7);
-                border-radius: 0.1em;
-                color: #fff;
-                font-size: 200%;
-                text-shadow: 1px 1px 1px #333;
-            }
-
-            .top-space { margin-top: 2em; }
-            .bottom-space { margin-bottom: 2em; }
         </style>
+
     </head>
+
     <body>
-        <div class="container">
-            <header class="bottom-space">
-                <h1>HTTP Status Cats API</h1>
-            </header>
+        <section class="head-banner">
+            <div class="httpcat-container uk-container-center uk-text-center">
 
-            <h2 class="top-space">Usage:</h2>
-            <pre>https://http.cat/[status_code]</pre>
-            <p><b>Note:</b> If you need for some reason to use an image extension, add <code>.jpg</code> to the URL.</p>
-            <h2 class="top-space bottom-space">Available status codes:</h2>
+                <div class="httpcat-logo-header">
+                    <svg version="1.1" id="httpcat_logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="80px" height="55px"
+                    	 viewBox="0 0 80 55" style="enable-background:new 0 0 80 55;" xml:space="preserve">
+                        <path d="M78.6,27.4H62.8V1.5c0-0.7-0.6-1.3-1.2-1.4c-0.6-0.2-1.4,0.1-1.8,0.6l-9.3,14.2H30L20.1,0.6c-0.4-0.5-1-0.8-1.6-0.6
+                        	c-0.6,0.2-0.9,0.8-0.9,1.4v25.9H1.4c-0.8,0-1.4,0.7-1.4,1.5c0,0.8,0.6,1.5,1.4,1.5h16.1v3.8l-9.8,0.2c0,0,0,0,0,0
+                        	c-0.8,0-1.4,0.5-1.4,1.3c0,0.8,0.6,1.4,1.4,1.4l9.8,0v4.1c0,7.7,9.9,13.8,22.6,13.8s22.6-6.1,22.6-13.8v-4.1l9.4-0.2c0,0,0,0,0,0
+                        	c0.8,0,1.4-0.5,1.4-1.3c0-0.8-0.6-1.4-1.4-1.4l-9.5,0v-3.8h15.8c0.8,0,1.4-0.7,1.4-1.5C80,28.1,79.4,27.4,78.6,27.4z M20.6,6.3
+                        	l7.5,11c0.3,0.4,0.6,0.6,1.1,0.6h22.1c0.5,0,1.1-0.3,1.4-0.7l7.1-10.7v20.8H48.3c-0.4,0-0.8,0.1-1,0.4L40,35.5l-7.8-7.7
+                        	c-0.3-0.3-0.6-0.4-1-0.4H20.6V6.3z M59.8,34.3l-7.4,0.2c0,0,0,0,0,0c-0.8,0-1.4,0.5-1.4,1.3c0,0.8,0.6,1.4,1.4,1.4l7.4,0v4.1
+                        	c0,5.9-9,10.8-19.6,10.8S20.6,47,20.6,41.2v-4.1l7.1-0.2c0,0,0,0,0,0c0.8,0,1.4-0.5,1.4-1.3c0-0.8-0.6-1.4-1.4-1.4l-7.1,0v-3.8h10.1
+                        	l8.4,8.2c0.3,0.3,0.6,0.3,1,0.3c0,0,0,0,0,0c0.4,0,0.8-0.1,1-0.3l7.9-8.2h10.9V34.3z"/>
+                    </svg>
+                    <h2>http.cat</h2>
+                </div>
 
-            <ul class="col-sm-12 col-md-4 col-lg-4">
-                <a href="/100"><li class="status" style="background-image:url(/images/100.jpg);">
-                    <span>100</span>
-                </li></a>
-                <a href="/101"><li class="status" style="background-image:url(/images/101.jpg);">
-                    <span>101</span>
-                </li></a>
-                <a href="/200"><li class="status" style="background-image:url(/images/200.jpg);">
-                    <span>200</span>
-                </li></a>
-                <a href="/201"><li class="status" style="background-image:url(/images/201.jpg);">
-                    <span>201</span>
-                </li></a>
-                <a href="/202"><li class="status" style="background-image:url(/images/202.jpg);">
-                    <span>202</span>
-                </li></a>
-                <a href="/204"><li class="status" style="background-image:url(/images/204.jpg);">
-                    <span>204</span>
-                </li></a>
-                <a href="/206"><li class="status" style="background-image:url(/images/206.jpg);">
-                    <span>206</span>
-                </li></a>
-                <a href="/207"><li class="status" style="background-image:url(/images/207.jpg);">
-                    <span>207</span>
-                </li></a>
-                <a href="/300"><li class="status" style="background-image:url(/images/300.jpg);">
-                    <span>300</span>
-                </li></a>
-                <a href="/301"><li class="status" style="background-image:url(/images/301.jpg);">
-                    <span>301</span>
-                </li></a>
-                <a href="/302"><li class="status" style="background-image:url(/images/302.jpg);">
-                    <span>302</span>
-                </li></a>
-                <a href="/303"><li class="status" style="background-image:url(/images/303.jpg);">
-                    <span>303</span>
-                </li></a>
-                <a href="/304"><li class="status" style="background-image:url(/images/304.jpg);">
-                    <span>304</span>
-                </li></a>
-                <a href="/305"><li class="status" style="background-image:url(/images/305.jpg);">
-                    <span>305</span>
-                </li></a>
-                <a href="/307"><li class="status" style="background-image:url(/images/307.jpg);">
-                    <span>307</span>
-                </li></a>
-                <a href="/400"><li class="status" style="background-image:url(/images/400.jpg);">
-                    <span>400</span>
-                </li></a>
-                <a href="/401"><li class="status" style="background-image:url(/images/401.jpg);">
-                    <span>401</span>
-                </li></a>
-            </ul>
+                <div class="search-container">
+                    <h1>HTTP Status Cats API</h1>
+                    <div class="uk-grid holder-search" data-uk-grid-margin="">
+                        <div class="uk-width-1-1 uk-container-center">
+                            <p class="head-label">How to use</p>
+                            <form class="uk-search" data-uk-search>
+                                <div class="input-container">
+                                    <input class="uk-search-field" type="search" value="https://http.cat/[status_code]">
+                                    <button type="button" name="submit">go!</button>
+                                </div>
+                            </form>
+                            <div class="note">
+                                <p class="note--title">Note:</p>
+                                <p class="note--desc">If you need for some reason to use an image extension, add <span>.jpg</span> to the URL.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-            <ul class="col-sm-12 col-md-4 col-lg-4">
-                <a href="/402"><li class="status" style="background-image:url(/images/402.jpg);">
-                    <span>402</span>
-                </li></a>
-                <a href="/403"><li class="status" style="background-image:url(/images/403.jpg);">
-                    <span>403</span>
-                </li></a>
-                <a href="/404"><li class="status" style="background-image:url(/images/404.jpg);">
-                    <span>404</span>
-                </li></a>
-                <a href="/405"><li class="status" style="background-image:url(/images/405.jpg);">
-                    <span>405</span>
-                </li></a>
-                <a href="/406"><li class="status" style="background-image:url(/images/406.jpg);">
-                    <span>406</span>
-                </li></a>
-                <a href="/408"><li class="status" style="background-image:url(/images/408.jpg);">
-                    <span>408</span>
-                </li></a>
-                <a href="/409"><li class="status" style="background-image:url(/images/409.jpg);">
-                    <span>409</span>
-                </li></a>
-                <a href="/410"><li class="status" style="background-image:url(/images/410.jpg);">
-                    <span>410</span>
-                </li></a>
-                <a href="/411"><li class="status" style="background-image:url(/images/411.jpg);">
-                    <span>411</span>
-                </li></a>
-                <a href="/412"><li class="status" style="background-image:url(/images/412.jpg);">
-                    <span>412</span>
-                </li></a>
-                <a href="/413"><li class="status" style="background-image:url(/images/413.jpg);">
-                    <span>413</span>
-                </li></a>
-                <a href="/414"><li class="status" style="background-image:url(/images/414.jpg);">
-                    <span>414</span>
-                </li></a>
-                <a href="/415"><li class="status" style="background-image:url(/images/415.jpg);">
-                    <span>415</span>
-                </li></a>
-                <a href="/416"><li class="status" style="background-image:url(/images/416.jpg);">
-                    <span>416</span>
-                </li></a>
-                <a href="/417"><li class="status" style="background-image:url(/images/417.jpg);">
-                    <span>417</span>
-                </li></a>
-                <a href="/418"><li class="status" style="background-image:url(/images/418.jpg);">
-                    <span>418</span>
-                </li></a>
-                <a href="/422"><li class="status" style="background-image:url(/images/422.jpg);">
-                    <span>422</span>
-                </li></a>
-            </ul>
+            </div>
+        </section>
 
-            <ul class="col-sm-12 col-md-4 col-lg-4 bottom-space">
-                <a href="/423"><li class="status" style="background-image:url(/images/423.jpg);">
-                    <span>423</span>
-                </li></a>
-                <a href="/424"><li class="status" style="background-image:url(/images/424.jpg);">
-                    <span>424</span>
-                </li></a>
-                <a href="/425"><li class="status" style="background-image:url(/images/425.jpg);">
-                    <span>425</span>
-                </li></a>
-                <a href="/426"><li class="status" style="background-image:url(/images/426.jpg);">
-                    <span>426</span>
-                </li></a>
-                <a href="/429"><li class="status" style="background-image:url(/images/429.jpg);">
-                    <span>429</span>
-                </li></a>
-                <a href="/431"><li class="status" style="background-image:url(/images/431.jpg);">
-                    <span>431</span>
-                </li></a>
-                <a href="/444"><li class="status" style="background-image:url(/images/444.jpg);">
-                    <span>444</span>
-                </li></a>
-                <a href="/450"><li class="status" style="background-image:url(/images/450.jpg);">
-                    <span>450</span>
-                </li></a>
-                <a href="/451"><li class="status" style="background-image:url(/images/451.jpg);">
-                    <span>451</span>
-                </li></a>
-                <a href="/500"><li class="status" style="background-image:url(/images/500.jpg);">
-                    <span>500</span>
-                </li></a>
-                <a href="/502"><li class="status" style="background-image:url(/images/502.jpg);">
-                    <span>502</span>
-                </li></a>
-                <a href="/503"><li class="status" style="background-image:url(/images/503.jpg);">
-                    <span>503</span>
-                </li></a>
-                <a href="/506"><li class="status" style="background-image:url(/images/506.jpg);">
-                    <span>506</span>
-                </li></a>
-                <a href="/507"><li class="status" style="background-image:url(/images/507.jpg);">
-                    <span>507</span>
-                </li></a>
-                <a href="/508"><li class="status" style="background-image:url(/images/508.jpg);">
-                    <span>508</span>
-                </li></a>
-                <a href="/509"><li class="status" style="background-image:url(/images/509.jpg);">
-                    <span>509</span>
-                </li></a>
-                <a href="/599"><li class="status" style="background-image:url(/images/599.jpg);">
-                    <span>599</span>
-                </li></a>
-            </ul>
+        <section class="list-content">
 
-            <div class="clearfix"></div>
-            <div class="fb-container text-center">
-                <div class="fb-page" data-href="https://www.facebook.com/httpcats" data-width="250" data-height="70" data-small-header="false" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/httpcats"><a href="https://www.facebook.com/httpcats">HTTP Cats</a></blockquote></div></div>
+            <div class="fx-holder">
+                <span class="grad"></span>
+                <div class="httpcat-container-list uk-container-center uk-text-center">
+                    <span class="http-watermark"></span>
+                    <h2>Available status codes:</h2>
+                </div>
+            </div>
+            <div class="list-holder">
+                <div class="httpcat-container-list uk-container-center uk-text-center">
+                    <ul class="status-list uk-grid" data-uk-grid-margin>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#modal" data-uk-modal>
+                                <div class="status-panel uk-panel" >
+                                    <img src="assets/imgs/cats-thumbs/100.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">100</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc">Continue</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/402.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">402</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc">Payment Required</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/423.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">423</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc">Locked</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/101.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">101</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc">Switching Protocols</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/403.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">403</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc">Forbidden</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/424.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">424</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc">Failed Dependency</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/200.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">200</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc">OK</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/404.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">404</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc">Not Found</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/425.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">425</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc">Unordered Collection</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/201.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">201</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc">Created</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/405.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">405</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc">Method Not Allowed</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/426.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">426</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc">Upgrade Required</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/202.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">202</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc">Accepted</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/406.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">406</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc">Not Acceptable</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/429.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">429</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc">Too Many Requests</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/204.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">204</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc">No Content</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/408.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">408</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc">Request Timeout</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/431.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">431</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc sml">Request Header Fields Too Large</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/206.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">206</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc">Partial Content</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/409.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">409</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc">Conflict</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/444.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">444</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc">No Response</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/207.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">207</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc">Multi-Status</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/410.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">410</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc">Gone</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/450.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">450</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc sml">Blocked by Parental Controls</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/300.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">300</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc">Multiple Choices</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/411.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">411</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc">Length Required</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/451.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">451</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc sml">Unavailable for Legal Reasons</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/301.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">301</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc">Moved Permanently</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/412.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">412</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc">Precondition Failed</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/500.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">500</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc">Internal Server Error</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/302.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">302</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc">Found</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/413.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">413</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc">Request Entity Too Large</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/502.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">502</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc">Bad Gateway</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/303.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">303</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc">See Other</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/414.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">414</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc">Request-URI Too Long</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/503.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">503</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc">Service Unavailable</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/304.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">304</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc">Not Modified</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/415.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">415</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc">Unsupported Media Type</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/506.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">506</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc">Variant Also Negotiates</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/305.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">305</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc">Use Proxy</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/416.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">416</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc sml">Requested Range Not Satisfiable</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/507.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">507</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc">Insufficient Storage</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/307.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">307</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc">Temporary Redirect</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/417.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">417</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc">Expectation Failed</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/508.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">508</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc">Loop Detected</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/400.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">400</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc">Bad Request</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/418.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">418</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc">I'm a teapot</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/509.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">509</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc">Bandwidth Limit Exceeded</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/401.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">401</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc">Unauthorized</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/422.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">422</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc">Unprocessable Entity</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="item uk-width-1-4">
+                            <a href="#">
+                                <div class="status-panel uk-panel">
+                                    <img src="assets/imgs/cats-thumbs/599.jpg" alt="" />
+                                    <div class="status-info">
+                                        <div class="status-info--1strow">
+                                            <span class="status--label">Status code</span>
+                                            <div class="status--nr">599</div>
+                                        </div>
+                                        <div class="status-info--2strow">
+                                            <p class="status--desc sml">Network Connect Timeout Error</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="httpcat-container-list uk-container-center uk-text-center">
+                <ul class="share-links-footer uk-grid">
+                    <li class="links-item uk-width-1-2">
+                        <a class="facebook-share" href="#">
+                            <svg version="1.1" id="facebook" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="35px" height="81px"
+                            	 viewBox="0 0 34.5 81" style="enable-background:new 0 0 34.5 81;" xml:space="preserve">
+                                 <path d="M33.2,40.5l1.3-14H23v-7c0-2.1,0.3-3.5,0.9-4.4c0.6-0.8,2-1.2,4.2-1.2h6.4V0H24.3c-5.9,0-10.2,1.5-12.7,4.6
+                            	c-2.6,3.1-3.9,7.6-3.9,13.6v8.4H0v14h7.7V81H23V40.5H33.2z"/>
+                            </svg>
+                            Share on <span>Facebook</span>
+                        </a>
+                    </li>
+                    <li class="links-item uk-width-1-2">
+                        <a class="twitter-share" href="#">
+                            <svg version="1.1" id="twitter" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100px" height="78px"
+                            	 viewBox="0 0 100 78" style="enable-background:new 0 0 100 78;" xml:space="preserve">
+                                <path d="M100,9.2c-3.6,1.6-7.6,2.6-11.8,3.2c4.4-2.5,7.5-6.2,9.1-11c-4.2,2.4-8.6,4-13.1,4.8c-4-4.1-9-6.2-14.9-6.2
+                                	c-5.7,0-10.5,1.9-14.5,5.8c-4,3.8-6,8.5-6,13.9c0,1.8,0.2,3.3,0.5,4.5c-8.4-0.4-16.3-2.5-23.6-6.1C18.2,14.5,12,9.6,6.8,3.6
+                                	C4.9,6.7,4,10,4,13.5c0,7.1,3,12.6,8.9,16.4c-3.1-0.1-6.3-0.9-9.8-2.4v0.2c0,4.7,1.6,8.9,4.9,12.5c3.3,3.7,7.3,5.9,12,6.8
+                                	c-1.9,0.5-3.5,0.8-5,0.8c-0.8,0-2.1-0.1-3.8-0.4c1.4,3.9,3.8,7.2,7.3,9.8C22,59.7,25.9,61,30.4,61c-7.6,5.6-16,8.4-25.5,8.4
+                                	c-1.7,0-3.3-0.1-4.9-0.3C9.6,75.1,20.1,78,31.4,78c7.3,0,14.1-1.1,20.5-3.3c6.4-2.2,11.8-5.2,16.4-8.9c4.6-3.7,8.5-8,11.8-12.8
+                                	c3.3-4.8,5.7-9.9,7.3-15.2c1.6-5.3,2.4-10.6,2.4-15.8c0-1.1,0-2-0.1-2.5C93.8,16.6,97.2,13.2,100,9.2z"/>
+                            </svg>
+                            Share on <span>Twitter</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="language-wrapper">
+                    <div class="holder-language-link uk-container-center uk-text-center">
+                        <a class="language-link" href="#">Versió Català</a>
+                    </div>
+                </div>
+
+                <div class="fb-like-box-wrapper">
+                    <div class="fb-container uk-container-center uk-text-center">
+                        <div class="fb-page" data-href="https://www.facebook.com/httpcats/" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false">
+                            <div class="fb-xfbml-parse-ignore">
+                                <blockquote cite="https://www.facebook.com/httpcats/"><a href="https://www.facebook.com/httpcats/">HTTP Cats</a></blockquote>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
-            <footer class="text-center bottom-space">
-                <div class="links top-space bottom-space">
-                    <p><a href="/catala">Versió Català</a></p>
-                </div>
-                <p>Developed by <a href="https://twitter.com/rogeriopvl">@rogeriopvl</a>. Images from <a href="http://www.flickr.com/photos/girliemac/sets/72157628409467125/with/6509400997/">Tomomi Imura</a>.</p>
-            </footer>
+            <div class="credits uk-text-center">
+                <svg version="1.1" id="httpcat_logo_footer" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="54px" height="37px"
+                     viewBox="0 0 80 55" style="enable-background:new 0 0 80 55;" xml:space="preserve">
+                    <path d="M78.6,27.4H62.8V1.5c0-0.7-0.6-1.3-1.2-1.4c-0.6-0.2-1.4,0.1-1.8,0.6l-9.3,14.2H30L20.1,0.6c-0.4-0.5-1-0.8-1.6-0.6
+                        c-0.6,0.2-0.9,0.8-0.9,1.4v25.9H1.4c-0.8,0-1.4,0.7-1.4,1.5c0,0.8,0.6,1.5,1.4,1.5h16.1v3.8l-9.8,0.2c0,0,0,0,0,0
+                        c-0.8,0-1.4,0.5-1.4,1.3c0,0.8,0.6,1.4,1.4,1.4l9.8,0v4.1c0,7.7,9.9,13.8,22.6,13.8s22.6-6.1,22.6-13.8v-4.1l9.4-0.2c0,0,0,0,0,0
+                        c0.8,0,1.4-0.5,1.4-1.3c0-0.8-0.6-1.4-1.4-1.4l-9.5,0v-3.8h15.8c0.8,0,1.4-0.7,1.4-1.5C80,28.1,79.4,27.4,78.6,27.4z M20.6,6.3
+                        l7.5,11c0.3,0.4,0.6,0.6,1.1,0.6h22.1c0.5,0,1.1-0.3,1.4-0.7l7.1-10.7v20.8H48.3c-0.4,0-0.8,0.1-1,0.4L40,35.5l-7.8-7.7
+                        c-0.3-0.3-0.6-0.4-1-0.4H20.6V6.3z M59.8,34.3l-7.4,0.2c0,0,0,0,0,0c-0.8,0-1.4,0.5-1.4,1.3c0,0.8,0.6,1.4,1.4,1.4l7.4,0v4.1
+                        c0,5.9-9,10.8-19.6,10.8S20.6,47,20.6,41.2v-4.1l7.1-0.2c0,0,0,0,0,0c0.8,0,1.4-0.5,1.4-1.3c0-0.8-0.6-1.4-1.4-1.4l-7.1,0v-3.8h10.1
+                        l8.4,8.2c0.3,0.3,0.6,0.3,1,0.3c0,0,0,0,0,0c0.4,0,0.8-0.1,1-0.3l7.9-8.2h10.9V34.3z"/>
+                </svg>
+                <p>
+                    Developed by <a href="https://twitter.com/rogeriopvl" target="_blank">@rogeriopvl</a>. Designed by <a href="https://twitter.com/pfdborges" target="_blank">@pfdborges</a>.<br>
+                    Images from <a href="http://www.flickr.com/photos/girliemac/sets/72157628409467125/with/6509400997/" target="_blank">Tomomi Imura</a>
+                </p>
+            </div>
+        </footer>
 
-        </div> <!-- container -->
+        <div id="modal" class="httpcat-modal uk-modal">
+            <div class="httpcat-dialog uk-modal-dialog">
+                <a class="uk-modal-close close-btn">
+                    <svg version="1.1" id="close_btn" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px"
+                    	 viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">
+                    <path d="M17,14.5L28.5,3c0.7-0.7,0.7-1.8,0-2.5c-0.7-0.7-1.8-0.7-2.5,0L14.5,12l0,0l0,0L3,0.5c-0.7-0.7-1.8-0.7-2.5,0
+                    	C0.2,0.9,0,1.3,0,1.8C0,2.2,0.2,2.7,0.5,3L12,14.5L0.5,26c-0.7,0.7-0.7,1.8,0,2.5c0.7,0.7,1.8,0.7,2.5,0L14.5,17l0,0l0,0L26,28.5
+                    	c0.7,0.7,1.8,0.7,2.5,0c0.3-0.3,0.5-0.8,0.5-1.3c0-0.5-0.2-0.9-0.5-1.3L17,14.5z"/>
+                    </svg>
+                </a>
+                <div class="wrapper">
+                    <div class="uk-grid uk-grid-collapse">
+                        <div class="modal-container--left uk-width-7-10">
+                            <div class="uk-container-center uk-text-center">
+                                <p class="poweredby">
+                                    Powered by
+                                    <svg version="1.1" id="httpcat_logo_poweredby" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="44px" height="30px"
+                                         viewBox="0 0 80 55" style="enable-background:new 0 0 80 55;" xml:space="preserve">
+                                        <path d="M78.6,27.4H62.8V1.5c0-0.7-0.6-1.3-1.2-1.4c-0.6-0.2-1.4,0.1-1.8,0.6l-9.3,14.2H30L20.1,0.6c-0.4-0.5-1-0.8-1.6-0.6
+                                            c-0.6,0.2-0.9,0.8-0.9,1.4v25.9H1.4c-0.8,0-1.4,0.7-1.4,1.5c0,0.8,0.6,1.5,1.4,1.5h16.1v3.8l-9.8,0.2c0,0,0,0,0,0
+                                            c-0.8,0-1.4,0.5-1.4,1.3c0,0.8,0.6,1.4,1.4,1.4l9.8,0v4.1c0,7.7,9.9,13.8,22.6,13.8s22.6-6.1,22.6-13.8v-4.1l9.4-0.2c0,0,0,0,0,0
+                                            c0.8,0,1.4-0.5,1.4-1.3c0-0.8-0.6-1.4-1.4-1.4l-9.5,0v-3.8h15.8c0.8,0,1.4-0.7,1.4-1.5C80,28.1,79.4,27.4,78.6,27.4z M20.6,6.3
+                                            l7.5,11c0.3,0.4,0.6,0.6,1.1,0.6h22.1c0.5,0,1.1-0.3,1.4-0.7l7.1-10.7v20.8H48.3c-0.4,0-0.8,0.1-1,0.4L40,35.5l-7.8-7.7
+                                            c-0.3-0.3-0.6-0.4-1-0.4H20.6V6.3z M59.8,34.3l-7.4,0.2c0,0,0,0,0,0c-0.8,0-1.4,0.5-1.4,1.3c0,0.8,0.6,1.4,1.4,1.4l7.4,0v4.1
+                                            c0,5.9-9,10.8-19.6,10.8S20.6,47,20.6,41.2v-4.1l7.1-0.2c0,0,0,0,0,0c0.8,0,1.4-0.5,1.4-1.3c0-0.8-0.6-1.4-1.4-1.4l-7.1,0v-3.8h10.1
+                                            l8.4,8.2c0.3,0.3,0.6,0.3,1,0.3c0,0,0,0,0,0c0.4,0,0.8-0.1,1-0.3l7.9-8.2h10.9V34.3z"/>
+                                    </svg>
+                                    <span>Http.cat</span>
+                                </p>
+                                <div class="template-img-holder">
+                                    <img src="assets/imgs/cats-templates/100.jpg" alt="" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-container--right uk-width-3-10">
+                            <div class="mrec">
+                                <img src="assets/imgs/mrc.png" alt="" />
+                            </div>
+
+                            <div class="share-links-modal-wrapper uk-container-center uk-text-center">
+                                <ul class="share-links-modal uk-grid">
+                                    <li class="links-item uk-width-1-1">
+                                        <a class="facebook-share" href="#">
+                                            <svg version="1.1" id="facebook" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="35px" height="81px"
+                                            	 viewBox="0 0 34.5 81" style="enable-background:new 0 0 34.5 81;" xml:space="preserve">
+                                                 <path d="M33.2,40.5l1.3-14H23v-7c0-2.1,0.3-3.5,0.9-4.4c0.6-0.8,2-1.2,4.2-1.2h6.4V0H24.3c-5.9,0-10.2,1.5-12.7,4.6
+                                            	c-2.6,3.1-3.9,7.6-3.9,13.6v8.4H0v14h7.7V81H23V40.5H33.2z"/>
+                                            </svg>
+                                            Share on <span>Facebook</span>
+                                        </a>
+                                    </li>
+                                    <li class="links-item uk-width-1-1">
+                                        <a class="twitter-share" href="#">
+                                            <svg version="1.1" id="twitter" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100px" height="78px"
+                                            	 viewBox="0 0 100 78" style="enable-background:new 0 0 100 78;" xml:space="preserve">
+                                                <path d="M100,9.2c-3.6,1.6-7.6,2.6-11.8,3.2c4.4-2.5,7.5-6.2,9.1-11c-4.2,2.4-8.6,4-13.1,4.8c-4-4.1-9-6.2-14.9-6.2
+                                                	c-5.7,0-10.5,1.9-14.5,5.8c-4,3.8-6,8.5-6,13.9c0,1.8,0.2,3.3,0.5,4.5c-8.4-0.4-16.3-2.5-23.6-6.1C18.2,14.5,12,9.6,6.8,3.6
+                                                	C4.9,6.7,4,10,4,13.5c0,7.1,3,12.6,8.9,16.4c-3.1-0.1-6.3-0.9-9.8-2.4v0.2c0,4.7,1.6,8.9,4.9,12.5c3.3,3.7,7.3,5.9,12,6.8
+                                                	c-1.9,0.5-3.5,0.8-5,0.8c-0.8,0-2.1-0.1-3.8-0.4c1.4,3.9,3.8,7.2,7.3,9.8C22,59.7,25.9,61,30.4,61c-7.6,5.6-16,8.4-25.5,8.4
+                                                	c-1.7,0-3.3-0.1-4.9-0.3C9.6,75.1,20.1,78,31.4,78c7.3,0,14.1-1.1,20.5-3.3c6.4-2.2,11.8-5.2,16.4-8.9c4.6-3.7,8.5-8,11.8-12.8
+                                                	c3.3-4.8,5.7-9.9,7.3-15.2c1.6-5.3,2.4-10.6,2.4-15.8c0-1.1,0-2-0.1-2.5C93.8,16.6,97.2,13.2,100,9.2z"/>
+                                            </svg>
+                                            Share on <span>Twitter</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <span class="httpcat-watermark">
+                                <svg version="1.1" id="httpcat_watermark" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="184px" height="124px"
+                                     viewBox="0 0 80 55" style="enable-background:new 0 0 80 55;" xml:space="preserve">
+                                    <path d="M78.6,27.4H62.8V1.5c0-0.7-0.6-1.3-1.2-1.4c-0.6-0.2-1.4,0.1-1.8,0.6l-9.3,14.2H30L20.1,0.6c-0.4-0.5-1-0.8-1.6-0.6
+                                        c-0.6,0.2-0.9,0.8-0.9,1.4v25.9H1.4c-0.8,0-1.4,0.7-1.4,1.5c0,0.8,0.6,1.5,1.4,1.5h16.1v3.8l-9.8,0.2c0,0,0,0,0,0
+                                        c-0.8,0-1.4,0.5-1.4,1.3c0,0.8,0.6,1.4,1.4,1.4l9.8,0v4.1c0,7.7,9.9,13.8,22.6,13.8s22.6-6.1,22.6-13.8v-4.1l9.4-0.2c0,0,0,0,0,0
+                                        c0.8,0,1.4-0.5,1.4-1.3c0-0.8-0.6-1.4-1.4-1.4l-9.5,0v-3.8h15.8c0.8,0,1.4-0.7,1.4-1.5C80,28.1,79.4,27.4,78.6,27.4z M20.6,6.3
+                                        l7.5,11c0.3,0.4,0.6,0.6,1.1,0.6h22.1c0.5,0,1.1-0.3,1.4-0.7l7.1-10.7v20.8H48.3c-0.4,0-0.8,0.1-1,0.4L40,35.5l-7.8-7.7
+                                        c-0.3-0.3-0.6-0.4-1-0.4H20.6V6.3z M59.8,34.3l-7.4,0.2c0,0,0,0,0,0c-0.8,0-1.4,0.5-1.4,1.3c0,0.8,0.6,1.4,1.4,1.4l7.4,0v4.1
+                                        c0,5.9-9,10.8-19.6,10.8S20.6,47,20.6,41.2v-4.1l7.1-0.2c0,0,0,0,0,0c0.8,0,1.4-0.5,1.4-1.3c0-0.8-0.6-1.4-1.4-1.4l-7.1,0v-3.8h10.1
+                                        l8.4,8.2c0.3,0.3,0.6,0.3,1,0.3c0,0,0,0,0,0c0.4,0,0.8-0.1,1-0.3l7.9-8.2h10.9V34.3z"/>
+                                </svg>
+                            </span>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <script src="assets/js/jquery-2.2.1.min.js"></script>
+        <script src="assets/js/uikit/uikit.min.js"></script>
+        <script src="assets/js/svg4everybody.js"></script>
 
         <script type="text/javascript">
             var _gaq = _gaq || [];
@@ -268,7 +1142,14 @@
              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
              })();
         </script>
+
         <div id="fb-root"></div>
-        <script>(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=181277299089"; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'facebook-jssdk'));</script>
-    </body>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.5&appId=150673251690380";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
 </html>

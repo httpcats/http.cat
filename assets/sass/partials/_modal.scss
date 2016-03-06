@@ -1,0 +1,203 @@
+.httpcat-modal{
+    background: rgba(43, 44, 50, 0.9);
+    .httpcat-dialog{
+        @media screen and (max-width: 768px) {
+            max-width: calc(100% - 41px);
+    	}
+        @media screen and (max-width: 320px) {
+            max-width: calc(100% - 26px);
+    	}
+        width: 1142px;
+        padding: 0;
+        background: none;
+        margin: 75px auto;
+        .wrapper{
+            width: 100%;
+            overflow: hidden;
+            @include border-radius(10px);
+        }
+    }
+    .close-btn{
+        position: absolute;
+        right: 0;
+        top: -48px;
+        svg{
+            &#close_btn{
+                fill: $close-btn-color;
+                @include transition(all .2s ease-in-out);
+            }
+        }
+        &:hover{
+            svg{
+                &#close_btn{
+                    fill: white;
+                }
+            }
+        }
+    }
+    .modal-container--left{
+        @media screen and (max-width: 768px) {
+    		width: 100%;
+    	}
+        background: black;
+        padding: 2.1em 0;
+    }
+    .poweredby{
+        text-transform: uppercase;
+        color: $poweredby-grey;
+        text-align: center;
+        font-size: 0.85em;
+        letter-spacing: 2px;
+        margin-bottom: 6px;
+        svg{
+            &#httpcat_logo_poweredby{
+                fill: $primary-color;
+                display: inline-block;
+                position: relative;
+                top: -4px;
+                margin-left: 3px;
+                margin-right: 5px;
+            }
+        }
+        span{
+            color: white;
+            text-transform: uppercase;
+            font-size: 1.35em;
+            letter-spacing: 0;
+        }
+    }
+    .template-img-holder{
+        @include full-width();
+        text-align: center;
+        margin: 0 auto;
+        img{
+            max-width: 100%;
+        }
+    }
+    .modal-container--right{
+        @media screen and (max-width: 768px) {
+    		width: 100%;
+    	}
+        background: $modal-bg;
+        padding: 1.6em;
+        position: relative;
+        .mrec{
+            @media screen and (max-width: 768px) {
+                width: 50%;
+        	}
+            @media screen and (max-width: 525px) {
+                width: 100%;
+                text-align: center;
+        	}
+            @include full-width();
+            margin-bottom: 1.6em;
+            position: relative;
+            z-index: 5;
+        }
+    }
+    .share-links-modal-wrapper{
+        @media screen and (max-width: 768px) {
+            width: 50%;
+            padding-left: 1.5em;
+        }
+        @media screen and (max-width: 525px) {
+            width: 100%;
+            padding-left: 0;
+        }
+        @include full-width();
+        position: relative;
+        z-index: 5;
+    }
+    .share-links-modal{
+        margin-bottom: 3.5em;
+        li{
+            &.links-item{
+                &:first-child{
+                    margin-bottom: 1.6em;
+                }
+            }
+            a{
+                @include full-width();
+                padding: 0.7em 0;
+                color: white;
+                font-weight: 400;
+                @include border-radius(4px);
+                overflow: hidden;
+                text-align: center;
+                position: relative;
+                font-size: 1.3em;
+                &.facebook-share{
+                    background: $brand-facebook;
+                    svg{
+                		&#facebook{
+                			fill: rgba(255, 255, 255, .2);
+                            position: absolute;
+                            left: 0;
+                            top: -16px;
+                            margin-left: 7%;
+                            width: 23px;
+                		}
+                	}
+                }
+                &.twitter-share{
+                    background: $brand-twitter;
+                    svg{
+                		&#twitter{
+                			fill: rgba(255, 255, 255, .2);
+                            position: absolute;
+                            left: 0;
+                            top: -17px;
+                            margin-left: 4%;
+                            width: 60px;
+                		}
+                	}
+                }
+                svg{
+                    @include transition(all .25s ease-in-out);
+                }
+                span{
+                    font-weight: 700;
+                }
+                &:hover{
+                    &.facebook-share{
+                        background: darken($brand-facebook, 5%);
+                        svg{
+                    		&#facebook{
+                    			fill: rgba(255, 255, 255, .4);
+                    		}
+                    	}
+                    }
+                    &.twitter-share{
+                        background: darken($brand-twitter, 5%);
+                        svg{
+                    		&#twitter{
+                    			fill: rgba(255, 255, 255, .4);
+                    		}
+                    	}
+                    }
+                }
+            }
+        }
+    }
+    .httpcat-watermark{
+        @media screen and (max-width: 525px) {
+            display: none;
+        }
+        width: 100%;
+        text-align: center;
+        svg{
+            &#httpcat_watermark{
+                @media screen and (max-width: 768px) {
+                    bottom: 31px;
+                    left: 73%;
+                }
+                fill: $watermark-color;
+                position: absolute;
+                bottom: 64px;
+                left: 50%;
+                margin-left: -92px;
+                z-index: 1;
+            }
+        }
+    }
+}

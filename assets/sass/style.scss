@@ -1,9 +1,13 @@
+/** font **/
+@import url("http://fonts.googleapis.com/css?family=Montserrat:400,700");
+
 /** Compass **/
 @import "compass";
 
 /** Main styles **/
-@import "main";
-@import "animations";
-
-
-
+@import "partials/variables";
+@import "partials/mixins";
+@import "partials/animations";
+@import "partials/main";
+@import "partials/footer";
+@import "partials/modal";

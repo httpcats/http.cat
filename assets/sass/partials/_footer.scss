@@ -1,0 +1,170 @@
+footer{
+    @media screen and (max-width: 340px) {
+        padding-top: 2.4em;
+        padding-bottom: 3em;
+    }
+    @include full-width();
+    padding-top: 6.7em;
+    padding-bottom: 6.7em;
+    background: white;
+    &.notfound{
+        margin-top: 0;
+    }
+}
+.share-links-footer{
+    @media screen and (max-width: 1160px) {
+	    padding-left: 2em;
+		padding-right: 2em;
+	}
+    @media screen and (max-width: 688px) {
+        margin-bottom: 2em;
+    }
+    @media screen and (max-width: 320px) {
+	    padding-left: 1.5em;
+		padding-right: 1.5em;
+	}
+    margin-bottom: 3.5em;
+    li{
+        &.links-item{
+            @media screen and (max-width: 688px) {
+        	    width: 100%;
+                &:first-child{
+                    margin-bottom: 2em;
+                }
+        	}
+        }
+        a{
+            @media screen and (max-width: 340px) {
+                font-size: 1.3em;
+            }
+            @include full-width();
+            padding: 1em 0;
+            color: white;
+            font-weight: 400;
+            @include border-radius(4px);
+            overflow: hidden;
+            text-align: center;
+            position: relative;
+            font-size: 1.8em;
+            &.facebook-share{
+                background: $brand-facebook;
+                svg{
+            		&#facebook{
+            			fill: rgba(255, 255, 255, .2);
+                        position: absolute;
+                        left: 0;
+                        top: -3px;
+                        margin-left: 11%;
+            		}
+            	}
+            }
+            &.twitter-share{
+                background: $brand-twitter;
+                svg{
+            		&#twitter{
+            			fill: rgba(255, 255, 255, .2);
+                        position: absolute;
+                        left: 0;
+                        top: -3px;
+                        margin-left: 6%;
+            		}
+            	}
+            }
+            svg{
+                @include transition(all .25s ease-in-out);
+            }
+            span{
+                font-weight: 700;
+            }
+            &:hover{
+                &.facebook-share{
+                    background: darken($brand-facebook, 5%);
+                    svg{
+                		&#facebook{
+                			fill: rgba(255, 255, 255, .4);
+                		}
+                	}
+                }
+                &.twitter-share{
+                    background: darken($brand-twitter, 5%);
+                    svg{
+                		&#twitter{
+                			fill: rgba(255, 255, 255, .4);
+                		}
+                	}
+                }
+            }
+        }
+    }
+}
+.language-wrapper,
+.fb-like-box-wrapper{
+    @include full-width();
+    margin-bottom: 3.5em;
+}
+.fb-like-box-wrapper{
+    //margin-bottom: 10.6em;
+}
+.holder-language-link{
+    @media screen and (max-width: 688px) {
+        padding-left: 2em;
+		padding-right: 2em;
+        width: 100%;
+    }
+    @media screen and (max-width: 320px) {
+	    padding-left: 1.5em;
+		padding-right: 1.5em;
+	}
+    width: 33%;
+    a{
+        &.language-link{
+            @media screen and (max-width: 688px) {
+                border: 2px solid $primary-color;
+                background: $primary-color;
+                color: white;
+            }
+            @media screen and (max-width: 340px) {
+                font-size: 1.3em;
+            }
+            @include full-width();
+            padding: 0.9em 0;
+            color: $primary-color;
+            font-weight: 400;
+            @include border-radius(4px);
+            text-align: center;
+            font-size: 1.8em;
+            border: 2px solid #d2d3db;
+            background: white;
+            &:hover{
+                border: 2px solid $primary-color;
+                background: $primary-color;
+                color: white;
+            }
+        }
+    }
+}
+.credits{
+    @media screen and (max-width: 530px) {
+        padding-left: 2em;
+		padding-right: 2em;
+    }
+    @include full-width();
+    svg{
+		&#httpcat_logo_footer{
+			fill: $primary-color;
+            margin-bottom: 1em;
+		}
+	}
+    p{
+        color: $input-color;
+        text-align: center;
+        font-size: 1.29em;
+        line-height: 1.5;
+        a{
+            color: $primary-color;
+            &:hover{
+                color: $primary-grey;
+            }
+        }
+    }
+}
