@@ -1,5 +1,7 @@
 # HTTP Cats API
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/rogeriopvl/http.cat.svg)](https://greenkeeper.io/)
+
 ![HTTP Cat picture](https://http.cat/204)
 
 ## About
