@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "mkdir -p dist && mkdir -p dist/catala && cp -R images favicon.ico dist/",
+    "build": "mkdir -p dist && mkdir -p dist/catala && cp -R images favicon.png dist/",
     "min": "html-minifier -c htmlmin.conf index.html > dist/index.html && html-minifier -c htmlmin.conf notfound.html > dist/notfound.html && html-minifier -c htmlmin.conf catala/index.html > dist/catala/index.html"
   },
   "author": "rogeriopvl",
