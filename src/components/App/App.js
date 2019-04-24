@@ -4,6 +4,7 @@ import Header from '../Header'
 import Usage from '../Usage'
 import Thumbnail from '../Thumbnail'
 import ThumbnailGrid from '../ThumbnailGrid'
+import Footer from '../Footer'
 import statuses from '../../lib/statuses'
 
 import styles from './App.module.css'
@@ -18,6 +19,7 @@ function App() {
           <Thumbnail code={code} key={code} description={statuses[code].message} />
         ))}
       </ThumbnailGrid>
+      <Footer />
     </div>
   )
 }
