@@ -1,12 +1,13 @@
 import React from 'react'
 
+import styles from './Usage.module.css'
+
 const Usage = () => (
-  <div>
-    <h2 className="top-space">Usage:</h2>
+  <div className={styles.container}>
+    <h2>Usage:</h2>
     <pre>https://http.cat/[status_code]</pre>
     <p>
-      <b>Note:</b> If you need for some reason to use an image extension, add{' '}
-      <code>.jpg</code> to the URL.
+      <b>Note:</b> If you need an extension at the end of the URL just add <code>.jpg</code>.
     </p>
   </div>
 )
