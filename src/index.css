@@ -23,13 +23,13 @@ code {
     monospace;
 }
 
-@media (min-width: 40rem) {
+@media (min-width: 640px) {
     body {
         padding: 1rem 4rem 1rem 4rem;
     }
 }
 
-@media (min-width: 56rem) {
+@media (min-width: 900px) {
     body {
         padding: 1rem 8rem 1rem 8rem;
     }

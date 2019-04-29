@@ -13,13 +13,13 @@
   width: 100%;
 }
 
-@media (min-width: 40rem) {
+@media (min-width: 640px) {
   .thumbnail {
     width: 50%;
   }
 }
 
-@media (min-width: 56rem) {
+@media (min-width: 900px) {
   .thumbnail {
     width: 33.3333%;
   }
