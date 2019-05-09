@@ -1,0 +1,14 @@
+.container {
+    margin-top: 5em;
+    text-align: center;
+}
+
+.social {
+    display: flex;
+    justify-content: center;
+    padding: 1em;
+}
+
+.social > div {
+    padding: 1em;
+}
