@@ -9,6 +9,7 @@ const GithubButton = ({ width, height}) => (
       href="https://github.com/httpcats/http.cat"
       target="_blank"
       rel="noopener noreferrer"
+      title="http.cat github repository"
     >
       <img
         src={githubIcon}

@@ -8,6 +8,7 @@ const TwitterButton = ({ width, height}) => (
       href="https://twitter.com/rogeriopvl"
       target="_blank"
       rel="noopener noreferrer"
+      title="http.cat dev twitter"
     >
       <img
         src={twitterIcon}

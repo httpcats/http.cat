@@ -9,6 +9,7 @@ const FacebookButton = ({ width, height}) => (
       href="https://www.facebook.com/httpcats"
       target="_blank"
       rel="noopener noreferrer"
+      title="http.cat facebook page"
     >
       <img
         src={facebookIcon}
