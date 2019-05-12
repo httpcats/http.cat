@@ -3,6 +3,10 @@
     text-align: center;
 }
 
+.container a {
+    color: #d0383e;
+}
+
 .social {
     display: flex;
     justify-content: center;
