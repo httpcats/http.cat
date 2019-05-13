@@ -1,13 +1,14 @@
 import React from 'react'
 
+import getString from '../../lib/strings'
 import styles from './Usage.module.css'
 
 const Usage = () => (
   <div className={styles.container}>
-    <h2>Usage:</h2>
-    <pre>https://http.cat/[status_code]</pre>
+    <h2>{getString('USAGE_TITLE')}:</h2>
+    <pre>https://http.cat/[{getString('USAGE_PARAM')}]</pre>
     <p>
-      <b>Note:</b> If you need an extension at the end of the URL just add <code>.jpg</code>.
+      <b>{getString('USAGE_NOTE_LABEL')}:</b> {getString('USAGE_NOTE_TEXT')} <code>.jpg</code>.
     </p>
   </div>
 )

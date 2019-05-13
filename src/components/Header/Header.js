@@ -1,5 +1,6 @@
 import React from 'react'
 
+import getString from '../../lib/strings'
 import Logo from '../Logo'
 import styles from './Header.module.css'
 
@@ -10,7 +11,7 @@ const Header = () => (
         <Logo width="80" height="55" color="#d0383e" />
       </div>
     <h1 className={styles.title}>
-      HTTP Cats
+      {getString('APP_TITLE')}
     </h1>
   </a>
   </header>
