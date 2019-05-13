@@ -17,6 +17,11 @@
   filter: contrast(100%);
 }
 
+.container a {
+  text-decoration: none;
+  color: #fff;
+}
+
 .image {
   background-position: center center;
   background-repeat: no-repeat;
