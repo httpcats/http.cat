@@ -1,18 +1,18 @@
 .container {
-    margin-top: 5em;
-    text-align: center;
+  margin-top: 5em;
+  text-align: center;
 }
 
 .container a {
-    color: #d0383e;
+  color: #d0383e;
 }
 
 .social {
-    display: flex;
-    justify-content: center;
-    padding: 1em;
+  display: flex;
+  justify-content: center;
+  padding: 1em;
 }
 
 .social > div {
-    padding: 1em;
+  padding: 1em;
 }

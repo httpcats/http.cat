@@ -15,17 +15,16 @@ const strings = {
     USAGE_TITLE: 'Instruccions',
     USAGE_PARAM: 'codi_d_estat',
     USAGE_NOTE_LABEL: 'Nota',
-    USAGE_NOTE_TEXT: 'Si necessiteu una extensió al final de l’URL només heu d’afegir',
+    USAGE_NOTE_TEXT:
+      'Si necessiteu una extensió al final de l’URL només heu d’afegir',
     LANGUAGE_LINK_TEXT: 'Versió Català',
     DEVELOPED_BY: 'Desenvolupat per',
     IMAGES_BY: 'Imatges de'
   }
 }
 
-const getString = (label) => {
-  const lang = window.location.search.indexOf('lang=cat') !== -1
-    ? 'cat'
-    : 'en'
+const getString = label => {
+  const lang = window.location.search.indexOf('lang=cat') !== -1 ? 'cat' : 'en'
 
   return strings[lang][label]
 }
