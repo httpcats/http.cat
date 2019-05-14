@@ -13,7 +13,7 @@
   cursor: pointer;
 }
 
-.container:hover > .image {
+.container:hover > a > .image {
   filter: contrast(100%);
 }
 
