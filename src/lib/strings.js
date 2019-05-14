@@ -1,4 +1,4 @@
-const strings = {
+export const strings = {
   en: {
     APP_TITLE: 'HTTP Cats',
     USAGE_TITLE: 'Usage',
