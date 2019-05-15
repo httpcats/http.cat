@@ -1,0 +1,22 @@
+.container {
+  padding: 1em 0 1em 0.5em;
+}
+
+.container pre,
+.container code {
+  background-color: #eee;
+}
+
+.container pre {
+  font-size: 1.5em;
+  padding: 1em;
+  border-radius: 5px;
+  overflow: scroll;
+}
+
+@media (max-width: 430px) {
+  .container pre {
+    padding: 0.3em;
+    font-size: 1.1em;
+  }
+}

@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.thumbnail {
+  display: flex;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .thumbnail {
+    width: 50%;
+  }
+}
+
+@media (min-width: 900px) {
+  .thumbnail {
+    width: 33.3333%;
+  }
+}

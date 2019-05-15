@@ -1,16 +1,38 @@
 {
-  "name": "httpcats-api",
-  "version": "1.0.0",
-  "description": "HTTP Cats API",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "mkdir -p dist && mkdir -p dist/catala && cp -R images favicon.png apple-touch-icon.png dist/",
-    "min": "html-minifier -c htmlmin.conf index.html > dist/index.html && html-minifier -c htmlmin.conf notfound.html > dist/notfound.html && html-minifier -c htmlmin.conf catala/index.html > dist/catala/index.html"
+  "name": "http.cat",
+  "version": "2.0.0",
+  "private": true,
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-scripts": "3.0.0"
   },
-  "author": "rogeriopvl",
-  "license": "MIT",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "postbuild": "react-snap && yarn postrender",
+    "postrender": "./post-render.sh",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "prettier": "prettier --write src/**/*.{js,css,html,json}"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
   "devDependencies": {
-    "html-minifier": "^0.7.2"
+    "prettier": "^1.17.0",
+    "react-snap": "^1.23.0"
   }
 }
