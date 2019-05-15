@@ -1,6 +1,6 @@
 {
-  "name": "http.cat-2",
-  "version": "0.1.0",
+  "name": "http.cat",
+  "version": "2.0.0",
   "private": true,
   "dependencies": {
     "react": "^16.8.6",
