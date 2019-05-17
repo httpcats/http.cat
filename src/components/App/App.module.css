@@ -1,2 +1,15 @@
 .container {
+  padding: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding: 1rem 4rem 1rem 4rem;
+  }
+}
+
+@media (min-width: 900px) {
+  .container {
+    padding: 1rem 8rem 1rem 8rem;
+  }
 }
