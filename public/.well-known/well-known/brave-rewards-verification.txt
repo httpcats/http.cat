@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: http.cat
+Token: cb75fa56e643e8212138cd3bc2ab85905bb4065d163a4195c4a10a3a4c9685f5
