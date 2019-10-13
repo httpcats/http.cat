@@ -30,7 +30,9 @@ Creates a build of the project.
 
 Thanks to @girliemac for creating the amazing http status cats images.
 
-Thanks to @pfdborges for creating the http.cat logo
+Thanks to @pfdborges for creating the http.cat logo.
+
+Thanks to @nataly-enne for the status 501 image.
 
 ## License
 
