@@ -1,6 +1,6 @@
 #  http.cat [![Build Status](https://travis-ci.com/httpcats/http.cat.svg?branch=master)](https://travis-ci.com/httpcats/http.cat)
 
-![HTTP Cat picture](https://http.cat/204)
+![HTTP Cat picture](https://http.cat/404)
 
 ## About
 
