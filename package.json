@@ -33,7 +33,7 @@
     ]
   },
   "devDependencies": {
-    "prettier": "^2.1.1",
+    "prettier": "^2.1.2",
     "react-snap": "^1.23.0"
   }
 }
