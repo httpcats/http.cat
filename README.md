@@ -28,13 +28,13 @@ Creates a build of the project.
 
 ## Credits
 
-Thanks to @girliemac for creating the amazing http status cats images.
+Thanks to [@girliemac](https://github.com/girliemac) for creating the amazing http status cats images.
 
-Thanks to @pfdborges for creating the http.cat logo.
+Thanks to [@pfdborges](https://github.com/pfdborges) for creating the http.cat logo.
 
-Thanks to @nataly-enne for the status 501 image.
+Thanks to [@nataly-enne](https://github.com/nataly-enne) for the status 501 image.
 
-Thanks to @woutfeys for the status 102 image.
+Thanks to [@woutfeys](https://github.com/woutfeys) for the status 102 image.
 
 ## License
 
