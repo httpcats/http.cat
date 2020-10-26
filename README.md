@@ -34,6 +34,8 @@ Thanks to @pfdborges for creating the http.cat logo.
 
 Thanks to @nataly-enne for the status 501 image.
 
+Thanks to @woutfeys for the status 102 image.
+
 ## License
 
 MIT
