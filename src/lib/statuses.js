@@ -38,7 +38,7 @@ const statuses = {
   422: { code: 422, message: 'Unprocessable Entity' },
   423: { code: 423, message: 'Locked' },
   424: { code: 424, message: 'Failed Dependency' },
-  425: { code: 425, message: 'Unordered Collection' },
+  425: { code: 425, message: 'Too Early' },
   426: { code: 426, message: 'Upgrade Required' },
   429: { code: 429, message: 'Too Many Requests' },
   431: { code: 431, message: 'Request Header Fields Too Large' },
