@@ -15,6 +15,7 @@ const statuses = {
   304: { code: 304, message: 'Not Modified' },
   305: { code: 305, message: 'Use Proxy' },
   307: { code: 307, message: 'Temporary Redirect' },
+  308: { code: 308, message: 'Permanent Redirect' },
   400: { code: 400, message: 'Bad Request' },
   401: { code: 401, message: 'Unauthorized' },
   402: { code: 402, message: 'Payment Required' },
