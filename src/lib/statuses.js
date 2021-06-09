@@ -5,6 +5,7 @@ const statuses = {
   200: { code: 200, message: 'OK' },
   201: { code: 201, message: 'Created' },
   202: { code: 202, message: 'Accepted' },
+  203: { code: 203, message: 'Non-Authoritative Information' },
   204: { code: 204, message: 'No Content' },
   206: { code: 206, message: 'Partial Content' },
   207: { code: 207, message: 'Multi-Status' },
@@ -48,7 +49,7 @@ const statuses = {
   451: { code: 451, message: 'Unavailable For Legal Reasons' },
   499: { code: 499, message: 'Client Closed Request' },
   500: { code: 500, message: 'Internal Server Error' },
-  501: { code: 501, message: 'Not Implemented'},
+  501: { code: 501, message: 'Not Implemented' },
   502: { code: 502, message: 'Bad Gateway' },
   503: { code: 503, message: 'Service Unavailable' },
   504: { code: 504, message: 'Gateway Timeout' },
@@ -58,7 +59,7 @@ const statuses = {
   509: { code: 509, message: 'Bandwidth Limit Exceeded' },
   510: { code: 510, message: 'Not Extended' },
   511: { code: 511, message: 'Network Authentication Required' },
-  599: { code: 599, message: 'Network Connect Timeout Error' }
+  599: { code: 599, message: 'Network Connect Timeout Error' },
 }
 
 export default statuses
