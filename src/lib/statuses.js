@@ -5,6 +5,7 @@ const statuses = {
   200: { code: 200, message: 'OK' },
   201: { code: 201, message: 'Created' },
   202: { code: 202, message: 'Accepted' },
+  203: { code: 203, message: 'Non-Authoritative Information' },
   204: { code: 204, message: 'No Content' },
   206: { code: 206, message: 'Partial Content' },
   207: { code: 207, message: 'Multi-Status' },
