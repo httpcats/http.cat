@@ -10,7 +10,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "postbuild": "react-snap && yarn postrender",
+    "postbuild": "react-snap && npm run postrender",
     "postrender": "./scripts/post-render.sh",
     "deploy": "./scripts/deploy.sh",
     "test": "react-scripts test",
