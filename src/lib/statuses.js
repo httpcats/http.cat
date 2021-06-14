@@ -24,6 +24,7 @@ const statuses = {
   404: { code: 404, message: 'Not Found' },
   405: { code: 405, message: 'Method Not Allowed' },
   406: { code: 406, message: 'Not Acceptable' },
+  407: { code: 407, message: 'Proxy Authentication Required' },
   408: { code: 408, message: 'Request Timeout' },
   409: { code: 409, message: 'Conflict' },
   410: { code: 410, message: 'Gone' },
