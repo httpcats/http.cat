@@ -36,6 +36,8 @@ Thanks to [@nataly-enne](https://github.com/nataly-enne) for the status 501 imag
 
 Thanks to [@woutfeys](https://github.com/woutfeys) for the status 102 image.
 
+Thanks to [@luizcieslak](https://github.com/luizcieslak) for the 203 and 407 statuses image.
+
 ## License
 
 MIT
