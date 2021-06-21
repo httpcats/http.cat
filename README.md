@@ -26,6 +26,19 @@ Runs the tests.
 
 Creates a build of the project.
 
+## Adding a new image
+
+Currently not all HTTP status codes are covered. You are welcome to create an issue or PR to cover them.
+
+We've prepared some templates to make this process easier.
+
+* [Landscape template](https://docs.google.com/presentation/d/1sYxNNKxUbP11kyt9oPixWdFEykHDafr4jixy9uwMh9I/edit?usp=sharing)
+* [Portrait template](https://docs.google.com/presentation/d/1Ay5nattHagPfnd-gMaUHumckFt2VANaYwMkXuQ-xS6E/edit?usp=sharing)
+
+You can clone it, replace the information with the new one and export as a JPG image.
+
+Then, upload it to both `public/images` and `public/images-original` folders and update the [statuses.js](https://github.com/httpcats/http.cat/blob/master/src/lib/statuses.js) file.
+
 ## Credits
 
 Thanks to [@girliemac](https://github.com/girliemac) for creating the amazing http status cats images.
