@@ -1,54 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
 
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.png" />
-    <link rel="apple-touch-icon-precomposed" href="%PUBLIC_URL%/apple-touch-icon.png">
-    <link rel="mask-icon" href="mask-icon.svg" color="#d0383e">
+<head>
+  <meta charset="utf-8" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.png" />
+  <link rel="apple-touch-icon-precomposed" href="%PUBLIC_URL%/apple-touch-icon.png">
+  <link rel="mask-icon" href="mask-icon.svg" color="#d0383e">
 
-    <meta name="author" content="Rogério Vicente">
-    <meta name="description" content="An API for the awesome HTTP Cats! Use it in your website to show funny error messages.">
-    <meta name="keywords" content="httpcats, cats, error, http, lolcats">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <meta property="og:title" content="HTTP Cats">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://http.cat">
-    <meta property="og:image" content="https://http.cat/100.jpg">
-    <meta property="og:site_name" content="HTTP Status Cats API">
-    <meta property="og:description" content="API for HTTP Cats">
+  <meta name="author" content="Rogério Vicente">
+  <meta name="description"
+    content="An API for the awesome HTTP Cats! Use it in your website to show funny error messages.">
+  <meta name="keywords" content="httpcats, cats, error, http, lolcats">
 
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="https://http.cat">
-    <meta name="twitter:creator" content="@rogeriopvl">
-    <meta name="twitter:title" content="HTTP Cats">
-    <meta name="twitter:description" content="API for HTTP Cats">
-    <meta name="twitter:image" content="https://http.cat/100">
+  <meta property="og:title" content="HTTP Cats">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://http.cat">
+  <meta property="og:image" content="https://http.cat/100.jpg">
+  <meta property="og:site_name" content="HTTP Status Cats API">
+  <meta property="og:description" content="API for HTTP Cats">
 
-    <meta name="theme-color" content="#d0383e" />
-    <!--
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="https://http.cat">
+  <meta name="twitter:creator" content="@rogeriopvl">
+  <meta name="twitter:title" content="HTTP Cats">
+  <meta name="twitter:description" content="API for HTTP Cats">
+  <meta name="twitter:image" content="https://http.cat/100">
+
+  <meta name="theme-color" content="#d0383e" />
+  <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
-    <title>HTTP Cats</title>
-  </head>
-  <body>
-    <div style="background-color: #000; color: #fff; padding: 16px; width: 100%; text-align: center;">
-      <a style="color: #fff;" href="https://twitter.com/search?q=%23BlackLivesMatter">#BlackLivesMatter</a>
-    </div>
-    <div id="root"></div>
+  <title>HTTP Cats</title>
 
-    <!-- Google Analytics -->
-    <script>
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-      ga('create', 'UA-27701865-1', 'auto');
-      ga('send', 'pageview');
-    </script>
-    <script async src='https://www.google-analytics.com/analytics.js'></script>
-    <!-- End Google Analytics -->
-  </body>
+  <link rel="stylesheet" href="%PUBLIC_URL%/carbonads.css">
+  </link>
+</head>
+
+<body>
+  <div id="root"></div>
+  <div id="ads">
+    <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CESITKJN&placement=httpcat"
+      id="_carbonads_js"></script>
+  </div>
+
+  <!-- Google Analytics -->
+  <script>
+    window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) }; ga.l = +new Date;
+    ga('create', 'UA-27701865-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+  <!-- End Google Analytics -->
+</body>
+
 </html>

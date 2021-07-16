@@ -30,7 +30,7 @@ const Usage = () => {
       <pre>
         {usageValue}
         {'clipboard' in navigator && (
-          <button onClick={copyValue}>
+          <button onClick={copyValue} title='Copy to clipboard'>
             {isValueCopied ? getString('COPIED') : <img src={copyIcon} alt={getString('COPY_ICON_ALT_TEXT')} />}
           </button>
         )}
