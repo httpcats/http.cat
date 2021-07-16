@@ -7,7 +7,9 @@ export const strings = {
     USAGE_NOTE_TEXT: 'If you need an extension at the end of the URL just add',
     LANGUAGE_LINK_TEXT: 'Versió Català',
     DEVELOPED_BY: 'Developed by',
-    IMAGES_BY: 'Images by'
+    IMAGES_BY: 'Images by',
+    COPIED: 'Copied!',
+    COPY_ICON_ALT_TEXT: 'Icon that represent the clipboard action'
   },
 
   cat: {
@@ -19,7 +21,9 @@ export const strings = {
       'Si necessiteu una extensió al final de l’URL només heu d’afegir',
     LANGUAGE_LINK_TEXT: 'Versió Català',
     DEVELOPED_BY: 'Desenvolupat per',
-    IMAGES_BY: 'Imatges de'
+    IMAGES_BY: 'Imatges de',
+    COPIED: '¡Copiat!',
+    COPY_ICON_ALT_TEXT: "Icona que representa l'acció del porta-retalls"
   }
 }
 
