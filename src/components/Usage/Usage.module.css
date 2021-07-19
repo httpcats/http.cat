@@ -61,3 +61,10 @@
     height: 1em;
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  .container pre,
+  .container code {
+    background-color: #444;
+  }
+}
