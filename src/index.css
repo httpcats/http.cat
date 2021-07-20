@@ -4,6 +4,23 @@
   box-sizing: border-box;
 }
 
+:root {
+  --bg-color-light: #fff;
+  --text-color-light: #000;
+  --bg-color-dark: #222;
+  --text-color-dark: #fff;
+
+  --text-color: var(--text-color-light);
+  --bg-color: var(--bg-color-light);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: var(--bg-color-dark);
+    --text-color: var(--text-color-dark);
+  }
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -14,11 +31,11 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #fff;
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-

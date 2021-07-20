@@ -31,11 +31,11 @@
 }
 
 #carbonads a {
-  color: inherit;
+  color: var(--text-color-light);
   text-decoration: none;
 }
 #carbonads a:hover {
-  color: inherit;
+  color: initial;
 }
 #carbonads span {
   position: relative;
