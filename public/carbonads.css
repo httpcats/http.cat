@@ -35,7 +35,7 @@
   text-decoration: none;
 }
 #carbonads a:hover {
-  color: inherit;
+  color: initial;
 }
 #carbonads span {
   position: relative;
