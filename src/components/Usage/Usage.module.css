@@ -65,6 +65,6 @@
 @media (prefers-color-scheme: dark) {
   .container pre,
   .container code {
-    background-color: #444;
+    background-color: var(--bg-color-elevation1);
   }
 }

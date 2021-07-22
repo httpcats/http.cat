@@ -9,6 +9,7 @@
   --text-color-light: #000;
   --bg-color-dark: #222;
   --text-color-dark: #fff;
+  --bg-color-elevation1: #444;
 
   --text-color: var(--text-color-light);
   --bg-color: var(--bg-color-light);

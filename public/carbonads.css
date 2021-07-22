@@ -11,6 +11,7 @@
   display: flex;
   max-width: 330px;
   background-color: hsl(0, 0%, 98%);
+  background-color: var(--bg-color);
   box-shadow: 0 1px 4px 1px hsla(0, 0%, 0%, 0.1);
   z-index: 100;
   position: absolute;
@@ -30,12 +31,15 @@
   }
 }
 
-#carbonads a {
-  color: var(--text-color-light);
-  text-decoration: none;
+@media (prefers-color-scheme: dark) {
+  #carbonads {
+    background-color: var(--bg-color-elevation1);
+  }
 }
-#carbonads a:hover {
-  color: initial;
+
+#carbonads a {
+  color: var(--text-color);
+  text-decoration: none;
 }
 #carbonads span {
   position: relative;
@@ -64,6 +68,7 @@
   display: block;
   padding: 6px 8px;
   background: #f1f1f2;
+  color: var(--text-color-light);
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 0.5px;
