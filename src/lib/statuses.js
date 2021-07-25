@@ -48,9 +48,10 @@ const statuses = {
   444: { code: 444, message: 'No Response' },
   450: { code: 450, message: 'Blocked by Windows Parental Controls' },
   451: { code: 451, message: 'Unavailable For Legal Reasons' },
+  498: { code: 498, message: 'Token expired/invalid' },
   499: { code: 499, message: 'Client Closed Request' },
   500: { code: 500, message: 'Internal Server Error' },
-  501: { code: 501, message: 'Not Implemented'},
+  501: { code: 501, message: 'Not Implemented' },
   502: { code: 502, message: 'Bad Gateway' },
   503: { code: 503, message: 'Service Unavailable' },
   504: { code: 504, message: 'Gateway Timeout' },
@@ -60,7 +61,7 @@ const statuses = {
   509: { code: 509, message: 'Bandwidth Limit Exceeded' },
   510: { code: 510, message: 'Not Extended' },
   511: { code: 511, message: 'Network Authentication Required' },
-  599: { code: 599, message: 'Network Connect Timeout Error' }
+  599: { code: 599, message: 'Network Connect Timeout Error' },
 }
 
 export default statuses
