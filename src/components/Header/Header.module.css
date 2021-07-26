@@ -9,7 +9,7 @@
 .link {
   display: flex;
   text-decoration: none;
-  color: #d0383e;
+  color: var(--interactive);
 }
 
 .title {

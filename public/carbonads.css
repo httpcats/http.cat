@@ -83,7 +83,7 @@
 
 @media (prefers-color-scheme: dark) {
   #carbonads .carbon-poweredby{
-    background-color: #d0383e;
+    background-color: var(--interactive);
     color: var(--text-color);
   }
 }

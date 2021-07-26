@@ -23,7 +23,7 @@
   display: flex;
   align-items: center;
   margin-left: 0.5em;
-  background-color: #d0383e;
+  background-color: var(--interactive);
   color: #fff;
   border: none;
   cursor: pointer;
