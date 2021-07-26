@@ -81,6 +81,13 @@
   right: 0;
 }
 
+@media (prefers-color-scheme: dark) {
+  #carbonads .carbon-poweredby{
+    background-color: #d0383e;
+    color: var(--text-color);
+  }
+}
+
 @media only screen and (min-width: 320px) and (max-width: 759px) {
   #ads {
     margin-bottom: 4rem;
