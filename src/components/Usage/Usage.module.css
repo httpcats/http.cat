@@ -23,7 +23,7 @@
   display: flex;
   align-items: center;
   margin-left: 0.5em;
-  background-color: #d0383e;
+  background-color: var(--interactive);
   color: #fff;
   border: none;
   cursor: pointer;
@@ -65,6 +65,6 @@
 @media (prefers-color-scheme: dark) {
   .container pre,
   .container code {
-    background-color: #444;
+    background-color: var(--bg-color-elevation1);
   }
 }
