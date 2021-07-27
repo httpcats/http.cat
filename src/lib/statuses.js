@@ -48,7 +48,7 @@ const statuses = {
   444: { code: 444, message: 'No Response' },
   450: { code: 450, message: 'Blocked by Windows Parental Controls' },
   451: { code: 451, message: 'Unavailable For Legal Reasons' },
-  497: { code: 497, message: 'HTTP Request sent to HTTPS port' },
+  497: { code: 497, message: 'HTTP Request Sent to HTTPS Port' },
   498: { code: 498, message: 'Token expired/invalid' },
   499: { code: 499, message: 'Client Closed Request' },
   500: { code: 500, message: 'Internal Server Error' },
