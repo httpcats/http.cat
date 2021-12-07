@@ -35,7 +35,7 @@ const statuses = {
   415: { code: 415, message: 'Unsupported Media Type' },
   416: { code: 416, message: 'Request Range Not Satisfiable' },
   417: { code: 417, message: 'Expectation Failed' },
-  418: { code: 418, message: 'I´m a teapot' },
+  418: { code: 418, message: 'I’m a teapot' },
   420: { code: 420, message: 'Enhance Your Calm' },
   421: { code: 421, message: 'Misdirected Request' },
   422: { code: 422, message: 'Unprocessable Entity' },
