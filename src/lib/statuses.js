@@ -62,9 +62,14 @@ const statuses = {
   509: { code: 509, message: 'Bandwidth Limit Exceeded' },
   510: { code: 510, message: 'Not Extended' },
   511: { code: 511, message: 'Network Authentication Required' },
+  520: { code: 520, message: 'Web Server Returned an Unknown Error'},
   521: { code: 521, message: 'Web Server Is Down' },
+  522: { code: 522, message: 'Connection Timed Out'},
   523: { code: 523, message: 'Origin Is Unreachable' },
   525: { code: 525, message: 'SSL Handshake Failed' },
+  526: { code: 526, message: 'Invalid SSL Certificate'},
+  527: { code: 527, message: 'Railgun Error'},
+  561: { code: 561, message: 'Unauthorized'},
   599: { code: 599, message: 'Network Connect Timeout Error' },
 }
 
