@@ -53,6 +53,12 @@ Thanks to [@epitaciosilva](https://github.com/epitaciosilva) for the 407 image.
 
 Thanks to [@luizcieslak](https://github.com/luizcieslak) for the 203 image and 407 image fix.
 
+## Sponsor / Donate
+
+Please consider sponsoring or donating via <a target="_blank" rel="nofollow" href="https://www.patreon.com/httpcat"><img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" alt="patron" width="100px" height="auto"></a>.
+
+You can also adopt an HTTP Cat and have your name in the chosen cat image!
+
 ## License
 
 MIT
