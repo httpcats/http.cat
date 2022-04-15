@@ -63,6 +63,7 @@ const statuses = {
   510: { code: 510, message: 'Not Extended' },
   511: { code: 511, message: 'Network Authentication Required' },
   521: { code: 521, message: 'Web Server Is Down' },
+  522: { code: 522, message: 'Connection Timed Out' },
   523: { code: 523, message: 'Origin Is Unreachable' },
   525: { code: 525, message: 'SSL Handshake Failed' },
   599: { code: 599, message: 'Network Connect Timeout Error' },
