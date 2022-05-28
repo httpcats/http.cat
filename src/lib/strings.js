@@ -4,7 +4,7 @@ export const strings = {
     USAGE_TITLE: 'Usage',
     USAGE_PARAM: 'status_code',
     USAGE_NOTE_LABEL: 'Note',
-    USAGE_NOTE_TEXT: 'If you need an extension at the end of the URL just add',
+    USAGE_NOTE_TEXT: 'If you need an extension at the end of the URL, just add',
     LANGUAGE_LINK_TEXT: 'Versió Català',
     DEVELOPED_BY: 'Developed by',
     IMAGES_BY: 'Images by',
