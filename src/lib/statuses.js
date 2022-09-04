@@ -66,6 +66,7 @@ const statuses = {
   522: { code: 522, message: 'Connection Timed Out' },
   523: { code: 523, message: 'Origin Is Unreachable' },
   525: { code: 525, message: 'SSL Handshake Failed' },
+  527: {code: 527, message: 'Railgun Error'},
   599: { code: 599, message: 'Network Connect Timeout Error' },
 }
 
