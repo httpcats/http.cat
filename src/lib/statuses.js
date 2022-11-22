@@ -2,6 +2,7 @@ const statuses = {
   100: { code: 100, message: 'Continue' },
   101: { code: 101, message: 'Switching Protocols' },
   102: { code: 102, message: 'Processing' },
+  103: { code: 103, message: 'Early Hints'},
   200: { code: 200, message: 'OK' },
   201: { code: 201, message: 'Created' },
   202: { code: 202, message: 'Accepted' },
