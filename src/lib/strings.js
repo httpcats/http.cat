@@ -22,7 +22,7 @@ export const strings = {
     LANGUAGE_LINK_TEXT: 'Versió Català',
     DEVELOPED_BY: 'Desenvolupat per',
     IMAGES_BY: 'Imatges de',
-    COPIED: '¡Copiat!',
+    COPIED: 'Copiat!',
     COPY_ICON_ALT_TEXT: "Icona que representa l'acció del porta-retalls"
   }
 }
