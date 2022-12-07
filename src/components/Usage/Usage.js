@@ -25,20 +25,20 @@ const Usage = () => {
   }, [isValueCopied])
 
   return (
-    <div className={styles.container}>
-      <h2>{getString('USAGE_TITLE')}:</h2>
+    <section className={styles.container} aria-labelledby="usageTitle" >
+      <h2 id="usageTitle" aria-level="2">{getString('USAGE_TITLE')}:</h2>
       <pre>
         {usageValue}
         {'clipboard' in navigator && (
           <button onClick={copyValue} title='Copy to clipboard'>
-            {isValueCopied ? getString('COPIED') : <img src={copyIcon} alt={getString('COPY_ICON_ALT_TEXT')} />}
+            {isValueCopied ? getString('COPIED') : <img src={copyIcon} alt={getString('COPY_ICON_ALT_TEXT')} aria-hidden />}
           </button>
         )}
       </pre>
       <p>
-        <b>{getString('USAGE_NOTE_LABEL')}:</b> {getString('USAGE_NOTE_TEXT')}{' '}<code>.jpg</code>.
+        <b>{getString('USAGE_NOTE_LABEL') + ': '}</b>{getString('USAGE_NOTE_TEXT') + ' '}<code>.jpg</code>.
       </p>
-    </div>
+    </section>
   )
 }
 
