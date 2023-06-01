@@ -10,19 +10,21 @@ The code for the older version hosted at the heroku platform is at the [http-sta
 
 This version does not need any server side code. The API behavior is provided by a Nginx server config.
 
-The interface is built with React and pre-rendered with react-snap.
+On v2.0.0 the website was built with React and pre-rendered with react-snap.
+
+As of v3.0.0 it's built with Next.js 13.
 
 ## Development
 
-    yarn start
+    npm run dev
 
 Starts the development server.
 
-    yarn test
+    npm test
 
 Runs the tests.
 
-    yarn build
+    npm run build
 
 Creates a build of the project.
 
@@ -37,13 +39,13 @@ We've prepared some templates to make this process easier.
 
 You can clone it, replace the information with the new one and export as a JPG image.
 
-Then, upload it to both `public/images` and `public/images-original` folders and update the [statuses.js](https://github.com/httpcats/http.cat/blob/master/src/lib/statuses.js) file.
+Then, upload it to both `public/images` and `public/images-original` folders and update the [statuses.ts](https://github.com/httpcats/http.cat/blob/master/lib/statuses.ts) file.
 
 ## Credits
 
 Thanks to [@girliemac](https://github.com/girliemac) for creating the amazing http status cats images.
 
-Thanks to [@pfdborges](https://github.com/pfdborges) for creating the http.cat logo.
+Thanks to [@pfdborges](https://github.com/pfdborges) for creating the http.cat logo (RIP my friend).
 
 Thanks to [@nataly-enne](https://github.com/nataly-enne) for the status 501 image.
 
