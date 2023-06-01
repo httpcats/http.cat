@@ -1,0 +1,190 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-color-light: #fff;
+  --text-color-light: #000;
+  --bg-color-dark: #222;
+  --text-color-dark: #fff;
+  --bg-color-elevation1: #444;
+  --interactive: #d0383e;
+
+  --text-color: var(--text-color-light);
+  --bg-color: var(--bg-color-light);
+
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: var(--text-color-dark);
+    --bg-color: var(--bg-color-dark);
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  letter-spacing: 0;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+p {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+/**
+ * Carbon Ads
+ * https://www.carbondesignsystem.com/resources/ads
+ */
+
+#carbonads * {
+  margin: initial;
+  padding: initial;
+}
+#carbonads {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', Helvetica, Arial,
+    sans-serif;
+}
+#carbonads {
+  display: flex;
+  max-width: 330px;
+  background-color: hsl(0, 0%, 98%);
+  background-color: var(--bg-color);
+  box-shadow: 0 1px 4px 1px hsla(0, 0%, 0%, 0.1);
+  z-index: 100;
+  position: absolute;
+  right: 1rem;
+  top: 2rem;
+}
+
+@media (min-width: 640px) {
+  #carbonads {
+    right: 4rem;
+  }
+}
+
+@media (min-width: 900px) {
+  #carbonads {
+    right: 8rem;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  #carbonads {
+    background-color: var(--bg-color-elevation1);
+  }
+}
+
+#carbonads a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+#carbonads span {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+#carbonads .carbon-wrap {
+  display: flex;
+}
+#carbonads .carbon-img {
+  display: block;
+  margin: 0;
+  line-height: 1;
+}
+#carbonads .carbon-img img {
+  display: block;
+}
+#carbonads .carbon-text {
+  font-size: 13px;
+  padding: 10px;
+  margin-bottom: 16px;
+  line-height: 1.5;
+  text-align: left;
+}
+#carbonads .carbon-poweredby {
+  display: block;
+  padding: 6px 8px;
+  background: #f1f1f2;
+  color: var(--text-color-light);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+  font-size: 8px;
+  line-height: 1;
+  border-top-left-radius: 3px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  #carbonads .carbon-poweredby {
+    background-color: var(--interactive);
+    color: var(--text-color);
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 759px) {
+  #ads {
+    margin-bottom: 4rem;
+  }
+
+  #carbonads {
+    float: initial;
+    position: relative;
+    right: initial;
+    bottom: initial;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+
+    max-width: 330px;
+  }
+
+  #carbonads .carbon-wrap {
+    display: flex;
+
+    flex-direction: row;
+  }
+
+  #carbonads .carbon-img {
+    margin: 0;
+  }
+
+  #carbonads .carbon-text {
+    padding: 10px 10px 0 10px;
+
+    font-size: 12px;
+  }
+
+  #carbonads .carbon-poweredby {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    text-align: center;
+    border-radius: 0;
+    border-top-left-radius: 3px;
+  }
+}
