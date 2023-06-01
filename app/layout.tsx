@@ -9,11 +9,21 @@ import Footer from '@/components/Footer';
 import lang from '@/locales/en/common.json';
 
 export const metadata: Metadata = {
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.png',
+    apple: '/apple-touch-icon.png',
+    other: [
+      { rel: 'apple-touch-icon-precomposed', url: '/apple-touch-icon.png' },
+    ],
+  },
+  viewport: 'width=device-width, initial-scale=1',
   title: 'HTTP Cats',
   description:
     'An API for the awesome HTTP Cats! Use it in your website to show funny error messages.',
   keywords:
     'http, cats, http cats, http status cats, status cats, api, lolcats, error',
+  authors: [{ name: 'Rogério Vicente', url: 'https://github.com/rogeriopvl' }],
   openGraph: {
     type: 'website',
     title: 'HTTP Cats',

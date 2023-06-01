@@ -10,7 +10,7 @@
 set -o nounset
 set -o errexit
 
-SOURCE_DIR=build/
+SOURCE_DIR=out/
 
 # Set the environment by loading from the file "environment" in the same dir
 DIR="$( cd "$( dirname $( dirname "$0" ) )" && pwd)"
