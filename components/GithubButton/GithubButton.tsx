@@ -4,11 +4,11 @@ import githubIcon from './github.svg';
 import styles from './GithubButton.module.css';
 
 type GithubButtonProps = {
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
 };
 
-const GithubButton = ({ width, height }: GithubButtonProps) => (
+const GithubButton = ({ width = 50, height = 50 }: GithubButtonProps) => (
   <div className={styles.container}>
     <a
       href="https://github.com/httpcats/http.cat"
@@ -20,10 +20,5 @@ const GithubButton = ({ width, height }: GithubButtonProps) => (
     </a>
   </div>
 );
-
-GithubButton.defaultProps = {
-  width: 50,
-  height: 50,
-};
 
 export default GithubButton;

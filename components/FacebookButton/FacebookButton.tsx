@@ -4,11 +4,11 @@ import facebookIcon from './facebook.svg';
 import styles from './FacebookButton.module.css';
 
 type FacebookButtonProps = {
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
 };
 
-const FacebookButton = ({ width, height }: FacebookButtonProps) => (
+const FacebookButton = ({ width = 50, height = 50 }: FacebookButtonProps) => (
   <div className={styles.container}>
     <a
       href="https://www.facebook.com/httpcats"
@@ -25,10 +25,5 @@ const FacebookButton = ({ width, height }: FacebookButtonProps) => (
     </a>
   </div>
 );
-
-FacebookButton.defaultProps = {
-  width: 50,
-  height: 50,
-};
 
 export default FacebookButton;

@@ -7,7 +7,7 @@ type TwitterButtonProps = {
   height?: number;
 };
 
-const TwitterButton = ({ width, height }: TwitterButtonProps) => (
+const TwitterButton = ({ width = 50, height = 50 }: TwitterButtonProps) => (
   <div>
     <a
       href="https://twitter.com/rogeriopvl"
@@ -24,10 +24,5 @@ const TwitterButton = ({ width, height }: TwitterButtonProps) => (
     </a>
   </div>
 );
-
-TwitterButton.defaultProps = {
-  width: 50,
-  height: 50,
-};
 
 export default TwitterButton;
