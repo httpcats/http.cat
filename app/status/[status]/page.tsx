@@ -1,9 +1,8 @@
+import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 
 import statuses, { IStatus } from '@/lib/statuses';
-
-export const metadata = {};
 
 export default function Info({ params }: { params: { status: string } }) {
   const statusObj = statuses[params.status as keyof typeof statuses] as IStatus;
@@ -29,4 +28,31 @@ export default function Info({ params }: { params: { status: string } }) {
 
 export function generateStaticParams() {
   return Object.keys(statuses).map((status) => ({ status }));
+}
+
+export function generateMetadata({
+  params,
+}: {
+  params: { status: string };
+}): Metadata {
+  const statusObj = statuses[params.status as keyof typeof statuses] as IStatus;
+
+  return {
+    title: `${statusObj.code} ${statusObj.message} | HTTP Cats`,
+    openGraph: {
+      title: `${statusObj.code} ${statusObj.message} | HTTP Cats`,
+      images: [
+        {
+          url: `https://http.cat/${statusObj.code}.jpg`,
+          alt: statusObj.message,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      site: `https://http.cat/status/${statusObj.code}`,
+      title: `${statusObj.code} ${statusObj.message} | HTTP Cats`,
+      images: [`https://http.cat/${statusObj.code}`],
+    },
+  };
 }
