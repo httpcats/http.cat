@@ -1,12 +1,12 @@
-interface Status {
+export interface IStatus {
   code: number,
   message: string
 }
-interface Statuses {
-  [key: string]: Status
+export interface IStatuses {
+  [key: string]: IStatus
 }
 
-const statuses:Statuses = {
+const statuses:IStatuses = {
   100: { code: 100, message: 'Continue' },
   101: { code: 101, message: 'Switching Protocols' },
   102: { code: 102, message: 'Processing' },
