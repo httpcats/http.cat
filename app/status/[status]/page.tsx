@@ -2,17 +2,24 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import statuses, { IStatus } from '@/lib/statuses';
+import { getStatusInfo } from '@/lib/status-info';
 
-export default function Info({ params }: { params: { status: string } }) {
-  const statusObj = statuses[params.status as keyof typeof statuses] as IStatus;
+import statuses from '@/lib/statuses';
+
+export default async function Info({ params }: { params: { status: string } }) {
+  const statusObj = statuses[params.status as unknown as keyof typeof statuses];
+  const statusInfoHTML = await getStatusInfo(params.status);
 
   return (
     <main>
-      <Link href="/" className="text-white">{`< Back to home`}</Link>
+      <nav>
+        <Link href="/" className="text-white">{`< Back to home`}</Link>
+      </nav>
+
       <h1 className="text-center my-12">
         {statusObj.code} {statusObj.message}
       </h1>
+
       <div className="text-center">
         <Image
           src={`/images/${statusObj.code.toString()}.jpg`}
@@ -22,6 +29,12 @@ export default function Info({ params }: { params: { status: string } }) {
           className="w-full h-full max-w-3xl"
         />
       </div>
+      <section className="flex justify-center">
+        <div className="max-w-3xl">
+          <h2>Description</h2>
+          <div dangerouslySetInnerHTML={{ __html: statusInfoHTML }} />
+        </div>
+      </section>
     </main>
   );
 }
@@ -35,7 +48,7 @@ export function generateMetadata({
 }: {
   params: { status: string };
 }): Metadata {
-  const statusObj = statuses[params.status as keyof typeof statuses] as IStatus;
+  const statusObj = statuses[params.status as unknown as keyof typeof statuses];
 
   return {
     title: `${statusObj.code} ${statusObj.message} | HTTP Cats`,
