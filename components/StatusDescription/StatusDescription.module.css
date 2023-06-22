@@ -1,0 +1,28 @@
+.container p:last-child {
+  margin-top: 3rem;
+  font-size: 0.875rem;
+}
+
+.container code {
+  background-color: #ddd;
+  border-radius: 2px;
+  padding: 0.125rem 0.25rem;
+  font-size: 0.875rem;
+}
+
+.container a {
+  color: var(--interactive);
+}
+
+.container aside {
+  margin: 1rem 0;
+  padding: 1rem 1rem 1rem 2rem;
+  position: relative;
+  border-radius: 0.3rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .container code {
+    background-color: #000;
+  }
+}

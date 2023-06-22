@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { getStatusInfo } from '@/lib/status-info';
+import StatusDescription from '@/components/StatusDescription';
 
 import statuses from '@/lib/statuses';
 
@@ -29,11 +30,10 @@ export default async function Info({ params }: { params: { status: string } }) {
           className="w-full h-full max-w-3xl"
         />
       </div>
-      <section className="flex justify-center">
-        <div className="max-w-3xl">
-          <h2>Description</h2>
+      <section className="flex justify-center tracking-wider">
+        <StatusDescription>
           <div dangerouslySetInnerHTML={{ __html: statusInfoHTML }} />
-        </div>
+        </StatusDescription>
       </section>
     </main>
   );
@@ -52,6 +52,7 @@ export function generateMetadata({
 
   return {
     title: `${statusObj.code} ${statusObj.message} | HTTP Cats`,
+    description: `HTTP Cat for status ${statusObj.code} ${statusObj.message}`,
     openGraph: {
       title: `${statusObj.code} ${statusObj.message} | HTTP Cats`,
       images: [

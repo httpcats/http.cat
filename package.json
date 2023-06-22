@@ -22,10 +22,13 @@
     "postcss": "8.4.23",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "remark": "^14.0.3",
-    "remark-html": "^15.0.2",
+    "rehype-external-links": "^2.1.0",
+    "rehype-stringify": "^9.0.3",
+    "remark-parse": "^10.0.2",
+    "remark-rehype": "^10.1.0",
     "tailwindcss": "3.3.2",
-    "typescript": "5.0.4"
+    "typescript": "5.0.4",
+    "unified": "^10.1.2"
   },
   "devDependencies": {
     "jsdom": "^22.1.0",
