@@ -26,3 +26,8 @@ if [ $? -eq 0 ]; then
 else
   echo "❌ Deployment error. Check the output!"
 fi
+
+echo "🚀 Purging Cloudflare cache"
+curl -X POST https://api.cloudflare.com/client/v4/zones/${CLOUDFLARE_ZONE_ID}/purge_cache -H "Authorization: Bearer ${CLOUDFLARE_API_TOKEN}" -H "Content-Type: application/json" --data '{"purge_everything":true}'
+
+echo "✅ Cloudflare cache purged!"
