@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     ],
   },
   viewport: 'width=device-width, initial-scale=1',
-  title: 'HTTP Cats',
+  title: 'HTTP Dino',
   description:
     'An API for the awesome HTTP Cats! Use it in your website to show funny error messages.',
   keywords:
