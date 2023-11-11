@@ -1,8 +1,13 @@
-#  http.cat [![Build Status](https://travis-ci.com/httpcats/http.cat.svg?branch=master)](https://travis-ci.com/httpcats/http.cat)
+#  http.dino42 [![Build Status](https://travis-ci.com/httpcats/http.cat.svg?branch=master)](https://travis-ci.com/httpcats/http.cat)
 
 ![HTTP Cat picture](https://http.cat/204)
 
 ## About
+
+Inspired from the age old Dino . Here is my server to run all over the world. Creating an api for dino api (under processing)
+
+
+Thanks @anahit for inspiring me to see that dinosaur therapy book. No wonder why there is something to learn
 
 This is the website that is hosted at [https://http.cat](https://http.cat).
 
