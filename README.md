@@ -1,6 +1,8 @@
 #  http.dino42 [![Build Status](https://travis-ci.com/httpcats/http.cat.svg?branch=master)](https://travis-ci.com/httpcats/http.cat)
 
-![HTTP Cat picture](https://http.cat/204)
+![dino_cat_logo](https://github.com/mdabir1203/http.dino42/assets/66947064/182cb962-8e00-4415-8cf5-b509e469a132)
+
+
 
 ## About
 
