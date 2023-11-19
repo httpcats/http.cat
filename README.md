@@ -39,7 +39,7 @@ We've prepared some templates to make this process easier.
 
 You can clone it, replace the information with the new one and export as a JPG image.
 
-Then, upload it to both `public/images` and `public/images-original` folders and update the [statuses.ts](https://github.com/httpcats/http.cat/blob/master/lib/statuses.ts) file.
+Then, upload it to both `public/images` and `public/images-original` folders and update the [statuses.js](https://github.com/httpcats/http.cat/blob/master/lib/statuses.js) file.
 
 ## Credits
 

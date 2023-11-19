@@ -12,26 +12,26 @@
     "scrapper": "node ./scripts/scrapper.js"
   },
   "dependencies": {
-    "@types/node": "20.1.2",
-    "@types/react": "18.2.6",
-    "@types/react-dom": "18.2.4",
-    "autoprefixer": "10.4.14",
-    "eslint": "8.40.0",
-    "eslint-config-next": "13.4.1",
-    "next": "^13.4.4",
-    "postcss": "8.4.23",
+    "@types/node": "20.9.0",
+    "@types/react": "18.2.37",
+    "@types/react-dom": "18.2.15",
+    "autoprefixer": "10.4.16",
+    "eslint": "8.53.0",
+    "eslint-config-next": "14.0.2",
+    "next": "^14.0.2",
+    "postcss": "8.4.31",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "rehype-external-links": "^2.1.0",
-    "rehype-stringify": "^9.0.3",
-    "remark-parse": "^10.0.2",
-    "remark-rehype": "^10.1.0",
-    "tailwindcss": "3.3.2",
-    "typescript": "5.0.4",
-    "unified": "^10.1.2"
+    "rehype-external-links": "^3.0.0",
+    "rehype-stringify": "^10.0.0",
+    "remark-parse": "^11.0.0",
+    "remark-rehype": "^11.0.0",
+    "tailwindcss": "3.3.5",
+    "typescript": "5.2.2",
+    "unified": "^11.0.4"
   },
   "devDependencies": {
     "jsdom": "^22.1.0",
-    "p-map": "^4.0.0"
+    "p-map": "^6.0.0"
   }
 }
