@@ -7,7 +7,7 @@ type ThumbnailProps = {
 };
 
 const Thumbnail = ({ code, description }: ThumbnailProps) => (
-  <div className="flex flex-col flex-grow text-white overflow-hidden rounded shadow bg-[--interactive]">
+  <div className="flex flex-col flex-grow h-full text-white overflow-hidden rounded shadow bg-[--interactive]">
     <Link href={`/status/${code}`} className='text-white no-underline'>
       <div className='pt-[56.25%] relative overflow-hidden'>
         <Image
