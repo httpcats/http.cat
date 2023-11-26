@@ -49,9 +49,14 @@ Thanks to [@pfdborges](https://github.com/pfdborges) for creating the http.cat l
 
 #### Thanks to all the contributors:
 
-<a href="https://github.com/httpcats/http.cat/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=httpcats/http.cat" />
-</a>
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ## Sponsor / Donate
 
