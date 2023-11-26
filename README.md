@@ -1,4 +1,4 @@
-#  http.cat [![Build Status](https://travis-ci.com/httpcats/http.cat.svg?branch=master)](https://travis-ci.com/httpcats/http.cat)
+# http.cat [![Build Status](https://travis-ci.com/httpcats/http.cat.svg?branch=master)](https://travis-ci.com/httpcats/http.cat)
 
 ![HTTP Cat picture](https://http.cat/204)
 
@@ -34,8 +34,8 @@ Currently not all HTTP status codes are covered. You are welcome to create an is
 
 We've prepared some templates to make this process easier.
 
-* [Landscape template](https://docs.google.com/presentation/d/1sYxNNKxUbP11kyt9oPixWdFEykHDafr4jixy9uwMh9I/edit?usp=sharing)
-* [Portrait template](https://docs.google.com/presentation/d/1Ay5nattHagPfnd-gMaUHumckFt2VANaYwMkXuQ-xS6E/edit?usp=sharing)
+- [Landscape template](https://docs.google.com/presentation/d/1sYxNNKxUbP11kyt9oPixWdFEykHDafr4jixy9uwMh9I/edit?usp=sharing)
+- [Portrait template](https://docs.google.com/presentation/d/1Ay5nattHagPfnd-gMaUHumckFt2VANaYwMkXuQ-xS6E/edit?usp=sharing)
 
 You can clone it, replace the information with the new one and export as a JPG image.
 
@@ -47,13 +47,11 @@ Thanks to [@girliemac](https://github.com/girliemac) for creating the amazing ht
 
 Thanks to [@pfdborges](https://github.com/pfdborges) for creating the http.cat logo (RIP my friend).
 
-Thanks to [@nataly-enne](https://github.com/nataly-enne) for the status 501 image.
+#### Thanks to all the contributors:
 
-Thanks to [@woutfeys](https://github.com/woutfeys) for the status 102 image.
-
-Thanks to [@epitaciosilva](https://github.com/epitaciosilva) for the 407 image.
-
-Thanks to [@luizcieslak](https://github.com/luizcieslak) for the 203 image and 407 image fix.
+<a href="https://github.com/httpcats/http.cat/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=httpcats/http.cat" />
+</a>
 
 ## Sponsor / Donate
 
