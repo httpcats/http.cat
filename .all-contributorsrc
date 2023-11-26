@@ -46,6 +46,16 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "AlexMayol",
+      "name": "Alejandro Mayol",
+      "avatar_url": "https://avatars.githubusercontent.com/u/11309999?v=4",
+      "profile": "https://github.com/AlexMayol",
+      "contributions": [
+        "design",
+        "code"
+      ]
     }
   ]
 }
