@@ -46,6 +46,17 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "dcruz",
+      "name": "David Cruz",
+      "avatar_url": "https://avatars.githubusercontent.com/u/401064?v=4",
+      "profile": "https://github.com/dcruz",
+      "contributions": [
+        "code",
+        "design",
+        "a11y"
+      ]
     }
   ]
 }
