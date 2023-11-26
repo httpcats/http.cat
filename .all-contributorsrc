@@ -46,6 +46,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "m4thieulavoie",
+      "name": "Matt Lavoie",
+      "avatar_url": "https://avatars.githubusercontent.com/u/44816587?v=4",
+      "profile": "https://m4thieulavoie.dev",
+      "contributions": [
+        "code"
+      ]
     }
   ]
 }
