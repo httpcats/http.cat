@@ -46,6 +46,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "mokazemi",
+      "name": "Mohammad Kazemi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/18334056?v=4",
+      "profile": "http://mokazemi.ir",
+      "contributions": [
+        "doc"
+      ]
     }
   ]
 }
