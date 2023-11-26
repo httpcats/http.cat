@@ -15,12 +15,12 @@ const Thumbnail = ({ code, description }: ThumbnailProps) => (
           alt=""
           loading='lazy'
           fill
-          className="contrast-75 hover:contrast-100 transition duration-500 object-cover scale-[160%] md:scale-[200%] lg:scale-[160%]"
+          className="contrast-[70%] hover:contrast-100 transition duration-500 object-cover scale-[140%]"
         />
       </div>
       <div className="flex flex-col px-4 pt-4">
-        <div className="text-3xl font-semibold uppercase">{code}</div>
-        <p className='text-base font-semibold'>{description}</p>
+        <div className="text-[2rem] tracking-[2px] font-semibold uppercase">{code}</div>
+        <p className='font-semibold'>{description}</p>
       </div>
     </Link>
   </div>
