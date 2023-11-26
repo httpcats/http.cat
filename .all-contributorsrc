@@ -46,6 +46,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "lucasmezencio",
+      "name": "Lucas Mezêncio",
+      "avatar_url": "https://avatars.githubusercontent.com/u/472412?v=4",
+      "profile": "http://about.me/lucasmezencio",
+      "contributions": [
+        "code"
+      ]
     }
   ]
 }
