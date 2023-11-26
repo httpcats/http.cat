@@ -46,6 +46,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "ronan-s1",
+      "name": "Ronan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/85257187?v=4",
+      "profile": "http://ronansingpurwala.com",
+      "contributions": [
+        "code"
+      ]
     }
   ]
 }
