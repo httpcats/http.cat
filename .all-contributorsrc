@@ -46,6 +46,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "omarefg",
+      "name": "Omar Flores Grimontt",
+      "avatar_url": "https://avatars.githubusercontent.com/u/30012444?v=4",
+      "profile": "https://omarefg.com",
+      "contributions": [
+        "code"
+      ]
     }
   ]
 }
