@@ -52,6 +52,13 @@ Thanks to [@pfdborges](https://github.com/pfdborges) for creating the http.cat l
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="http://ushuz.im"><img src="https://avatars.githubusercontent.com/u/1430856?v=4?s=100" width="100px;" alt="John HU"/><br /><sub><b>John HU</b></sub></a><br /><a href="#data-ushuz" title="Data">🔣</a> <a href="#a11y-ushuz" title="Accessibility">️️️️♿️</a></td>
+    </tr>
+  </tbody>
+</table>
 
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
