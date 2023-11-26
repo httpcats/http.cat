@@ -46,6 +46,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "ljrk0",
+      "name": "Leonard Janis Robert König",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7831843?v=4",
+      "profile": "https://www.blog.ljrk.org",
+      "contributions": [
+        "code"
+      ]
     }
   ]
 }
