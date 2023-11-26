@@ -46,6 +46,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "Arnau478",
+      "name": "Arnau",
+      "avatar_url": "https://avatars.githubusercontent.com/u/61841960?v=4",
+      "profile": "http://arnau478.me",
+      "contributions": [
+        "translation"
+      ]
     }
   ]
 }
