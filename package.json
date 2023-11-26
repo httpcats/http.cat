@@ -31,6 +31,7 @@
     "unified": "^11.0.4"
   },
   "devDependencies": {
+    "all-contributors-cli": "^6.26.1",
     "jsdom": "^22.1.0",
     "p-map": "^6.0.0"
   }
