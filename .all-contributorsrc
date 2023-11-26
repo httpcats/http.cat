@@ -46,6 +46,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "mathiazom",
+      "name": "Mathias Oterhals Myklebust",
+      "avatar_url": "https://avatars.githubusercontent.com/u/24361490?v=4",
+      "profile": "http://oterbust.no",
+      "contributions": [
+        "code"
+      ]
     }
   ]
 }
