@@ -59,6 +59,7 @@ Thanks to [@pfdborges](https://github.com/pfdborges) for creating the http.cat l
       <td align="center" valign="top" width="14.28%"><a href="https://girliemac.com"><img src="https://avatars.githubusercontent.com/u/107763?v=4?s=100" width="100px;" alt="Tomomi ❤ Imura"/><br /><sub><b>Tomomi ❤ Imura</b></sub></a><br /><a href="#content-girliemac" title="Content">🖋</a> <a href="#translation-girliemac" title="Translation">🌍</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/strangeloveBsc"><img src="https://avatars.githubusercontent.com/u/3050149?v=4?s=100" width="100px;" alt="strangeloveBsc"/><br /><sub><b>strangeloveBsc</b></sub></a><br /><a href="#content-strangeloveBsc" title="Content">🖋</a> <a href="#design-strangeloveBsc" title="Design">🎨</a></td>
       <td align="center" valign="top" width="14.28%"><a href="http://nataly-enne.github.io"><img src="https://avatars.githubusercontent.com/u/26802307?v=4?s=100" width="100px;" alt="Nátaly Enne "/><br /><sub><b>Nátaly Enne </b></sub></a><br /><a href="#content-nataly-enne" title="Content">🖋</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://oterbust.no"><img src="https://avatars.githubusercontent.com/u/24361490?v=4?s=100" width="100px;" alt="Mathias Oterhals Myklebust"/><br /><sub><b>Mathias Oterhals Myklebust</b></sub></a><br /><a href="#code-mathiazom" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
