@@ -27,6 +27,16 @@
         "content",
         "translation"
       ]
+    },
+    {
+      "login": "strangeloveBsc",
+      "name": "strangeloveBsc",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3050149?v=4",
+      "profile": "https://github.com/strangeloveBsc",
+      "contributions": [
+        "content",
+        "design"
+      ]
     }
   ]
 }
