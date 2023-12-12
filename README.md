@@ -6,14 +6,12 @@
 
 ## About
 
-Inspired from the age old Dino . Here is my server to run all over the world. Creating an api for dino api (under processing)
-
+Inspired from the age old http.cat.
 
 Thanks @anahit for inspiring me to see that dinosaur therapy book. No wonder why there is something to learn
 
 This is the website that is hosted at [https://http.cat](https://http.cat).
 
-The code for the older version hosted at the heroku platform is at the [http-status-cats-api](https://github.com/rogeriopvl/http-status-cats-api) repo.
 
 This version does not need any server side code. The API behavior is provided by a Nginx server config.
 
