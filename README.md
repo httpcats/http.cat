@@ -98,7 +98,9 @@ Thanks to [@pfdborges](https://github.com/pfdborges) for creating the http.cat l
 
 ## Sponsor / Donate
 
-Please consider sponsoring or donating via <a target="_blank" rel="nofollow" href="https://www.patreon.com/httpcat"><img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" alt="patron" width="100px" height="auto"></a>.
+Please consider sponsoring or donating via the following options:
+
+<a target="_blank" rel="nofollow" href="https://www.patreon.com/httpcat"><img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" alt="patron" width="174px" height="41"></a> <a href="https://www.buymeacoffee.com/http.cat" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-yellow.png" alt="Buy Me A Coffee" height="41" width="174"></a>
 
 You can also adopt an HTTP Cat and have your name in the chosen cat image!
 
