@@ -96,6 +96,10 @@ Thanks to [@pfdborges](https://github.com/pfdborges) for creating the http.cat l
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=httpcats/http.cat&type=Date)](https://star-history.com/#httpcats/http.cat&Date)
+
 ## Sponsor / Donate
 
 Please consider sponsoring or donating via the following options:
