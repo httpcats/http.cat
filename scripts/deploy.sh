@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 
 # to run this script you must provide an .env file containing the following
 # variables:
