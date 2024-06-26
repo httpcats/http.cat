@@ -16,7 +16,7 @@
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "autoprefixer": "^10.4.19",
-    "eslint": "8.53.0",
+    "eslint": "^9.5.0",
     "eslint-config-next": "^14.2.4",
     "next": "^14.0.2",
     "postcss": "^8.4.38",
@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "all-contributors-cli": "^6.26.1",
-    "jsdom": "^22.1.0",
-    "p-map": "^6.0.0"
+    "jsdom": "^24.1.0",
+    "p-map": "^7.0.2"
   }
 }
