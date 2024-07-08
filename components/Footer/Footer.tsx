@@ -9,9 +9,11 @@ import TwitterButton from '@/components/TwitterButton';
 
 import styles from './Footer.module.css';
 
-import lang from '@/locales/en/common.json';
+type FooterProps = {
+  t?: { [key: string]: string };
+};
 
-const Footer = () => {
+const Footer = ({ t }: { t: { [key: string]: string } }) => {
   const pathname = usePathname();
 
   const isMainPage = pathname === '/';
@@ -24,18 +26,16 @@ const Footer = () => {
         <TwitterButton />
       </div>
 
-      {/* <nav>
-        <Link href="/" locale="ca">
-          {lang.LANGUAGE_LINK_TEXT}
-        </Link>
-      </nav> */}
+      <nav>
+        <Link href="/ca">{t.LANGUAGE_LINK_TEXT}</Link>
+      </nav>
 
       <p>
-        {lang.DEVELOPED_BY}{' '}
+        {t.DEVELOPED_BY}{' '}
         <a href="https://twitter.com/rogeriopvl">@rogeriopvl</a>
       </p>
       <p>
-        {lang.IMAGES_BY} Tomomi Imura (
+        {t.IMAGES_BY} Tomomi Imura (
         <a href="https://twitter.com/girlie_mac">@girlie_mac</a>)
       </p>
 

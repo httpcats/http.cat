@@ -6,13 +6,15 @@ import useCopyToClipboard from '@/hooks/useCopyToClipboard';
 import copyIcon from './copy.svg';
 import styles from './Usage.module.css';
 
-import lang from '@/locales/en/common.json';
+type UsageProps = {
+  t?: { [key: string]: string };
+};
 
-const Usage = () => {
+const Usage = ({ t }: { t: { [key: string]: string } }) => {
   const [isValueCopied, setIsValueCopied] = useState(false);
   const [value, copy] = useCopyToClipboard();
 
-  const usageValue = `https://http.cat/[${lang.USAGE_PARAM}]`;
+  const usageValue = `https://http.cat/[${t.USAGE_PARAM}]`;
 
   useEffect(() => {
     if (isValueCopied) {
@@ -24,7 +26,7 @@ const Usage = () => {
 
   return (
     <div className={styles.container}>
-      <h2>{lang.USAGE_TITLE}:</h2>
+      <h2>{t.USAGE_TITLE}:</h2>
       <pre>
         {usageValue}
         <button
@@ -35,15 +37,14 @@ const Usage = () => {
           title="Copy to clipboard"
         >
           {isValueCopied ? (
-            lang.COPIED
+            t.COPIED
           ) : (
-            <Image src={copyIcon} alt={lang.COPY_ICON_ALT_TEXT} />
+            <Image src={copyIcon} alt={t.COPY_ICON_ALT_TEXT} />
           )}
         </button>
       </pre>
       <p>
-        <b>{lang.USAGE_NOTE_LABEL}:</b> {lang.USAGE_NOTE_TEXT} <code>.jpg</code>
-        .
+        <b>{t.USAGE_NOTE_LABEL}:</b> {t.USAGE_NOTE_TEXT} <code>.jpg</code>.
       </p>
     </div>
   );

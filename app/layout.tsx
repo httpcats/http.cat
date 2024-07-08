@@ -2,11 +2,7 @@ import { Metadata } from 'next';
 import Script from 'next/script';
 
 import './globals.css';
-import Logo from '@/components/Logo';
 import CarbonAd from '@/components/CarbonAd';
-import Footer from '@/components/Footer';
-
-import lang from '@/locales/en/common.json';
 
 export const metadata: Metadata = {
   icons: {
@@ -49,7 +45,7 @@ export const metadata: Metadata = {
   manifest: '/manifest.json',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -58,18 +54,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <CarbonAd />
-        <div className="p-4 sm:px-16 sm:py-4 lg:px-32 lg:py-4">
-          <header className="flex">
-            <a href="/" className="flex text-interactive no-underline">
-              <div className="pt-4">
-                <Logo width={80} height={55} color="#d0383e" />
-              </div>
-              <h1 className="ml-2 text-4xl font-bold my-6">{lang.APP_TITLE}</h1>
-            </a>
-          </header>
-          {children}
-          <Footer />
-        </div>
+        <div className="p-4 sm:px-16 sm:py-4 lg:px-32 lg:py-4">{children}</div>
         <Script id="google-analytics" strategy="afterInteractive">
           {`
           window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
