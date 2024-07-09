@@ -11,10 +11,10 @@ import { getStatusInfo } from '@/lib/status-info';
 import { getTranslations } from '@/lib/translation';
 
 export default async function Info({ params }: { params: { status: string } }) {
-  const statusObj = statuses[params.status as unknown as keyof typeof statuses];
-  const statusInfoHTML = await getStatusInfo(params.status);
-
   const t = await getTranslations('ca');
+
+  const statusObj = statuses[params.status as unknown as keyof typeof statuses];
+  const statusInfoHTML = await getStatusInfo(params.status, t.LOCALE);
 
   return (
     <>

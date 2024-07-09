@@ -5,8 +5,11 @@ import remarkRehype from 'remark-rehype';
 import rehypeExternalLinks from 'rehype-external-links';
 import rehypeStringify from 'rehype-stringify';
 
-export async function getStatusInfo(status: string) {
-  const fileContent = readFileSync(`./content/${status}.md`, 'utf8');
+export async function getStatusInfo(status: string, locale: string = 'en') {
+  const filePath =
+    locale === 'ca' ? `./content/ca/${status}.md` : `./content/${status}.md`;
+
+  const fileContent = readFileSync(filePath, 'utf8');
 
   const result = await unified()
     .use(remarkParse)
