@@ -1,4 +1,5 @@
 {
+  "LOCALE": "en",
   "APP_TITLE": "HTTP Cats",
   "USAGE_TITLE": "Usage",
   "USAGE_PARAM": "status_code",
@@ -8,5 +9,6 @@
   "DEVELOPED_BY": "Developed by",
   "IMAGES_BY": "Original Images by",
   "COPIED": "Copied!",
-  "COPY_ICON_ALT_TEXT": "Icon that represent the clipboard action"
+  "COPY_TO_CLIPBOARD": "Copy to clipboard",
+  "BACK_TO_HOME": "Back to home"
 }

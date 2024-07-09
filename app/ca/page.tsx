@@ -21,6 +21,7 @@ export default async function Home() {
               code={status.code}
               key={status.code}
               description={status.message}
+              t={t}
             />
           ))}
         </ThumbnailGrid>

@@ -7,10 +7,10 @@ import copyIcon from './copy.svg';
 import styles from './Usage.module.css';
 
 type UsageProps = {
-  t?: { [key: string]: string };
+  t: { [key: string]: string };
 };
 
-const Usage = ({ t }: { t: { [key: string]: string } }) => {
+const Usage = ({ t }: UsageProps) => {
   const [isValueCopied, setIsValueCopied] = useState(false);
   const [value, copy] = useCopyToClipboard();
 
@@ -34,7 +34,7 @@ const Usage = ({ t }: { t: { [key: string]: string } }) => {
             copy(usageValue);
             setIsValueCopied(true);
           }}
-          title="Copy to clipboard"
+          title={t.COPY_TO_CLIPBOARD}
         >
           {isValueCopied ? (
             t.COPIED

@@ -10,13 +10,15 @@ import TwitterButton from '@/components/TwitterButton';
 import styles from './Footer.module.css';
 
 type FooterProps = {
-  t?: { [key: string]: string };
+  t: { [key: string]: string };
 };
 
-const Footer = ({ t }: { t: { [key: string]: string } }) => {
+const Footer = ({ t }: FooterProps) => {
   const pathname = usePathname();
 
   const isMainPage = pathname === '/';
+
+  const localeHref = t.LOCALE === 'ca' ? '/' : '/ca';
 
   return (
     <div className={styles.container}>
@@ -27,7 +29,7 @@ const Footer = ({ t }: { t: { [key: string]: string } }) => {
       </div>
 
       <nav>
-        <Link href="/ca">{t.LANGUAGE_LINK_TEXT}</Link>
+        <Link href={localeHref}>{t.LANGUAGE_LINK_TEXT}</Link>
       </nav>
 
       <p>

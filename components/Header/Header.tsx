@@ -1,13 +1,15 @@
 import Logo from '@/components/Logo';
 
 type HeaderProps = {
-  t?: { [key: string]: string };
+  t: { [key: string]: string };
 };
 
-const Header = ({ t }: { t: { [key: string]: string } }) => {
+const Header = ({ t }: HeaderProps) => {
+  const href = t.LOCALE === 'ca' ? '/ca' : '/';
+
   return (
     <header className="flex">
-      <a href="/" className="flex text-interactive no-underline">
+      <a href={href} className="flex text-interactive no-underline">
         <div className="pt-4">
           <Logo width={80} height={55} color="#d0383e" />
         </div>

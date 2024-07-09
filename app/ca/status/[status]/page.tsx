@@ -14,14 +14,14 @@ export default async function Info({ params }: { params: { status: string } }) {
   const statusObj = statuses[params.status as unknown as keyof typeof statuses];
   const statusInfoHTML = await getStatusInfo(params.status);
 
-  const t = await getTranslations('en');
+  const t = await getTranslations('ca');
 
   return (
     <>
       <Header t={t} />
       <main>
         <nav>
-          <Link href="/" className="text-white">{`< ${t.BACK_TO_HOME}`}</Link>
+          <Link href="/ca" className="text-white">{`< ${t.BACK_TO_HOME}`}</Link>
         </nav>
 
         <h1 className="text-center my-12">

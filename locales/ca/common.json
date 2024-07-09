@@ -1,12 +1,14 @@
 {
+  "LOCALE": "ca",
   "APP_TITLE": "HTTP Gats",
   "USAGE_TITLE": "Instruccions",
   "USAGE_PARAM": "codi_d_estat",
   "USAGE_NOTE_LABEL": "Nota",
   "USAGE_NOTE_TEXT": "Si necessiteu una extensió al final de l’URL només heu d’afegir",
-  "LANGUAGE_LINK_TEXT": "Versió Català",
+  "LANGUAGE_LINK_TEXT": "English Version",
   "DEVELOPED_BY": "Desenvolupat per",
   "IMAGES_BY": "Imatges de",
   "COPIED": "Copiat!",
-  "COPY_ICON_ALT_TEXT": "Icona que representa l'acció del porta-retalls"
+  "COPY_TO_CLIPBOARD": "Copiar al porta-retalls",
+  "BACK_TO_HOME": "Tornar a l'inici"
 }
