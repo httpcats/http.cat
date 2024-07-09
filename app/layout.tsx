@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+import { Metadata, Viewport } from 'next';
 import Script from 'next/script';
 
 import './globals.css';
@@ -13,7 +13,6 @@ export const metadata: Metadata = {
       { rel: 'apple-touch-icon-precomposed', url: '/apple-touch-icon.png' },
     ],
   },
-  viewport: 'width=device-width, initial-scale=1',
   title: 'HTTP Cats',
   description:
     'An API for the awesome HTTP Cats! Use it in your website to show funny error messages.',
@@ -41,8 +40,13 @@ export const metadata: Metadata = {
     description: 'API for HTTP Cats',
     images: ['https://http.cat/100'],
   },
-  themeColor: '#d0383e',
   manifest: '/manifest.json',
+};
+
+export const viewport: Viewport = {
+  width: 'devide-width',
+  initialScale: 1,
+  themeColor: '#d0383e',
 };
 
 export default async function RootLayout({
