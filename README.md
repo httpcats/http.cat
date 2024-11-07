@@ -88,6 +88,7 @@ Thanks to [@pfdborges](https://github.com/pfdborges) for creating the http.cat l
       <td align="center" valign="top" width="14.28%"><a href="https://stackoverflow.com/"><img src="https://avatars.githubusercontent.com/u/90441096?v=4?s=100" width="100px;" alt="Xeno"/><br /><sub><b>Xeno</b></sub></a><br /><a href="https://github.com/httpcats/http.cat/commits?author=Xenofic" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/santiago-salinas"><img src="https://avatars.githubusercontent.com/u/48341470?v=4?s=100" width="100px;" alt="Santiago Salinas"/><br /><sub><b>Santiago Salinas</b></sub></a><br /><a href="#content-santiago-salinas" title="Content">🖋</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://www.linkedin.com/in/karlhiramoto"><img src="https://avatars.githubusercontent.com/u/22713?v=4?s=100" width="100px;" alt="Karl Hiramoto"/><br /><sub><b>Karl Hiramoto</b></sub></a><br /><a href="https://github.com/httpcats/http.cat/commits?author=karlhiramoto" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://www.earthtonesmusic.us/"><img src="https://avatars.githubusercontent.com/u/92189031?v=4?s=100" width="100px;" alt="Anisah Majeed"/><br /><sub><b>Anisah Majeed</b></sub></a><br /><a href="https://github.com/httpcats/http.cat/commits?author=yellowstrings" title="Code">💻</a> <a href="#content-yellowstrings" title="Content">🖋</a></td>
     </tr>
   </tbody>
 </table>
