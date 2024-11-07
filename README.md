@@ -18,10 +18,6 @@ As of v3.0.0 it's built with Next.js 13.
 
     npm run dev
 
-Starts the development server.
-
-    npm test
-
 Runs the tests.
 
     npm run build
@@ -40,6 +36,12 @@ We've prepared some templates to make this process easier.
 You can clone it, replace the information with the new one and export as a JPG image.
 
 Then, upload it to both `public/images` and `public/images-original` folders and update the [statuses.js](https://github.com/httpcats/http.cat/blob/master/lib/statuses.js) file.
+
+Finally you need to add a markdown file in `/content/<status-code>.md` with a
+description of the status code and links to official documentation. Please
+follow the format of already existing files.
+Also, copy this file over to `/content/ca` and ask Copilot, ChatGPT or Google,
+etc to translate the content to Catalan.
 
 ## Credits
 
