@@ -12,7 +12,7 @@ const TwitterButton = ({ width = 50, height = 50 }: TwitterButtonProps) => (
     <a
       href="https://twitter.com/rogeriopvl"
       target="_blank"
-      rel="noopener noreferrer"
+      rel="me noopener noreferrer"
       title="http.cat dev twitter"
     >
       <Image

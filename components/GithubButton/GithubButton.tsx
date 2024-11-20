@@ -1,7 +1,6 @@
 import Image from 'next/image';
 
 import githubIcon from './github.svg';
-import styles from './GithubButton.module.css';
 
 type GithubButtonProps = {
   width?: number;
@@ -9,11 +8,11 @@ type GithubButtonProps = {
 };
 
 const GithubButton = ({ width = 50, height = 50 }: GithubButtonProps) => (
-  <div className={styles.container}>
+  <div>
     <a
       href="https://github.com/httpcats/http.cat"
       target="_blank"
-      rel="noopener noreferrer"
+      rel="me noopener noreferrer"
       title="http.cat github repository"
     >
       <Image src={githubIcon} alt="Github logo" width={width} height={height} />

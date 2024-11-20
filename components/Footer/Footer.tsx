@@ -5,6 +5,8 @@ import { usePathname } from 'next/navigation';
 
 import FacebookButton from '@/components/FacebookButton';
 import GithubButton from '@/components/GithubButton';
+import BlueskyButton from '@/components/BlueskyButton';
+import MastodonButton from '@/components/MastodonButton';
 import TwitterButton from '@/components/TwitterButton';
 
 import styles from './Footer.module.css';
@@ -23,6 +25,8 @@ const Footer = ({ t }: FooterProps) => {
       <div className={styles.social}>
         <FacebookButton />
         <GithubButton />
+        <BlueskyButton />
+        <MastodonButton />
         <TwitterButton />
       </div>
 
