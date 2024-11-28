@@ -1,7 +1,6 @@
 import Image from 'next/image';
 
 import facebookIcon from './facebook.svg';
-import styles from './FacebookButton.module.css';
 
 type FacebookButtonProps = {
   width?: number;
@@ -9,11 +8,11 @@ type FacebookButtonProps = {
 };
 
 const FacebookButton = ({ width = 50, height = 50 }: FacebookButtonProps) => (
-  <div className={styles.container}>
+  <div>
     <a
       href="https://www.facebook.com/httpcats"
       target="_blank"
-      rel="noopener noreferrer"
+      rel="me noopener noreferrer"
       title="http.cat facebook page"
     >
       <Image

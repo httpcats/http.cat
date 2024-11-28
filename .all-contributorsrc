@@ -257,6 +257,25 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "yellowstrings",
+      "name": "Anisah Majeed",
+      "avatar_url": "https://avatars.githubusercontent.com/u/92189031?v=4",
+      "profile": "https://www.earthtonesmusic.us/",
+      "contributions": [
+        "code",
+        "content"
+      ]
+    },
+    {
+      "login": "matasaru",
+      "name": "mata saru",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1546100?v=4",
+      "profile": "https://github.com/matasaru",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "repoType": "github"

@@ -1,4 +1,4 @@
-# http.cat [![Build Status](https://travis-ci.com/httpcats/http.cat.svg?branch=master)](https://travis-ci.com/httpcats/http.cat)
+# http.cat
 
 ![HTTP Cat picture](https://http.cat/204)
 
@@ -18,10 +18,6 @@ As of v3.0.0 it's built with Next.js 13.
 
     npm run dev
 
-Starts the development server.
-
-    npm test
-
 Runs the tests.
 
     npm run build
@@ -40,6 +36,12 @@ We've prepared some templates to make this process easier.
 You can clone it, replace the information with the new one and export as a JPG image.
 
 Then, upload it to both `public/images` and `public/images-original` folders and update the [statuses.js](https://github.com/httpcats/http.cat/blob/master/lib/statuses.js) file.
+
+Finally you need to add a markdown file in `/content/<status-code>.md` with a
+description of the status code and links to official documentation. Please
+follow the format of already existing files.
+Also, copy this file over to `/content/ca` and ask Copilot, ChatGPT or Google,
+etc to translate the content to Catalan.
 
 ## Credits
 
@@ -88,6 +90,10 @@ Thanks to [@pfdborges](https://github.com/pfdborges) for creating the http.cat l
       <td align="center" valign="top" width="14.28%"><a href="https://stackoverflow.com/"><img src="https://avatars.githubusercontent.com/u/90441096?v=4?s=100" width="100px;" alt="Xeno"/><br /><sub><b>Xeno</b></sub></a><br /><a href="https://github.com/httpcats/http.cat/commits?author=Xenofic" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/santiago-salinas"><img src="https://avatars.githubusercontent.com/u/48341470?v=4?s=100" width="100px;" alt="Santiago Salinas"/><br /><sub><b>Santiago Salinas</b></sub></a><br /><a href="#content-santiago-salinas" title="Content">🖋</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://www.linkedin.com/in/karlhiramoto"><img src="https://avatars.githubusercontent.com/u/22713?v=4?s=100" width="100px;" alt="Karl Hiramoto"/><br /><sub><b>Karl Hiramoto</b></sub></a><br /><a href="https://github.com/httpcats/http.cat/commits?author=karlhiramoto" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://www.earthtonesmusic.us/"><img src="https://avatars.githubusercontent.com/u/92189031?v=4?s=100" width="100px;" alt="Anisah Majeed"/><br /><sub><b>Anisah Majeed</b></sub></a><br /><a href="https://github.com/httpcats/http.cat/commits?author=yellowstrings" title="Code">💻</a> <a href="#content-yellowstrings" title="Content">🖋</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/matasaru"><img src="https://avatars.githubusercontent.com/u/1546100?v=4?s=100" width="100px;" alt="mata saru"/><br /><sub><b>mata saru</b></sub></a><br /><a href="https://github.com/httpcats/http.cat/commits?author=matasaru" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
