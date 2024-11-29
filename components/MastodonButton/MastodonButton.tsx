@@ -13,7 +13,7 @@ const MastodonButton = ({ width = 50, height = 50 }: MastodonButtonProps) => (
       href="https://mastodon.social/@rogeriopvl"
       target="_blank"
       rel="me noopener noreferrer"
-      title="http.cat dev Bluesky"
+      title="http.cat dev Mastodon"
     >
       <Image
         src={mastodonIcon}
