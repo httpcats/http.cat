@@ -276,6 +276,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "ddelange",
+      "name": "ddelange",
+      "avatar_url": "https://avatars.githubusercontent.com/u/14880945?v=4",
+      "profile": "https://github.com/ddelange",
+      "contributions": [
+        "code",
+        "content"
+      ]
     }
   ],
   "repoType": "github"
