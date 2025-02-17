@@ -94,6 +94,7 @@ Thanks to [@pfdborges](https://github.com/pfdborges) for creating the http.cat l
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/matasaru"><img src="https://avatars.githubusercontent.com/u/1546100?v=4?s=100" width="100px;" alt="mata saru"/><br /><sub><b>mata saru</b></sub></a><br /><a href="https://github.com/httpcats/http.cat/commits?author=matasaru" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/ddelange"><img src="https://avatars.githubusercontent.com/u/14880945?v=4?s=100" width="100px;" alt="ddelange"/><br /><sub><b>ddelange</b></sub></a><br /><a href="https://github.com/httpcats/http.cat/commits?author=ddelange" title="Code">💻</a> <a href="#content-ddelange" title="Content">🖋</a></td>
     </tr>
   </tbody>
 </table>
