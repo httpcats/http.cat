@@ -40,11 +40,10 @@ export const metadata: Metadata = {
     description: 'API for HTTP Cats',
     images: ['https://http.cat/100'],
   },
-  manifest: '/manifest.json',
 };
 
 export const viewport: Viewport = {
-  width: 'devide-width',
+  width: 'device-width',
   initialScale: 1,
   themeColor: '#d0383e',
 };
@@ -56,6 +55,14 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link
+          rel="search"
+          type="application/opensearchdescription+xml"
+          title="httpcat"
+          href="https://http.cat/opensearch.xml"
+        />
+      </head>
       <body>
         <CarbonAd />
         <div className="p-4 sm:px-16 sm:py-4 lg:px-32 lg:py-4">{children}</div>
