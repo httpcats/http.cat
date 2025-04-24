@@ -286,6 +286,15 @@
         "code",
         "content"
       ]
+    },
+    {
+      "login": "drweissbrot",
+      "name": "Pierre Borgmann",
+      "avatar_url": "https://avatars.githubusercontent.com/u/11035385?v=4",
+      "profile": "https://drweissbrot.net",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "repoType": "github"
