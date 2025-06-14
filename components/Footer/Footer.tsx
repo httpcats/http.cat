@@ -42,23 +42,6 @@ const Footer = ({ t }: FooterProps) => {
         {t.IMAGES_BY} Tomomi Imura (
         <a href="https://twitter.com/girlie_mac">@girlie_mac</a>)
       </p>
-
-      <p>
-        Check out <a href="https://www.abstractapi.com">Abstract API</a>, the
-        home for modern, developer-friendly tools like the{' '}
-        <a href="https://www.abstractapi.com/ip-geolocation-api">
-          IP Geolocation API
-        </a>
-        ,{' '}
-        <a href="https://www.abstractapi.com/vat-validation-rates-api">
-          VAT Validation & Rates API
-        </a>
-        ,{' '}
-        <a href="https://www.abstractapi.com/holidays-api">
-          Public Holiday API
-        </a>
-        , and more.
-      </p>
     </div>
   );
 };
