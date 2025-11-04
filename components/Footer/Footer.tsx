@@ -23,11 +23,11 @@ const Footer = ({ t }: FooterProps) => {
   return (
     <div className={styles.container}>
       <div className={styles.social}>
-        <FacebookButton />
-        <GithubButton />
-        <BlueskyButton />
-        <MastodonButton />
-        <TwitterButton />
+        <TwitterButton width={70} height={70} />
+        <BlueskyButton width={70} height={70} />
+        <MastodonButton width={70} height={70} />
+        <FacebookButton width={70} height={70} />
+        <GithubButton width={70} height={70} />
       </div>
 
       <nav>
