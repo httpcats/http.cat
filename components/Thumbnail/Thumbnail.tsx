@@ -11,7 +11,7 @@ const Thumbnail = ({ code, description, t }: ThumbnailProps) => {
   const hrefBase = t.LOCALE === 'ca' ? '/ca' : '';
 
   return (
-    <div className="flex flex-col flex-grow h-full text-white overflow-hidden rounded shadow bg-[--interactive]">
+    <div id={`${code}`} className="flex flex-col flex-grow h-full text-white overflow-hidden rounded shadow bg-[--interactive]">
       <Link
         href={`${hrefBase}/status/${code}`}
         className="text-white no-underline"
