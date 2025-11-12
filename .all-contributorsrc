@@ -295,6 +295,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "helblinglilly",
+      "name": "Lilly Helbling",
+      "avatar_url": "https://avatars.githubusercontent.com/u/29527289?v=4",
+      "profile": "https://helbling.uk",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "repoType": "github"
