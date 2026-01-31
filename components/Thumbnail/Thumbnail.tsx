@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -10,10 +12,15 @@ type ThumbnailProps = {
 const Thumbnail = ({ code, description, t }: ThumbnailProps) => {
   const hrefBase = t.LOCALE === 'ca' ? '/ca' : '';
 
+  const saveScrollPosition = () => {
+    sessionStorage.setItem('homeScrollPosition', window.scrollY.toString());
+  };
+
   return (
     <div id={`${code}`} className="flex flex-col flex-grow h-full text-white overflow-hidden rounded shadow bg-[--interactive]">
       <Link
         href={`${hrefBase}/status/${code}`}
+        onClick={saveScrollPosition}
         className="text-white no-underline"
       >
         <div className="pt-[56.25%] relative overflow-hidden">

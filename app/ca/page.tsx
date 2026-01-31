@@ -3,6 +3,7 @@ import ThumbnailGrid from '@/components/ThumbnailGrid';
 import Thumbnail from '@/components/Thumbnail';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import ScrollRestore from '@/components/ScrollRestore';
 import { getTranslations } from '@/lib/translation';
 
 import statuses from '@/lib/statuses';
@@ -12,6 +13,7 @@ export default async function Home() {
 
   return (
     <>
+      <ScrollRestore />
       <Header t={t} />
       <main>
         <Usage t={t} />

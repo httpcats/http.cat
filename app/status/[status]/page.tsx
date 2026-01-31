@@ -21,7 +21,11 @@ export default async function Info({ params }: { params: { status: string } }) {
       <Header t={t} />
       <main>
         <nav>
-          <Link href="/" className="text-white">{`< ${t.BACK_TO_HOME}`}</Link>
+          <Link
+            href="/"
+            className="text-white"
+            scroll={false}
+          >{`< ${t.BACK_TO_HOME}`}</Link>
         </nav>
 
         <h1 className="text-center my-12">
