@@ -5,9 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build && rm out/404.html && cp out/ca.html out/ca/index.html && cp out/ca.txt out/ca/index.txt",
-    "start": "next start",
     "lint": "next lint",
-    "export": "next export",
     "deploy": "./scripts/deploy.sh",
     "scrapper": "node ./scripts/scrapper.js"
   },
