@@ -31,6 +31,7 @@
   "devDependencies": {
     "all-contributors-cli": "^6.26.1",
     "jsdom": "^24.1.0",
-    "p-map": "^7.0.2"
+    "p-map": "^7.0.2",
+    "turndown": "^7.2.2"
   }
 }
