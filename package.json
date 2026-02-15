@@ -5,9 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build && rm out/404.html && cp out/ca.html out/ca/index.html && cp out/ca.txt out/ca/index.txt",
-    "start": "next start",
     "lint": "next lint",
-    "export": "next export",
     "deploy": "./scripts/deploy.sh",
     "scrapper": "node ./scripts/scrapper.js"
   },
@@ -33,6 +31,7 @@
   "devDependencies": {
     "all-contributors-cli": "^6.26.1",
     "jsdom": "^24.1.0",
-    "p-map": "^7.0.2"
+    "p-map": "^7.0.2",
+    "turndown": "^7.2.2"
   }
 }
