@@ -10,7 +10,8 @@ import statuses from '@/lib/statuses';
 import { getStatusInfo } from '@/lib/status-info';
 import { getTranslations } from '@/lib/translation';
 
-export default async function Info({ params }: { params: { status: string } }) {
+export default async function Info(props: { params: Promise<{ status: string }> }) {
+  const params = await props.params;
   const statusObj = statuses[params.status as unknown as keyof typeof statuses];
   const statusInfoHTML = await getStatusInfo(params.status);
 
@@ -56,11 +57,12 @@ export function generateStaticParams() {
   return Object.keys(statuses).map((status) => ({ status }));
 }
 
-export function generateMetadata({
-  params,
-}: {
-  params: { status: string };
-}): Metadata {
+export async function generateMetadata(
+  props: {
+    params: Promise<{ status: string }>;
+  }
+): Promise<Metadata> {
+  const params = await props.params;
   const statusObj = statuses[params.status as unknown as keyof typeof statuses];
 
   return {
