@@ -20,6 +20,32 @@ There's a [Postman collection](https://documenter.getpostman.com/view/6034746/Sz
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://documenter.getpostman.com/view/6034746/SzzrWt5f)
 
+## Using HTTP Cats as Nginx Error Pages
+
+You can make your own Nginx server show HTTP Cats on its error pages with the [`integrations/nginx/http-cats.conf`](integrations/nginx/http-cats.conf) snippet. Download it to your Nginx snippets folder:
+
+    sudo wget -O /etc/nginx/snippets/http-cats.conf https://raw.githubusercontent.com/httpcats/http.cat/master/integrations/nginx/http-cats.conf
+
+Then include it in the `server` block(s) where you want the cats:
+
+```nginx
+server {
+    # ...
+    include snippets/http-cats.conf;
+}
+```
+
+Reload Nginx with `sudo nginx -t && sudo systemctl reload nginx`, and visit a page that doesn't exist to see the 404 cat.
+
+A few things to keep in mind:
+
+- The original status code is kept, only the response body is replaced by the cat image.
+- A `location` that defines its own `error_page` doesn't inherit these.
+- If Nginx is a reverse proxy for an app, add `proxy_intercept_errors on;` to that `location` so the app's error responses also get cats.
+- Each error page is fetched from http.cat, so if it's unreachable Nginx falls back to its default error page.
+
+Based on [this gist](https://gist.github.com/mjmeyer/6cf8d3c1199d028f0921) by [@mjmeyer](https://github.com/mjmeyer), suggested by [@mishailovic](https://github.com/mishailovic) in [#126](https://github.com/httpcats/http.cat/issues/126).
+
 ## Development
 
     npm run dev
