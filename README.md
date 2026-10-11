@@ -14,6 +14,12 @@ On v2.0.0 the website was built with React and pre-rendered with react-snap.
 
 As of v3.0.0 it's built with Next.js 13.
 
+## Postman Collection
+
+There's a [Postman collection](https://documenter.getpostman.com/view/6034746/SzzrWt5f) with requests for the HTTP status cats, created by [@SubramanyaRaj5](https://github.com/SubramanyaRaj5). Use the button below to import it into your Postman app.
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://documenter.getpostman.com/view/6034746/SzzrWt5f)
+
 ## Development
 
     npm run dev
