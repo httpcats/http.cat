@@ -50,7 +50,7 @@ describe('content', () => {
   });
 
   test('every file in public/images is a status or hidden image .jpg', () => {
-    // anything else in there becomes a live URL (/<name>) nobody decided on
+    // anything else in there is served at /images/<name>, a URL nobody decided on
     const allowed = [...codes, ...hiddenImages].map((name) => `${name}.jpg`);
     const orphans = readdirSync(path.join(root, 'public/images')).filter(
       (file) => !allowed.includes(file),
@@ -72,11 +72,38 @@ describe('content', () => {
   });
 });
 
+describe('nginx config', () => {
+  // The config is deployed by hand, so this only asserts that the file the
+  // repo calls the source of truth still carries the rules the site relies on.
+  const conf = readFileSync(path.join(root, 'deploy/nginx/http.cat.conf'), 'utf8');
+
+  test('routes image URLs explicitly (spec 0001)', () => {
+    assert.ok(conf.includes('location ~ ^/(\\d+)(\\.jpg)?$ {'), 'image location missing');
+    assert.ok(conf.includes('try_files /images/$1.jpg =404;'), 'image try_files missing');
+  });
+
+  test('every 404 is the 404 cat', () => {
+    // 4-space indent = server level, where all locations inherit it
+    assert.ok(conf.includes('\n    error_page 404 /images/404.jpg;'), 'server-level error_page missing');
+  });
+});
+
 describe('build output', () => {
   const out = path.join(root, 'out');
 
   before(() => {
     assert.ok(existsSync(out), 'out/ not found, run `npm run build` first');
+  });
+
+  test('no page is named like a status code', () => {
+    // Nginx routes every all-digit URL to images/, so a top-level out/<digits>
+    // page could never be reached. Next's not-found page (404.html) is the one
+    // exception: it's only meant to be served as /404.html.
+    const allowed = ['404.html'];
+    const unreachable = readdirSync(out).filter(
+      (entry) => /^\d+(\.html)?$/.test(entry) && !allowed.includes(entry),
+    );
+    assert.deepEqual(unreachable, []);
   });
 
   test('every status has an English and a Catalan page', () => {
@@ -103,20 +130,5 @@ describe('build output', () => {
   test('every image is in the build output', () => {
     const expected = listNames('public/images', '.jpg').map((name) => `out/images/${name}.jpg`);
     assert.deepEqual(missing(expected), []);
-  });
-
-  test('nothing in the build output would replace an image URL', () => {
-    // Nginx tries `$uri`, `$uri.html`, `$uri/index.html` and `/images/$uri`
-    // before `/images/$uri.jpg`, so any of out/404, out/404.html,
-    // out/404/index.html or out/images/404 would make /404 serve that instead
-    // of the 404 cat; same for /404.jpg.
-    const shadowing = listNames('public/images', '.jpg').flatMap((name) =>
-      [name, `${name}.jpg`]
-        .flatMap((url) => [url, `${url}.html`, `${url}/index.html`])
-        .concat(`images/${name}`)
-        .filter((candidate) => isFile(path.join(out, candidate)))
-        .map((candidate) => `out/${candidate}`),
-    );
-    assert.deepEqual(shadowing, []);
   });
 });

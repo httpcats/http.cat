@@ -37,5 +37,5 @@ spec too, so the specs always describe how the site behaves today.
 | Spec | Status |
 |---|---|
 | [0000 Baseline](0000-baseline/spec.md) | implemented |
-| [0001 Route image URLs explicitly in Nginx](0001-image-routing/spec.md) | approved |
+| [0001 Route image URLs explicitly in Nginx](0001-image-routing/spec.md) | implemented |
 | [0002 Not-found page shows the 404 cat](0002-not-found-page/spec.md) | approved |

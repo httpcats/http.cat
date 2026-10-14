@@ -10,7 +10,7 @@ The site had no written description of how it behaves. Most of its public
 behavior is a contract between the Next.js static export (`out/`) and the Nginx
 config (`deploy/nginx/http.cat.conf`), and breaking either side breaks URLs that
 other sites depend on (e.g. issue #267). This spec describes the behavior as of
-2026-10-11, verified against production.
+2026-10-14 (verified against production on 2026-10-11, updated for spec 0001).
 
 ## Behavior
 
@@ -40,7 +40,7 @@ other sites depend on (e.g. issue #267). This spec describes the behavior as of
 | Request | Response |
 |---|---|
 | Files in `public/` (e.g. `/robots.txt`, `/manifest.json`, `/opensearch.xml`, `/favicon.ico`) | `200`, the file |
-| Any file in the build output by its exact path (e.g. `/ca.html`, `/status/404.html`, `/index`, `/_not-found`) | `200`, the file. Not linked from anywhere; a side effect of how Nginx serves `out/` |
+| Any file in the build output by its exact path (e.g. `/ca.html`, `/status/404.html`, `/index`, `/_not-found`, `/404.html`) | `200`, the file. Not linked from anywhere; a side effect of how Nginx serves `out/`. `/404.html` and `/_not-found` are Next's not-found page (see spec 0002). `/404.html` is served from the first `npm run deploy` after 2026-10-14; until then it returns the 404 cat |
 
 ### Not found
 
@@ -69,11 +69,10 @@ other sites depend on (e.g. issue #267). This spec describes the behavior as of
 - Every status in `lib/statuses.js` has `public/images/<code>.jpg`,
   `public/images-original/<code>.jpg`, `content/<code>.md` and
   `content/ca/<code>.md`.
-- For every image name (e.g. `404`), the build output has no file at
-  `<name>`, `<name>.html`, `<name>/index.html` or `images/<name>`, because
-  Nginx tries all of those before `images/<name>.jpg` and the file would
-  replace the image. This is why `scripts/post-build.js` deletes
-  `out/404.html`, which Next always generates.
+- Image URLs don't depend on the build output: Nginx routes every all-digit
+  URL (with or without `.jpg`) straight to `images/<digits>.jpg` in a
+  dedicated location, so a page or file named like a status code (e.g. the
+  `404.html` Next always generates) can't replace a cat. See spec 0001.
 - `locales/en/common.json` and `locales/ca/common.json` have the same keys.
 
 ## Out of scope

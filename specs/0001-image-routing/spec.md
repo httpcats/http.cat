@@ -1,6 +1,6 @@
 # 0001: Route image URLs explicitly in Nginx
 
-- **Status:** approved
+- **Status:** implemented
 - **Issue:** —
 - **Affects:** nginx, deploy
 
@@ -16,9 +16,9 @@ This has already happened once. Next.js generates `out/404.html` (its
 not-found page) by default, and the only thing keeping `/404` a cat is
 `scripts/post-build.js` deleting that file after every build. A new page named
 like a status code, or a future Next.js version emitting `out/404/index.html`,
-would break a cat without any error. `tests/build.test.mjs` guards against this,
-but a guard is a weaker fix than stating the rule where it belongs: in the
-router.
+would break a cat without any error. A test in `tests/build.test.mjs` guarded
+against this, but a guard is a weaker fix than stating the rule where it
+belongs: in the router.
 
 ## Behavior
 
@@ -33,7 +33,7 @@ to be identical to the baseline.
 | `GET /<digits>/` | `301` to `/<digits>` (unchanged: the trailing-slash rewrite runs first) |
 | `GET /0` | `200`, the hidden image (unchanged) |
 | `GET /dog`, `/dog.jpg` | `302` to `/400`, `/400.jpg` (unchanged) |
-| `GET /404.html` | `200`, Next's not-found page. Today it's the 404 cat only because `post-build.js` deletes the file; see "Consequences" and spec 0002 |
+| `GET /404.html` | `200`, Next's not-found page. Before this spec it was the 404 cat, only because `post-build.js` deleted the file; see "Consequences" and spec 0002 |
 | Everything else (`/`, `/status/<code>`, `/ca`, static files) | unchanged |
 
 Config change in `deploy/nginx/http.cat.conf`:
@@ -130,7 +130,8 @@ The Nginx change must be live before the repo changes land, because
 - [x] With `out/404.html` present on the server, `/404` still returns the
       cat. This is the property the change exists for; checked once manually
       by placing the file, then removed. (2026-10-14)
-- [ ] `npm run build && npm test` passes with the shadowing test removed.
+- [x] `npm run build && npm test` passes with the shadowing test removed.
+      (2026-10-14)
 
 ## Open questions
 

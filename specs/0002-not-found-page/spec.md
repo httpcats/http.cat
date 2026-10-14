@@ -3,17 +3,14 @@
 - **Status:** approved
 - **Issue:** —
 - **Affects:** site (Next.js)
-- **Depends on:** spec 0001 implemented and deployed. Until then
-  `scripts/post-build.js` deletes `out/404.html` and the shadowing test in
-  `tests/build.test.mjs` rejects it, so this spec's acceptance checks can't
-  pass.
+- **Depends on:** spec 0001 (implemented and deployed 2026-10-14)
 
 ## Problem
 
 http.cat should always answer a 404 with its own 404 cat. Nginx already does
 this for error responses (`error_page 404 /images/404.jpg`), but Next.js also
-generates a not-found page, served today at `/_not-found` and, once spec 0001
-is implemented, at `/404.html` too. It's Next's default page ("404: This page
+generates a not-found page, served at `/_not-found` and `/404.html`. It's
+Next's default page ("404: This page
 could not be found."), the one place on the site where a 404 isn't a cat.
 
 There's no option to stop Next from generating it (checked in the Next 16.2.1
