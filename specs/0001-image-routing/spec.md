@@ -120,15 +120,16 @@ The Nginx change must be live before the repo changes land, because
 
 ## Acceptance checks
 
-- [ ] `nginx -t` passes on the server with the new config.
-- [ ] After reload and Cloudflare purge, these return as listed (manual, with
+- [x] `nginx -t` passes on the server with the new config. (2026-10-14)
+- [x] After reload and Cloudflare purge, these return as listed (manual, with
       `curl -sI`): `/404` (200 jpeg), `/404.jpg` (200 jpeg), `/404/` (301 →
       `/404`), `/0` (200 jpeg), `/999` (404 jpeg), `/dog` (302 → `/400`),
       `/status/404` (200 html), `/nope` (404 jpeg), `/` (200 html),
-      `/404.html` (200 html).
-- [ ] With `out/404.html` and `out/404/index.html` present on the server,
-      `/404` still returns the cat. This is the property the change exists for;
-      checked once manually by placing the files, then removed.
+      `/404.html` (200 html). (2026-10-14, all as listed; `/404` body
+      byte-identical to `public/images/404.jpg`)
+- [x] With `out/404.html` present on the server, `/404` still returns the
+      cat. This is the property the change exists for; checked once manually
+      by placing the file, then removed. (2026-10-14)
 - [ ] `npm run build && npm test` passes with the shadowing test removed.
 
 ## Open questions
