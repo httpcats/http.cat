@@ -39,9 +39,10 @@ there's no Nginx to route `/404`). Next renders this component for the
 
 ## Acceptance checks
 
-- [ ] `npm run build` produces `out/404.html` and `out/_not-found.html`
+- [x] `npm run build` produces `out/404.html` and `out/_not-found.html`
       containing the 404 cat image, checked by a test in
-      `tests/build.test.mjs`.
+      `tests/build.test.mjs`. (2026-10-14; the test also checks the title,
+      and fails against Next's default page)
 - [ ] After deploy, `/404.html` and `/_not-found` show the cat page (manual).
 
 ## Open questions

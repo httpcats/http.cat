@@ -127,6 +127,14 @@ describe('build output', () => {
     }
   });
 
+  test("Next's not-found page shows the 404 cat (spec 0002)", () => {
+    for (const file of ['out/404.html', 'out/_not-found.html']) {
+      const html = readFileSync(path.join(root, file), 'utf8');
+      assert.ok(/<img[^>]+src="\/images\/404\.jpg"/.test(html), `${file} has no 404 cat`);
+      assert.ok(html.includes('<title>404 Not Found | HTTP Cats</title>'), `${file} has the wrong title`);
+    }
+  });
+
   test('every image is in the build output', () => {
     const expected = listNames('public/images', '.jpg').map((name) => `out/images/${name}.jpg`);
     assert.deepEqual(missing(expected), []);
