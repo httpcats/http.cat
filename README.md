@@ -12,7 +12,7 @@ This version does not need any server side code. The API behavior is provided by
 
 On v2.0.0 the website was built with React and pre-rendered with react-snap.
 
-As of v3.0.0 it's built with Next.js 13.
+As of v3.0.0 it's built with Next.js (currently version 16).
 
 ## Postman Collection
 
@@ -50,11 +50,17 @@ Based on [this gist](https://gist.github.com/mjmeyer/6cf8d3c1199d028f0921) by [@
 
     npm run dev
 
-Runs the tests.
+Runs the development server.
 
     npm run build
 
 Creates a build of the project.
+
+    npm test
+
+Checks the content and the build output (run `npm run build` first).
+
+New features and behavior changes start as a spec, see [specs/README.md](specs/README.md).
 
 ## Adding a new image
 
