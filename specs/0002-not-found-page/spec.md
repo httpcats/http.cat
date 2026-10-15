@@ -1,6 +1,6 @@
 # 0002: Not-found page shows the 404 cat
 
-- **Status:** approved
+- **Status:** implemented
 - **Issue:** —
 - **Affects:** site (Next.js)
 - **Depends on:** spec 0001 (implemented and deployed 2026-10-14)
@@ -43,7 +43,9 @@ there's no Nginx to route `/404`). Next renders this component for the
       containing the 404 cat image, checked by a test in
       `tests/build.test.mjs`. (2026-10-14; the test also checks the title,
       and fails against Next's default page)
-- [ ] After deploy, `/404.html` and `/_not-found` show the cat page (manual).
+- [x] After deploy, `/404.html` and `/_not-found` show the cat page (manual).
+      (2026-10-15: both `200 text/html`, titled `404 Not Found | HTTP Cats`,
+      with the 404 cat and none of Next's default text)
 
 ## Open questions
 

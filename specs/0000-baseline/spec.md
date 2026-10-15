@@ -10,7 +10,8 @@ The site had no written description of how it behaves. Most of its public
 behavior is a contract between the Next.js static export (`out/`) and the Nginx
 config (`deploy/nginx/http.cat.conf`), and breaking either side breaks URLs that
 other sites depend on (e.g. issue #267). This spec describes the behavior as of
-2026-10-14 (verified against production on 2026-10-11, updated for spec 0001).
+2026-10-15 (verified against production on 2026-10-11, updated for specs
+0001 and 0002).
 
 ## Behavior
 
@@ -40,7 +41,7 @@ other sites depend on (e.g. issue #267). This spec describes the behavior as of
 | Request | Response |
 |---|---|
 | Files in `public/` (e.g. `/robots.txt`, `/manifest.json`, `/opensearch.xml`, `/favicon.ico`) | `200`, the file |
-| Any file in the build output by its exact path (e.g. `/ca.html`, `/status/404.html`, `/index`, `/_not-found`, `/404.html`) | `200`, the file. Not linked from anywhere; a side effect of how Nginx serves `out/`. `/404.html` and `/_not-found` are Next's not-found page (see spec 0002). `/404.html` is served from the first `npm run deploy` after 2026-10-14; until then it returns the 404 cat |
+| Any file in the build output by its exact path (e.g. `/ca.html`, `/status/404.html`, `/index`, `/_not-found`, `/404.html`) | `200`, the file. Not linked from anywhere; a side effect of how Nginx serves `out/`. `/404.html` and `/_not-found` are Next's not-found page, which shows the 404 cat (spec 0002) |
 
 ### Not found
 
