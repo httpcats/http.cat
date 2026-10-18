@@ -10,8 +10,7 @@ The site had no written description of how it behaves. Most of its public
 behavior is a contract between the Next.js static export (`out/`) and the Nginx
 config (`deploy/nginx/http.cat.conf`), and breaking either side breaks URLs that
 other sites depend on (e.g. issue #267). This spec describes the behavior as of
-2026-10-15 (verified against production on 2026-10-11, updated for specs
-0001 and 0002).
+2026-10-18, including specs 0001 and 0002, verified against production.
 
 ## Behavior
 
@@ -85,8 +84,8 @@ other sites depend on (e.g. issue #267). This spec describes the behavior as of
 - [x] Content and build output invariants: `npm run build && npm test`
       (`tests/build.test.mjs`), run in CI on every PR.
 - [x] URL behavior tables above: verified manually against production with
-      `curl -sI` on 2026-10-11. Automating this with a smoke test is a
-      follow-up.
+      `curl` on 2026-10-11 and again on 2026-10-18. Automating this with a
+      smoke test is a follow-up.
 
 ## Open questions
 
