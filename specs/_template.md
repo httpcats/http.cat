@@ -3,6 +3,7 @@
 - **Status:** draft <!-- draft | approved | implemented -->
 - **Issue:** <!-- link to the GitHub issue, if any -->
 - **Affects:** <!-- site (Next.js) | nginx | content | deploy -->
+- **Depends on:** <!-- other specs that must be implemented first, or delete this line -->
 
 ## Problem
 
