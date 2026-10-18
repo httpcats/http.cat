@@ -93,9 +93,13 @@ Once this is deployed:
   `specs/0000-baseline/spec.md`.
 - The "nothing in the build output would replace an image URL" test in
   `tests/build.test.mjs` is removed, since the property it guards no longer
-  matters.
-- The "Invariants these rely on" section of `specs/0000-baseline/spec.md` is
-  updated to drop the shadowing invariant.
+  matters. In its place, two tests check that the Nginx config keeps the
+  image location and the server-level `error_page`, and one checks that no
+  top-level page in `out/` is named like a status code (it could never be
+  reached), with `404.html` as the only exception.
+- The shadowing invariant in the "Invariants these rely on" section of
+  `specs/0000-baseline/spec.md` is replaced by one saying image URLs don't
+  depend on the build output.
 
 ## Out of scope
 
