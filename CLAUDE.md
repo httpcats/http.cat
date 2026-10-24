@@ -35,6 +35,7 @@ New features and behavior changes start as a spec in `specs/`. Read
 - `public/images/` (served) and `public/images-original/` (originals): one
   `<code>.jpg` per status. `0.jpg` is a hidden easter egg not in `statuses.js`.
 - `app/`: pages. `app/ca/` mirrors the English pages for Catalan.
+  `app/[file]/route.ts` generates the JSON API (`out/<code>.json`).
 - `deploy/nginx/http.cat.conf`: production Nginx config, the source of truth.
   Its `try_files` order is load-bearing (see the comments in the file and
   issue #267). It isn't deployed automatically: changes have to be copied to

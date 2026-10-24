@@ -103,9 +103,9 @@ Once this is deployed:
 
 ## Out of scope
 
-- Any new URL or response format (e.g. JSON responses). A `.json` URL doesn't
-  match `^/(\d+)(\.jpg)?$`, so a future `/404.json` would be served from `out/`
-  by `location /` as today.
+- Any new URL or response format. A `.json` URL doesn't match
+  `^/(\d+)(\.jpg)?$`; the JSON responses have their own location, see
+  spec 0003.
 - Changing which URLs return the 404 cat for non-image requests.
 - Automating the deploy of the Nginx config. As with every nginx change, the
   maintainer copies the file to the server, runs `nginx -t`, reloads, and purges

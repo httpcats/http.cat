@@ -35,6 +35,19 @@ other sites depend on (e.g. issue #267). This spec describes the behavior as of
 | `GET /0` | `200`, `image/jpeg`, hidden grumpy cat memorial (not listed on the site) |
 | `GET /dog`, `GET /dog.jpg` | `302` to `/400`, `/400.jpg` respectively (easter egg) |
 
+### JSON
+
+See spec 0003 for the payload.
+
+| Request | Response |
+|---|---|
+| `GET /<code>.json` | `200`, `application/json`, the status, its name and description, and its image and page URLs |
+| `GET /<code>.json/` | `301` to `/<code>.json` |
+| `GET /<digits>.json` for a code not in `lib/statuses.js` (e.g. `/999.json`, `/0.json`) | `404`, `application/json`, the body of `/404.json` |
+
+The `200` and `404` JSON responses have `Access-Control-Allow-Origin: *`.
+`/ca/<code>.json` and `/dog.json` aren't JSON URLs: they return the 404 cat.
+
 ### Static files
 
 | Request | Response |
@@ -46,7 +59,7 @@ other sites depend on (e.g. issue #267). This spec describes the behavior as of
 
 | Request | Response |
 |---|---|
-| Any other URL (e.g. `/999`, `/nope`) | `404`, `image/jpeg`, the 404 cat |
+| Any other URL (e.g. `/999`, `/nope`, `/dog.json`) | `404`, `image/jpeg`, the 404 cat. `/<digits>.json` is the exception: it gets the 404 JSON (see JSON) |
 | Directories without a page (e.g. `/status`, `/images`) | `404`, `image/jpeg`, the 404 cat |
 
 ### Other
@@ -60,7 +73,9 @@ other sites depend on (e.g. issue #267). This spec describes the behavior as of
 - Caching: Nginx marks HTML as already expired and images/CSS/JS as cached for
   the max duration (`Cache-Control: max-age=315360000`). In production,
   Cloudflare rewrites the HTML header to `Cache-Control: max-age=14400`, so
-  browsers may keep a page for up to 4 hours after a deploy.
+  browsers may keep a page for up to 4 hours after a deploy. JSON gets no
+  `Cache-Control` from Nginx; Cloudflare caches it at the edge anyway and
+  sends browsers `max-age=14400`, as for HTML.
 - `http://` redirects to `https://` with a `301`.
 - After each deploy the Cloudflare cache is purged (`scripts/deploy.sh`).
 
@@ -73,6 +88,8 @@ other sites depend on (e.g. issue #267). This spec describes the behavior as of
   URL (with or without `.jpg`) straight to `images/<digits>.jpg` in a
   dedicated location, so a page or file named like a status code (e.g. the
   `404.html` Next always generates) can't replace a cat. See spec 0001.
+- The only `out/<digits>.json` files are the statuses' own, so every other
+  `/<digits>.json` gets the 404 JSON. See spec 0003.
 - `locales/en/common.json` and `locales/ca/common.json` have the same keys.
 
 ## Out of scope

@@ -149,18 +149,19 @@ Nginx's default 404 page until `out/404.json` exists.
 
 ## Acceptance checks
 
-- [ ] Build test in `tests/build.test.mjs`: every status has `out/<code>.json`
+- [x] Build test in `tests/build.test.mjs`: every status has `out/<code>.json`
       that parses and matches `lib/statuses.js` and `content/<code>.md`
       (all five fields), and every top-level `out/<digits>.json` belongs to a
-      status.
-- [ ] Nginx config test in `tests/build.test.mjs`: the JSON location, its
+      status. (2026-10-24)
+- [x] Nginx config test in `tests/build.test.mjs`: the JSON location, its
       CORS header and its `error_page` are in `deploy/nginx/http.cat.conf`.
+      (2026-10-24)
 - [ ] After both deploys (manual, with `curl -sI` and `curl -s`):
       `/500.json` (200 `application/json`, `Access-Control-Allow-Origin: *`,
       body matches the payload), `/404.json` (200), `/999.json` (404
       `application/json`, CORS header, the 404 body), `/0.json` (404 JSON),
       `/500.json/` (301 → `/500.json`), `/500` (200 jpeg), `/999` (404 jpeg).
-- [ ] Baseline, spec 0001 note and README updated.
+- [x] Baseline, spec 0001 note and README updated. (2026-10-24)
 
 ## Open questions
 

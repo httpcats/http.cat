@@ -8,6 +8,8 @@ import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
+import { expectedStatusJson } from './helpers/status-json.mjs';
+
 const require = createRequire(import.meta.url);
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const statuses = require('../lib/statuses.js');
@@ -86,6 +88,15 @@ describe('nginx config', () => {
     // 4-space indent = server level, where all locations inherit it
     assert.ok(conf.includes('\n    error_page 404 /images/404.jpg;'), 'server-level error_page missing');
   });
+
+  test('serves the JSON API with CORS and a JSON 404 (spec 0003)', () => {
+    const start = conf.indexOf('location ~ ^/\\d+\\.json$ {');
+    assert.ok(start !== -1, 'JSON location missing');
+    const block = conf.slice(start, conf.indexOf('}', start));
+    assert.ok(block.includes('add_header Access-Control-Allow-Origin * always;'), 'CORS header missing');
+    assert.ok(block.includes('error_page 404 /404.json;'), 'JSON error_page missing');
+    assert.ok(block.includes('try_files $uri =404;'), 'JSON try_files missing');
+  });
 });
 
 describe('build output', () => {
@@ -133,6 +144,23 @@ describe('build output', () => {
       assert.ok(/<img[^>]+src="\/images\/404\.jpg"/.test(html), `${file} has no 404 cat`);
       assert.ok(html.includes('<title>404 Not Found | HTTP Cats</title>'), `${file} has the wrong title`);
     }
+  });
+
+  test('every status has a JSON file matching its content (spec 0003)', () => {
+    for (const code of codes) {
+      const file = path.join(out, `${code}.json`);
+      assert.ok(isFile(file), `out/${code}.json missing`);
+      assert.deepEqual(JSON.parse(readFileSync(file, 'utf8')), expectedStatusJson(code));
+    }
+  });
+
+  test('every JSON file named like a status code belongs to a status', () => {
+    // Nginx answers /<digits>.json for unknown codes with the 404 JSON, so any
+    // other out/<digits>.json would be a status nobody decided on
+    const orphans = readdirSync(out).filter(
+      (entry) => /^\d+\.json$/.test(entry) && !codes.includes(entry.slice(0, -'.json'.length)),
+    );
+    assert.deepEqual(orphans, []);
   });
 
   test('every image is in the build output', () => {

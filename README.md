@@ -14,6 +14,26 @@ On v2.0.0 the website was built with React and pre-rendered with react-snap.
 
 As of v3.0.0 it's built with Next.js (currently version 16).
 
+## Usage
+
+Every status code is an image: `https://http.cat/<code>` (or `https://http.cat/<code>.jpg`), e.g. [https://http.cat/404](https://http.cat/404).
+
+The same information as the status page is also available as JSON at `https://http.cat/<code>.json`:
+
+    curl https://http.cat/500.json
+
+```json
+{
+  "status": 500,
+  "name": "Internal Server Error",
+  "description": "The HTTP `500 Internal Server Error` server error response code indicates ...",
+  "image": "https://http.cat/500",
+  "url": "https://http.cat/status/500"
+}
+```
+
+`description` is Markdown. The JSON can be fetched from other sites (it's sent with `Access-Control-Allow-Origin: *`). A code that doesn't exist, e.g. `/999.json`, returns a `404` with the body of `/404.json`, so check the HTTP status rather than the `status` field.
+
 ## Postman Collection
 
 There's a [Postman collection](https://documenter.getpostman.com/view/6034746/SzzrWt5f) with requests for the HTTP status cats, created by [@SubramanyaRaj5](https://github.com/SubramanyaRaj5). Use the button below to import it into your Postman app.
