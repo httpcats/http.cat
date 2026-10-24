@@ -62,7 +62,8 @@ A few things to keep in mind:
 - The original status code is kept, only the response body is replaced by the cat image.
 - A `location` that defines its own `error_page` doesn't inherit these.
 - If Nginx is a reverse proxy for an app, add `proxy_intercept_errors on;` to that `location` so the app's error responses also get cats.
-- Each error page is fetched from http.cat, so if it's unreachable Nginx falls back to its default error page.
+- Each error page is fetched from http.cat. If it's unreachable, or its certificate can't be verified, Nginx responds with its own `502 Bad Gateway` instead.
+- Nothing from your visitors' requests (cookies, `Authorization` headers, bodies) is sent to http.cat, and only the image comes back: no cookies, always `image/jpeg`. http.cat's certificate is verified against `/etc/ssl/certs/ca-certificates.crt`; on RHEL and Fedora, change that path to `/etc/pki/tls/certs/ca-bundle.crt`.
 
 Based on [this gist](https://gist.github.com/mjmeyer/6cf8d3c1199d028f0921) by [@mjmeyer](https://github.com/mjmeyer), suggested by [@mishailovic](https://github.com/mishailovic) in [#126](https://github.com/httpcats/http.cat/issues/126).
 
