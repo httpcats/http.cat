@@ -101,8 +101,10 @@ The `200` and `404` JSON responses have `Access-Control-Allow-Origin: *`.
 - [x] Content and build output invariants: `npm run build && npm test`
       (`tests/build.test.mjs`), run in CI on every PR.
 - [x] URL behavior tables above: verified manually against production with
-      `curl` on 2026-10-11 and again on 2026-10-18. Automating this with a
-      smoke test is a follow-up.
+      `curl` on 2026-10-11 and again on 2026-10-18. Now automated by
+      `tests/smoke/urls.test.mjs`: `npm run test:smoke` against the local
+      Nginx container (`npm run nginx:up`), or
+      `SMOKE_URL=https://http.cat npm run test:smoke` against production.
 
 ## Open questions
 

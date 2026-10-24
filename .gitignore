@@ -38,3 +38,6 @@ next-env.d.ts
 .vscode/
 
 ads.txt
+
+# local nginx (scripts/local-nginx.sh)
+/.local-nginx/

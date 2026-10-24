@@ -24,6 +24,11 @@ New features and behavior changes start as a spec in `specs/`. Read
 - `npm run build`: static export to `out/` (runs `scripts/post-build.js` after)
 - `npm test`: content and build output checks (run `npm run build` first)
 - `npm run lint`: ESLint
+- `npm run nginx:up` / `nginx:down`: serve `out/` through the production Nginx
+  config in Docker (`scripts/local-nginx.sh`). Uses `sudo docker` when the
+  socket isn't writable, so it needs the user to run it (`! npm run nginx:up`).
+- `npm run test:smoke`: checks the spec URL tables against the container, or
+  against production with `SMOKE_URL=https://http.cat` (GET requests only)
 
 ## How it fits together
 

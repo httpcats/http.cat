@@ -8,8 +8,11 @@
     "start": "next start",
     "lint": "eslint .",
     "test": "node --test tests/*.test.mjs",
+    "test:smoke": "node --test tests/smoke/*.test.mjs",
     "deploy": "./scripts/deploy.sh",
-    "scrapper": "node ./scripts/scrapper.js"
+    "scrapper": "node ./scripts/scrapper.js",
+    "nginx:up": "./scripts/local-nginx.sh up",
+    "nginx:down": "./scripts/local-nginx.sh down"
   },
   "dependencies": {
     "@types/node": "^20.14.9",

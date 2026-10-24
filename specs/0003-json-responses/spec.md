@@ -161,6 +161,8 @@ Nginx's default 404 page until `out/404.json` exists.
       body matches the payload), `/404.json` (200), `/999.json` (404
       `application/json`, CORS header, the 404 body), `/0.json` (404 JSON),
       `/500.json/` (301 → `/500.json`), `/500` (200 jpeg), `/999` (404 jpeg).
+      `SMOKE_URL=https://http.cat npm run test:smoke` covers all of these;
+      run it against the local container first (`npm run nginx:up`).
 - [x] Baseline, spec 0001 note and README updated. (2026-10-24)
 
 ## Open questions
