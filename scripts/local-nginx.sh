@@ -3,7 +3,8 @@
 # Serves out/ through the production Nginx config (deploy/nginx/http.cat.conf,
 # unmodified) in a Docker container, to test the site before deploying:
 #
-#   npm run nginx:up     https://localhost:8443 and http://localhost:8080
+#   npm run nginx:up     https://localhost:8443 (http://localhost:8080 only
+#                        redirects to https://http.cat, the production site)
 #   npm run test:smoke   checks the URLs in the specs against it
 #   npm run nginx:down
 #
@@ -82,7 +83,8 @@ up() {
   docker run -d --name "$NAME" "${args[@]}" "$IMAGE" >/dev/null
   for _ in $(seq 20); do
     if curl -sk -o /dev/null https://127.0.0.1:8443/; then
-      echo "Serving out/ at https://localhost:8443 and http://localhost:8080"
+      echo "Serving out/ at https://localhost:8443"
+      echo "(http://localhost:8080 redirects to https://http.cat, as in production)"
       return
     fi
     sleep 0.5

@@ -84,7 +84,7 @@ Checks the content and the build output (run `npm run build` first).
     npm run test:smoke
     npm run nginx:down
 
-Serves `out/` through the production Nginx config in Docker (https://localhost:8443, with a self-signed certificate, and http://localhost:8080), and checks every URL the specs describe against it. Use it before deploying: `npm run dev` doesn't run Nginx, so the image URLs (`/404`) and the JSON 404s and CORS header only work there. Run `npm run nginx:up` again after each build. If your user can't use Docker directly, the script runs `docker` with `sudo`. `SMOKE_URL=https://http.cat npm run test:smoke` runs the same checks against production.
+Serves `out/` through the production Nginx config in Docker at https://localhost:8443 (with a self-signed certificate, so accept the browser warning), and checks every URL the specs describe against it. Use it before deploying: `npm run dev` doesn't run Nginx, so the image URLs (`/404`) and the JSON 404s and CORS header only work there. Don't use http://localhost:8080: like production, it redirects to `https://http.cat`, the live site. Run `npm run nginx:up` again after each build. If your user can't use Docker directly, the script runs `docker` with `sudo`. `SMOKE_URL=https://http.cat npm run test:smoke` runs the same checks against production.
 
 New features and behavior changes start as a spec, see [specs/README.md](specs/README.md).
 
