@@ -1,6 +1,6 @@
 # 0003: JSON responses
 
-- **Status:** approved
+- **Status:** implemented
 - **Issue:** —
 - **Affects:** site (Next.js build), nginx, deploy
 - **Depends on:** spec 0001 (implemented)
@@ -158,13 +158,15 @@ Nginx's default 404 page until `out/404.json` exists.
 - [x] Nginx config test in `tests/build.test.mjs`: the JSON location, its
       CORS header and its `error_page` are in `deploy/nginx/http.cat.conf`.
       (2026-10-24)
-- [ ] After both deploys (manual, with `curl -sI` and `curl -s`):
+- [x] After both deploys (manual, with `curl -sI` and `curl -s`):
       `/500.json` (200 `application/json`, `Access-Control-Allow-Origin: *`,
       body matches the payload), `/404.json` (200), `/999.json` (404
       `application/json`, CORS header, the 404 body), `/0.json` (404 JSON),
       `/500.json/` (301 → `/500.json`), `/500` (200 jpeg), `/999` (404 jpeg).
       `SMOKE_URL=https://http.cat npm run test:smoke` covers all of these;
       run it against the local container first (`npm run nginx:up`).
+      (2026-10-25: all 13 smoke checks passed against production after both
+      deploys and a Cloudflare purge)
 - [x] Baseline, spec 0001 note and README updated. (2026-10-24)
 
 ## Open questions

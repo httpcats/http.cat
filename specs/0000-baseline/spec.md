@@ -10,7 +10,7 @@ The site had no written description of how it behaves. Most of its public
 behavior is a contract between the Next.js static export (`out/`) and the Nginx
 config (`deploy/nginx/http.cat.conf`), and breaking either side breaks URLs that
 other sites depend on (e.g. issue #267). This spec describes the behavior as of
-2026-10-18, including specs 0001 and 0002, verified against production.
+2026-10-25, including specs 0001 to 0003, verified against production.
 
 ## Behavior
 
@@ -101,7 +101,8 @@ The `200` and `404` JSON responses have `Access-Control-Allow-Origin: *`.
 - [x] Content and build output invariants: `npm run build && npm test`
       (`tests/build.test.mjs`), run in CI on every PR.
 - [x] URL behavior tables above: verified manually against production with
-      `curl` on 2026-10-11 and again on 2026-10-18. Now automated by
+      `curl` on 2026-10-11 and again on 2026-10-18, and with the smoke test on
+      2026-10-25. Now automated by
       `tests/smoke/urls.test.mjs`: `npm run test:smoke` against the local
       Nginx container (`npm run nginx:up`), or
       `SMOKE_URL=https://http.cat npm run test:smoke` against production.
