@@ -21,7 +21,8 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 CONF="$ROOT/deploy/nginx/http.cat.conf"
 CERTS="$ROOT/.local-nginx/letsencrypt"
 NAME=http.cat-nginx
-IMAGE="${NGINX_IMAGE:-nginx:1.30.6-alpine}"
+# the server's version (Ubuntu 26.04's nginx, checked on 2026-10-25)
+IMAGE="${NGINX_IMAGE:-nginx:1.28.3-alpine}"
 
 # Docker access without sudo is root-equivalent (e.g. the docker group on
 # Linux), so not every user has it. Only the docker calls elevate, and only

@@ -89,6 +89,12 @@ describe('nginx config', () => {
     assert.ok(conf.includes('\n    error_page 404 /images/404.jpg;'), 'server-level error_page missing');
   });
 
+  test('enables HTTP/2 with the http2 directive', () => {
+    // the server runs Nginx 1.28, where `listen ... http2` is deprecated
+    assert.ok(conf.includes('\n    http2 on;'), 'http2 directive missing');
+    assert.ok(!/^\s*listen\b[^;]*\bhttp2\b/m.test(conf), 'listen has the deprecated http2 parameter');
+  });
+
   test('serves the JSON API with CORS and a JSON 404 (spec 0003)', () => {
     const start = conf.indexOf('location ~ ^/\\d+\\.json$ {');
     assert.ok(start !== -1, 'JSON location missing');
