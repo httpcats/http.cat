@@ -15,8 +15,9 @@ New features and behavior changes start as a spec in `specs/`. Read
   the same change if the implementation had to deviate from it.
 - `specs/0000-baseline/spec.md` describes the URLs the site serves today and the
   invariants they rely on. Any change that alters those tables must update them.
-- Small changes (new cat images, typos, translations, dependency bumps) don't
-  need a spec.
+- Small changes (new cat images, typos, translations, dependency bumps) and
+  infrastructure or tooling changes that don't change what a URL returns
+  (e.g. Nginx syntax updates, scripts) don't need a spec.
 
 ## Commands
 

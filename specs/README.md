@@ -9,14 +9,16 @@ acceptance checks that prove the implementation is done.
 Write a spec for:
 
 - New features (e.g. a new URL, a new response format, a new page)
-- Changes to existing behavior (anything that changes what a URL returns)
-- Changes to the Nginx config in `deploy/nginx/`
+- Changes to existing behavior (anything that changes what a URL returns),
+  including ones made in the Nginx config
 
 You don't need a spec for:
 
 - Adding a new cat image / status code (follow the README instead)
 - Typos, copy and translation fixes
 - Dependency upgrades that don't change behavior
+- Infrastructure and tooling changes that don't change what a URL returns
+  (e.g. Nginx syntax updates, deploy and test scripts)
 - Bug fixes that restore the behavior already described in a spec
 
 ## Workflow
