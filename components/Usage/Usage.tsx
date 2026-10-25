@@ -44,7 +44,8 @@ const Usage = ({ t }: UsageProps) => {
         </button>
       </pre>
       <p>
-        <b>{t.USAGE_NOTE_LABEL}:</b> {t.USAGE_NOTE_TEXT} <code>.jpg</code>.
+        <b>{t.USAGE_NOTE_LABEL}:</b> {t.USAGE_NOTE_TEXT} <code>.jpg</code>.{' '}
+        {t.USAGE_JSON_TEXT} <code>.json</code>.
       </p>
     </div>
   );

@@ -115,6 +115,8 @@ it.
   `/404.json` would be served by `location /`. That's no longer true and is
   updated to point here.
 - The README documents the JSON URLs next to the image usage.
+- The usage note on the home page (`components/Usage`) mentions `.json` next
+  to `.jpg`, in English and Catalan.
 
 ## Out of scope
 

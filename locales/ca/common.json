@@ -5,6 +5,7 @@
   "USAGE_PARAM": "codi_d_estat",
   "USAGE_NOTE_LABEL": "Nota",
   "USAGE_NOTE_TEXT": "Si necessiteu una extensió al final de l’URL només heu d’afegir",
+  "USAGE_JSON_TEXT": "Per obtenir el nom i la descripció de l’estat en JSON, afegiu",
   "LANGUAGE_LINK_TEXT": "English Version",
   "DEVELOPED_BY": "Desenvolupat per",
   "IMAGES_BY": "Imatges de",
