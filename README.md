@@ -108,6 +108,28 @@ follow the format of already existing files.
 Also, copy this file over to `/content/ca` and ask Copilot, ChatGPT or Google,
 etc to translate the content to Catalan.
 
+## Writing a blog post
+
+The blog at [https://http.cat/blog](https://http.cat/blog) is one plain Markdown
+file per post in `content/blog/`, named `<YYYY-MM-DD>-<slug>.md`, e.g.
+`2026-11-01-hello-world.md` for `/blog/hello-world`. The date is the
+publication date, and the slug can't change once the post is published.
+
+The first line is the title, as a `# ` heading, and the paragraph after it is
+the description used in search results and link previews:
+
+```markdown
+# Hello, world
+
+http.cat has a blog.
+
+The rest of the post...
+```
+
+Post images go in `public/blog/<slug>/` (referenced as `/blog/<slug>/<file>`).
+For a cat, use `/images/<code>.jpg`. See
+[specs/0004-blog](specs/0004-blog/spec.md) for the details.
+
 ## Credits
 
 Thanks to [@girliemac](https://github.com/girliemac) for creating the amazing http status cats images.

@@ -24,6 +24,8 @@ other sites depend on (e.g. issue #267). This spec describes the behavior as of
 | `GET /status/<code>` | `200`, status page with the image and description |
 | `GET /ca` | `200`, home page in Catalan |
 | `GET /ca/status/<code>` | `200`, status page in Catalan |
+| `GET /blog` | `200`, the blog: every post, newest first (English only, see spec 0004) |
+| `GET /blog/<slug>` | `200`, a blog post, for every `content/blog/<YYYY-MM-DD>-<slug>.md` |
 
 ### Images (the "API")
 
@@ -59,7 +61,7 @@ The `200` and `404` JSON responses have `Access-Control-Allow-Origin: *`.
 
 | Request | Response |
 |---|---|
-| Any other URL (e.g. `/999`, `/nope`, `/dog.json`) | `404`, `image/jpeg`, the 404 cat. `/<digits>.json` is the exception: it gets the 404 JSON (see JSON) |
+| Any other URL (e.g. `/999`, `/nope`, `/dog.json`, `/blog/nope`) | `404`, `image/jpeg`, the 404 cat. `/<digits>.json` is the exception: it gets the 404 JSON (see JSON) |
 | Directories without a page (e.g. `/status`, `/images`) | `404`, `image/jpeg`, the 404 cat |
 
 ### Other
@@ -67,7 +69,8 @@ The `200` and `404` JSON responses have `Access-Control-Allow-Origin: *`.
 - Every URL with a trailing slash, except `/`, gets a `301` to the same URL
   without the slash before anything else is tried. This applies to pages,
   images, directories and unknown URLs alike: `/status/404/` → `/status/404`,
-  `/404/` → `/404`, `/nope/` → `/nope` (which then returns the 404 cat).
+  `/404/` → `/404`, `/blog/` → `/blog`, `/nope/` → `/nope` (which then
+  returns the 404 cat).
 - Client-side navigation data (e.g. `/status/<code>/__next._tree.txt`) is served
   as `200` files.
 - Caching: Nginx marks HTML as already expired and images/CSS/JS as cached for
@@ -91,6 +94,10 @@ The `200` and `404` JSON responses have `Access-Control-Allow-Origin: *`.
 - The only `out/<digits>.json` files are the statuses' own, so every other
   `/<digits>.json` gets the 404 JSON. See spec 0003.
 - `locales/en/common.json` and `locales/ca/common.json` have the same keys.
+- Every file in `content/blog/` is named `<YYYY-MM-DD>-<slug>.md` (a real
+  date, and a slug of lowercase letters, digits and hyphens that isn't all
+  digits and is unique), and starts with a `# ` title followed by a
+  paragraph. There's at least one post. See spec 0004.
 
 ## Out of scope
 

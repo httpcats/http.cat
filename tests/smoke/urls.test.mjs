@@ -18,10 +18,12 @@ import path from 'node:path';
 import pMap from 'p-map';
 
 import { expectedStatusJson } from '../helpers/status-json.mjs';
+import { listPosts } from '../helpers/posts.mjs';
 
 const require = createRequire(import.meta.url);
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
 const codes = Object.keys(require('../../lib/statuses.js'));
+const slugs = listPosts().map((post) => post.slug);
 
 // 127.0.0.1 rather than localhost: the container only listens on IPv4
 const base = new URL(process.env.SMOKE_URL ?? 'https://127.0.0.1:8443');
@@ -83,6 +85,24 @@ describe('pages', () => {
       await check(`/status/${code}`, { status: 200, type: 'text/html' });
       await check(`/ca/status/${code}`, { status: 200, type: 'text/html' });
     });
+  });
+});
+
+describe('blog (spec 0004)', () => {
+  test('list and posts', async () => {
+    await check('/blog', { status: 200, type: 'text/html' });
+    await checkAll(slugs, (slug) => check(`/blog/${slug}`, { status: 200, type: 'text/html' }));
+  });
+
+  test('trailing slashes are stripped', async () => {
+    await check('/blog/', { status: 301, location: '/blog' });
+    await checkAll(slugs, (slug) =>
+      check(`/blog/${slug}/`, { status: 301, location: `/blog/${slug}` }),
+    );
+  });
+
+  test('unknown posts are the 404 cat', async () => {
+    await check('/blog/nope', { status: 404, type: 'image/jpeg', body: cat404 });
   });
 });
 

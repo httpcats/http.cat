@@ -1,0 +1,54 @@
+.container code {
+  background-color: #ddd;
+  border-radius: 2px;
+  padding: 0.125rem 0.25rem;
+  font-size: 0.875rem;
+}
+
+.container pre {
+  /* lighter than inline code: the light highlighting colors need the contrast */
+  background-color: #f6f8fa;
+  border-radius: 2px;
+  padding: 0.75rem 1rem;
+  overflow-x: auto;
+}
+
+.container pre code {
+  background-color: transparent;
+  padding: 0;
+}
+
+/* syntax highlighting: lib/markdown.ts puts each token's light and dark colors
+   in CSS variables */
+.container pre span {
+  color: var(--shiki-light);
+}
+
+.container a {
+  color: var(--interactive);
+}
+
+.container img {
+  max-width: 100%;
+  height: auto;
+}
+
+.container time {
+  font-size: 0.875rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  /* a little darker than the page (#222) */
+  .container code,
+  .container pre {
+    background-color: #1a1a1a;
+  }
+
+  .container pre code {
+    background-color: transparent;
+  }
+
+  .container pre span {
+    color: var(--shiki-dark);
+  }
+}

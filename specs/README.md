@@ -15,6 +15,7 @@ Write a spec for:
 You don't need a spec for:
 
 - Adding a new cat image / status code (follow the README instead)
+- Writing, editing or removing a blog post (see spec 0004 and the README)
 - Typos, copy and translation fixes
 - Dependency upgrades that don't change behavior
 - Infrastructure and tooling changes that don't change what a URL returns
@@ -42,3 +43,4 @@ spec too, so the specs always describe how the site behaves today.
 | [0001 Route image URLs explicitly in Nginx](0001-image-routing/spec.md) | implemented |
 | [0002 Not-found page shows the 404 cat](0002-not-found-page/spec.md) | implemented |
 | [0003 JSON responses](0003-json-responses/spec.md) | implemented |
+| [0004 Blog](0004-blog/spec.md) | approved |

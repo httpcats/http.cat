@@ -8,7 +8,11 @@ import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
+import { unified } from 'unified';
+import remarkParse from 'remark-parse';
+
 import { expectedStatusJson } from './helpers/status-json.mjs';
+import { listPosts, postFileName, postsDir } from './helpers/posts.mjs';
 
 const require = createRequire(import.meta.url);
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -71,6 +75,42 @@ describe('content', () => {
     const en = Object.keys(require('../locales/en/common.json')).sort();
     const ca = Object.keys(require('../locales/ca/common.json')).sort();
     assert.deepEqual(ca, en);
+  });
+});
+
+describe('blog posts (spec 0004)', () => {
+  const posts = listPosts();
+
+  test('there is at least one post', () => {
+    // the list page and the export of /blog/[slug] need one
+    assert.ok(posts.length > 0);
+  });
+
+  test('every file is named <YYYY-MM-DD>-<slug>.md', () => {
+    const invalid = readdirSync(postsDir).filter((file) => !postFileName.test(file));
+    assert.deepEqual(invalid, []);
+  });
+
+  test('dates are real and slugs are unique and not all digits', () => {
+    for (const { file, date, slug } of posts) {
+      const parsed = new Date(`${date}T00:00:00Z`);
+      assert.ok(!Number.isNaN(parsed.getTime()), `${file}: invalid date`);
+      assert.equal(parsed.toISOString().slice(0, 10), date, `${file}: invalid date`);
+      assert.ok(!/^\d+$/.test(slug), `${file}: the slug is all digits`);
+    }
+    const slugs = posts.map((post) => post.slug);
+    assert.deepEqual(slugs, [...new Set(slugs)], 'duplicate slugs');
+  });
+
+  test('every post starts with a `# ` title followed by a paragraph', () => {
+    for (const { file } of posts) {
+      const markdown = readFileSync(path.join(postsDir, file), 'utf8');
+      const [heading, paragraph] = unified().use(remarkParse).parse(markdown).children;
+      assert.ok(markdown.startsWith('# '), `${file}: doesn't start with \`# \``);
+      assert.equal(heading?.type, 'heading', `${file}: no title`);
+      assert.equal(heading.depth, 1, `${file}: the title isn't a \`# \` heading`);
+      assert.equal(paragraph?.type, 'paragraph', `${file}: no paragraph after the title`);
+    }
   });
 });
 
@@ -167,6 +207,22 @@ describe('build output', () => {
       (entry) => /^\d+\.json$/.test(entry) && !codes.includes(entry.slice(0, -'.json'.length)),
     );
     assert.deepEqual(orphans, []);
+  });
+
+  test('every blog post has a page, and the blog links to them newest first (spec 0004)', () => {
+    const posts = listPosts();
+    assert.deepEqual(missing(posts.map(({ slug }) => `out/blog/${slug}.html`)), []);
+
+    const html = readFileSync(path.join(out, 'blog.html'), 'utf8');
+    const linked = [...html.matchAll(/href="\/blog\/([^"]+)"/g)].map(([, slug]) => slug);
+    assert.deepEqual(linked, posts.map(({ slug }) => slug));
+  });
+
+  test('every page links to the blog in the footer (spec 0004)', () => {
+    for (const file of ['out/index.html', 'out/ca.html', 'out/status/404.html', 'out/blog.html']) {
+      const html = readFileSync(path.join(root, file), 'utf8');
+      assert.ok(html.includes('href="/blog">Blog</a>'), `${file} has no blog link`);
+    }
   });
 
   test('every image is in the build output', () => {
