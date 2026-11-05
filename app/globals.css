@@ -86,6 +86,11 @@ p {
   margin: initial;
   padding: initial;
 }
+
+/* only shown on phones, see the media query below */
+.carbon-placeholder {
+  display: none;
+}
 #carbonads {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', Helvetica, Arial,
@@ -190,6 +195,33 @@ p {
   #carbon-container {
     display: flow-root;
     min-height: calc(100px + 2rem);
+    position: relative;
+  }
+
+  /* fills the reserved space until the ad loads, and stays if it doesn't.
+     Positioned over the space rather than in the flow, so swapping it for
+     the ad moves nothing. `top` matches where the ad is drawn: it keeps the
+     desktop `top: 2rem` above, which offsets it within its box. */
+  .carbon-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 2rem;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    max-width: 330px;
+    height: 100px;
+    border: 1px dashed currentColor;
+    opacity: 0.4;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  #carbon-container:has(#carbonads) .carbon-placeholder {
+    display: none;
   }
 
   #carbonads {

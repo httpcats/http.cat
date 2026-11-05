@@ -4,6 +4,7 @@ import Script from 'next/script';
 import '@/app/globals.css';
 import CarbonAd from '@/components/CarbonAd';
 import { Locale, SITE_URL } from '@/lib/site';
+import { getTranslations } from '@/lib/translation';
 
 // The markup and metadata every page shares. Rendered by the two root
 // layouts, app/(en)/layout.tsx and app/(ca)/layout.tsx, which only differ in
@@ -53,13 +54,15 @@ export const siteViewport: Viewport = {
   themeColor: '#d0383e',
 };
 
-export default function SiteLayout({
+export default async function SiteLayout({
   lang,
   children,
 }: {
   lang: Locale;
   children: React.ReactNode;
 }) {
+  const t = await getTranslations(lang);
+
   return (
     <html lang={lang}>
       {/* a root layout's <head>: the rule is for the Pages Router, and only
@@ -74,7 +77,7 @@ export default function SiteLayout({
         />
       </head>
       <body>
-        <CarbonAd />
+        <CarbonAd placeholder={t.AD_PLACEHOLDER_TEXT} />
         <div className="p-4 sm:px-16 sm:py-4 lg:px-32 lg:py-4">{children}</div>
         <Script id="google-analytics" strategy="afterInteractive">
           {`

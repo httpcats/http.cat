@@ -3,7 +3,9 @@
 import React, { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 
-const CarbonAd = () => {
+// `placeholder` fills the ad's reserved space on phones until the ad loads,
+// and stays if it never does (e.g. an ad blocker). See app/globals.css.
+const CarbonAd = ({ placeholder }: { placeholder: string }) => {
   const pathname = usePathname();
 
   useEffect(() => {
@@ -27,7 +29,13 @@ const CarbonAd = () => {
     }
   }, [pathname]);
 
-  return <div id="carbon-container" />;
+  return (
+    <div id="carbon-container">
+      <div className="carbon-placeholder" aria-hidden="true">
+        {placeholder}
+      </div>
+    </div>
+  );
 };
 
 export default CarbonAd;
