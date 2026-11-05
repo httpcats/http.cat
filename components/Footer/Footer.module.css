@@ -13,6 +13,14 @@
   padding: 1em;
 }
 
+/* the five 70px icons don't fit on narrow phones: let them shrink instead of
+   overflowing the page */
 .social > div {
   padding: 0.5em;
+  min-width: 0;
+}
+
+.social img {
+  max-width: 100%;
+  height: auto;
 }
