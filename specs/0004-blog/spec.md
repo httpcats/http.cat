@@ -188,11 +188,12 @@ through Nginx, so the image would be broken in `npm run dev`.
 - [x] Build test: both locale files have `BLOG_LINK_TEXT` (the existing
       same-keys check), and the home, Catalan home, status and blog pages
       link to `/blog`. (2026-11-02)
-- [ ] Smoke test (local container, then production after deploy):
+- [x] Smoke test (local container, then production after deploy):
       `/blog` (200 html), `/blog/<slug>` for every post (200 html), `/blog/`
       (301 → `/blog`), `/blog/<slug>/` (301), `/blog/nope` (404 jpeg), and
       `/500`, `/500.json` unchanged. (2026-11-04: all 16 smoke checks pass
-      against the local container; production still to do)
+      against the local container. 2026-11-05: all pass against
+      production, in the smoke run for spec 0005)
 - [ ] Manual: the post's Open Graph card renders (e.g. a link preview in a
       chat app). Needs production.
 - [x] Baseline, README and smoke test updated. (2026-11-02)
