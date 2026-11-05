@@ -247,11 +247,12 @@ checkout), and Google ignores `changefreq` and `priority`.
       `/500.json`, `/status/500` unchanged. (2026-11-05: all 19 smoke
       checks pass against the local container, which serves the sitemap as
       `text/xml` with no `Cache-Control`; production still to do)
-- [ ] Manual: switching language with the footer link works in both
+- [x] Manual: switching language with the footer link works in both
       directions, and the pages look the same as before. (2026-11-05: the
       exported HTML of the home, status, blog and not-found pages is
       identical to the previous build apart from the new `<head>` tags and
-      `lang`; the browser check is still to do)
+      `lang`, and the language link was checked in a browser against the
+      local container)
 - [ ] Manual: the production sitemap validates (e.g. Google Search
       Console's sitemap report shows it read with no errors).
 - [x] Baseline, spec 0002, CLAUDE.md and smoke test updated. (2026-11-05)
