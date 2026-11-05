@@ -24,11 +24,12 @@ cat.
 | `GET /_not-found`, `GET /_not-found.html`, `GET /404.html` | `200`, a page in the site's layout (header, footer) showing the 404 cat image, titled `404 Not Found \| HTTP Cats` |
 | Nginx 404 responses (`/nope`, `/999`) | unchanged: `404`, `image/jpeg`, via `error_page` |
 
-Implementation: an `app/not-found.tsx` rendering the same header, footer and
-image markup the status page uses, with the image at `/images/404.jpg` (the
-same path the status pages use, so it also works under `next dev`, where
-there's no Nginx to route `/404`). Next renders this component for the
-`/_not-found` route and copies it to `out/404.html`.
+Implementation: an `app/global-not-found.tsx` (an `app/not-found.tsx` until spec
+0005 split the site into two root layouts) rendering the same header, footer and
+image markup the status page uses, with the image at `/images/404.jpg` (the same
+path the status pages use, so it also works under `next dev`, where there's no
+Nginx to route `/404`). Next renders this component for the `/_not-found` route
+and copies it to `out/404.html`.
 
 ## Out of scope
 

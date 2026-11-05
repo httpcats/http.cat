@@ -6,11 +6,13 @@ import Footer from '@/components/Footer';
 
 import { formatDate, getPosts } from '@/lib/posts';
 import { getTranslations } from '@/lib/translation';
+import { alternatesFor } from '@/lib/site';
 
 // The blog is English only. See specs/0004-blog.
 export const metadata: Metadata = {
   title: 'Blog | HTTP Cats',
   description: 'News about HTTP Cats, and the odd note about HTTP.',
+  alternates: alternatesFor('/blog'),
 };
 
 export default async function Blog() {

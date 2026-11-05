@@ -230,3 +230,95 @@ describe('build output', () => {
     assert.deepEqual(missing(expected), []);
   });
 });
+
+describe('sitemap and language tags (spec 0005)', () => {
+  const site = 'https://http.cat';
+
+  // Every page that should be in the sitemap: its URL path, exported file,
+  // <html lang>, English/Catalan pair (translated pages only) and image.
+  const pair = (en, ca) => ({ en: `${site}${en}`, ca: `${site}${ca}`, 'x-default': `${site}${en}` });
+  const pages = [
+    { path: '/', file: 'out/index.html', lang: 'en', languages: pair('/', '/ca') },
+    { path: '/ca', file: 'out/ca.html', lang: 'ca', languages: pair('/', '/ca') },
+    ...codes.flatMap((code) => {
+      const languages = pair(`/status/${code}`, `/ca/status/${code}`);
+      const image = `${site}/images/${code}.jpg`;
+      return [
+        { path: `/status/${code}`, file: `out/status/${code}.html`, lang: 'en', languages, image },
+        { path: `/ca/status/${code}`, file: `out/ca/status/${code}.html`, lang: 'ca', languages, image },
+      ];
+    }),
+    { path: '/blog', file: 'out/blog.html', lang: 'en' },
+    ...listPosts().map(({ slug }) => ({
+      path: `/blog/${slug}`,
+      file: `out/blog/${slug}.html`,
+      lang: 'en',
+    })),
+  ];
+
+  // <url> entries of out/sitemap.xml, by <loc>
+  const readSitemap = () => {
+    const xml = readFileSync(path.join(root, 'out/sitemap.xml'), 'utf8');
+    assert.ok(xml.startsWith('<?xml'), 'out/sitemap.xml is not XML');
+    assert.ok(xml.includes('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"'), 'no <urlset>');
+    const entries = [...xml.matchAll(/<url>([\s\S]*?)<\/url>/g)].map(([, body]) => ({
+      loc: /<loc>([^<]*)<\/loc>/.exec(body)?.[1],
+      languages: Object.fromEntries(
+        [...body.matchAll(/<xhtml:link rel="alternate" hreflang="([^"]+)" href="([^"]+)" \/>/g)].map(
+          ([, lang, href]) => [lang, href],
+        ),
+      ),
+      images: [...body.matchAll(/<image:loc>([^<]*)<\/image:loc>/g)].map(([, src]) => src),
+      lastmod: body.includes('<lastmod>'),
+    }));
+    return new Map(entries.map((entry) => [entry.loc, entry]));
+  };
+
+  test('the sitemap lists exactly the pages', () => {
+    const entries = readSitemap();
+    assert.deepEqual(
+      [...entries.keys()].sort(),
+      pages.map((page) => `${site}${page.path}`).sort(),
+    );
+  });
+
+  test('sitemap entries have their language versions and cat image, and nothing else', () => {
+    const entries = readSitemap();
+    for (const page of pages) {
+      const entry = entries.get(`${site}${page.path}`);
+      assert.ok(entry, `${page.path} missing`);
+      assert.deepEqual(entry.languages, page.languages ?? {}, `${page.path}: alternates`);
+      assert.deepEqual(entry.images, page.image ? [page.image] : [], `${page.path}: images`);
+      assert.equal(entry.lastmod, false, `${page.path}: has a lastmod`);
+    }
+  });
+
+  test('every page has its lang, canonical and language versions in <head>', () => {
+    for (const page of pages) {
+      const html = readFileSync(path.join(root, page.file), 'utf8');
+      const htmlLang = /<html lang="([^"]+)"/.exec(html)?.[1];
+      const canonicals = [...html.matchAll(/<link rel="canonical" href="([^"]+)"\/>/g)].map(([, href]) => href);
+      const languages = Object.fromEntries(
+        [...html.matchAll(/<link rel="alternate" hrefLang="([^"]+)" href="([^"]+)"\/>/g)].map(
+          ([, lang, href]) => [lang, href],
+        ),
+      );
+      assert.equal(htmlLang, page.lang, `${page.file}: <html lang>`);
+      assert.deepEqual(canonicals, [`${site}${page.path}`], `${page.file}: canonical`);
+      assert.deepEqual(languages, page.languages ?? {}, `${page.file}: alternates`);
+    }
+  });
+
+  test("Next's not-found page is English, with no canonical", () => {
+    for (const file of ['out/404.html', 'out/_not-found.html']) {
+      const html = readFileSync(path.join(root, file), 'utf8');
+      assert.ok(html.includes('<html lang="en"'), `${file}: <html lang>`);
+      assert.ok(!html.includes('rel="canonical"'), `${file}: has a canonical`);
+    }
+  });
+
+  test('robots.txt points to the sitemap', () => {
+    const robots = readFileSync(path.join(root, 'public/robots.txt'), 'utf8');
+    assert.match(robots, /^Sitemap: https:\/\/http\.cat\/sitemap\.xml$/m);
+  });
+});

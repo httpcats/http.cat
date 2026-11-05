@@ -40,8 +40,14 @@ New features and behavior changes start as a spec in `specs/`. Read
 - `locales/{en,ca}/common.json`: UI strings. Both files must have the same keys.
 - `public/images/` (served) and `public/images-original/` (originals): one
   `<code>.jpg` per status. `0.jpg` is a hidden easter egg not in `statuses.js`.
-- `app/`: pages. `app/ca/` mirrors the English pages for Catalan.
-  `app/[file]/route.ts` generates the JSON API (`out/<code>.json`).
+- `app/`: pages, in two route groups with one root layout each, so each
+  language gets its own `<html lang>`: `app/(en)/` and `app/(ca)/ca/`, which
+  mirrors the English pages for Catalan. Both layouts render
+  `components/SiteLayout.tsx`. With no top-level layout, the not-found page
+  is `app/global-not-found.tsx` (experimental `globalNotFound` flag).
+  `app/[file]/route.ts` generates the JSON API (`out/<code>.json`) and
+  `app/sitemap.ts` the sitemap. `lib/site.ts` has the site URL and each
+  page's canonical/language URLs, shared by the pages and the sitemap.
 - `deploy/nginx/http.cat.conf`: production Nginx config, the source of truth.
   Its `try_files` order is load-bearing (see the comments in the file and
   issue #267). It isn't deployed automatically: changes have to be copied to

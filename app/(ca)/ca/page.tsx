@@ -1,3 +1,5 @@
+import { Metadata } from 'next';
+
 import Usage from '@/components/Usage';
 import ThumbnailGrid from '@/components/ThumbnailGrid';
 import Thumbnail from '@/components/Thumbnail';
@@ -7,9 +9,12 @@ import ScrollRestore from '@/components/ScrollRestore';
 import { getTranslations } from '@/lib/translation';
 
 import statuses from '@/lib/statuses';
+import { alternatesFor } from '@/lib/site';
+
+export const metadata: Metadata = { alternates: alternatesFor('/ca') };
 
 export default async function Home() {
-  const t = await getTranslations('en');
+  const t = await getTranslations('ca');
 
   return (
     <>

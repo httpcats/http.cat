@@ -106,6 +106,33 @@ describe('blog (spec 0004)', () => {
   });
 });
 
+describe('sitemap and language tags (spec 0005)', () => {
+  test('the sitemap', async () => {
+    // Nginx's default mime.types serves .xml as text/xml
+    const res = await check('/sitemap.xml', { status: 200, type: 'text/xml' });
+    const body = res.body.toString();
+    assert.ok(body.includes('<loc>https://http.cat/status/404</loc>'), '/sitemap.xml: no status pages');
+    assert.ok(body.includes('<loc>https://http.cat/ca/status/404</loc>'), '/sitemap.xml: no Catalan pages');
+    await check('/sitemap.xml/', { status: 301, location: '/sitemap.xml' });
+  });
+
+  test('robots.txt points to the sitemap', async () => {
+    const res = await check('/robots.txt', { status: 200, type: 'text/plain' });
+    assert.match(res.body.toString(), /^Sitemap: https:\/\/http\.cat\/sitemap\.xml$/m);
+  });
+
+  test('pages declare their language', async () => {
+    for (const [target, lang] of [
+      ['/status/404', 'en'],
+      ['/ca/status/404', 'ca'],
+      ['/ca', 'ca'],
+    ]) {
+      const res = await check(target, { status: 200, type: 'text/html' });
+      assert.ok(res.body.toString().includes(`<html lang="${lang}"`), `${target}: <html lang>`);
+    }
+  });
+});
+
 describe('images (spec 0001)', () => {
   test('every status image, with and without .jpg', async () => {
     await checkAll(codes, async (code) => {

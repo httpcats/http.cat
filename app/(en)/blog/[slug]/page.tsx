@@ -7,6 +7,7 @@ import PostContent from '@/components/PostContent';
 
 import { formatDate, getPost, getPosts, renderPost } from '@/lib/posts';
 import { getTranslations } from '@/lib/translation';
+import { alternatesFor } from '@/lib/site';
 
 // A blog post, exported to out/blog/<slug>.html. See specs/0004-blog.
 export const dynamicParams = false;
@@ -54,6 +55,7 @@ export async function generateMetadata(
   return {
     title,
     description: post.description,
+    alternates: alternatesFor(`/blog/${post.slug}`),
     openGraph: {
       type: 'article',
       title,

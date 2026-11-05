@@ -1,10 +1,15 @@
 import { Metadata, Viewport } from 'next';
 import Script from 'next/script';
 
-import './globals.css';
+import '@/app/globals.css';
 import CarbonAd from '@/components/CarbonAd';
+import { Locale, SITE_URL } from '@/lib/site';
 
-export const metadata: Metadata = {
+// The markup and metadata every page shares. Rendered by the two root
+// layouts, app/(en)/layout.tsx and app/(ca)/layout.tsx, which only differ in
+// <html lang>. See specs/0005-sitemap.
+
+export const siteMetadata: Metadata = {
   icons: {
     icon: '/favicon.ico',
     shortcut: '/favicon.png',
@@ -22,10 +27,10 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     title: 'HTTP Cats',
-    url: 'https://http.cat',
+    url: SITE_URL,
     images: [
       {
-        url: 'https://http.cat/100.jpg',
+        url: `${SITE_URL}/100.jpg`,
         alt: 'HTTP Cats',
       },
     ],
@@ -34,33 +39,38 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    site: 'https://http.cat',
+    site: SITE_URL,
     creator: '@rogeriopvl',
     title: 'HTTP Cats',
     description: 'API for HTTP Cats',
-    images: ['https://http.cat/100'],
+    images: [`${SITE_URL}/100`],
   },
 };
 
-export const viewport: Viewport = {
+export const siteViewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   themeColor: '#d0383e',
 };
 
-export default async function RootLayout({
+export default function SiteLayout({
+  lang,
   children,
 }: {
+  lang: Locale;
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang={lang}>
+      {/* a root layout's <head>: the rule is for the Pages Router, and only
+          fires because this file lives outside app/ */}
+      {/* eslint-disable-next-line @next/next/no-head-element */}
       <head>
         <link
           rel="search"
           type="application/opensearchdescription+xml"
           title="httpcat"
-          href="https://http.cat/opensearch.xml"
+          href={`${SITE_URL}/opensearch.xml`}
         />
       </head>
       <body>

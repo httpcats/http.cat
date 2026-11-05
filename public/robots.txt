@@ -1,2 +1,4 @@
 User-agent: *
 Disallow:
+
+Sitemap: https://http.cat/sitemap.xml

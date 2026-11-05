@@ -1,6 +1,7 @@
 import { readFileSync } from 'fs';
 
 import statuses from '@/lib/statuses';
+import { absoluteUrl } from '@/lib/site';
 
 // The JSON API: exported to out/<code>.json for every status, e.g. /500.json.
 // Next can't name a segment `[code].json`, so the parameter carries the
@@ -25,8 +26,8 @@ export async function GET(_request: Request, props: { params: Promise<{ file: st
     status: statusObj.code,
     name: statusObj.message,
     description,
-    image: `https://http.cat/${statusObj.code}`,
-    url: `https://http.cat/status/${statusObj.code}`,
+    image: absoluteUrl(`/${statusObj.code}`),
+    url: absoluteUrl(`/status/${statusObj.code}`),
   };
 
   return new Response(JSON.stringify(payload, null, 2), {

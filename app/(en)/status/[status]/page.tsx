@@ -7,6 +7,7 @@ import Footer from '@/components/Footer';
 import StatusDescription from '@/components/StatusDescription';
 
 import statuses from '@/lib/statuses';
+import { alternatesFor } from '@/lib/site';
 import { getStatusInfo } from '@/lib/status-info';
 import { getTranslations } from '@/lib/translation';
 
@@ -68,6 +69,7 @@ export async function generateMetadata(
   return {
     title: `${statusObj.code} ${statusObj.message} | HTTP Cats`,
     description: `HTTP Cat for status ${statusObj.code} ${statusObj.message}`,
+    alternates: alternatesFor(`/status/${statusObj.code}`),
     openGraph: {
       title: `${statusObj.code} ${statusObj.message} | HTTP Cats`,
       images: [
