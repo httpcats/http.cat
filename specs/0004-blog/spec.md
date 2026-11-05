@@ -1,6 +1,6 @@
 # 0004: Blog
 
-- **Status:** approved
+- **Status:** implemented
 - **Issue:** —
 - **Affects:** site (Next.js), content
 
@@ -195,7 +195,9 @@ through Nginx, so the image would be broken in `npm run dev`.
       against the local container. 2026-11-05: all pass against
       production, in the smoke run for spec 0005)
 - [ ] Manual: the post's Open Graph card renders (e.g. a link preview in a
-      chat app). Needs production.
+      chat app). Needs production. (2026-11-05: the Open Graph and Twitter
+      tags are in the production HTML of `/blog/hello-world`; the spec was
+      marked implemented without checking a rendered card)
 - [x] Baseline, README and smoke test updated. (2026-11-02)
 
 ## Open questions
