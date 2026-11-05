@@ -193,9 +193,8 @@ checkout), and Google ignores `changefreq` and `priority`.
 - **Nginx: no change expected.** `/sitemap.xml` is served by `location /`
   through `try_files $uri`. The image location (`^/(\d+)(\.jpg)?$`) and JSON
   location (`^/\d+\.json$`) can't match it. Nginx's default `mime.types` maps
-  `.xml` to `text/xml` (as for `/opensearch.xml` today); the smoke test
-  asserts whatever the local container actually returns, and this spec is
-  updated with it. `text/xml` isn't in the `expires` map, so Nginx sends no
+  `.xml` to `text/xml` (as for `/opensearch.xml` today), confirmed against
+  the local container and asserted by the smoke test. `text/xml` isn't in the `expires` map, so Nginx sends no
   `Cache-Control`; Cloudflare may cache it at the edge, which the purge after
   each deploy already handles.
 
@@ -245,8 +244,9 @@ checkout), and Google ignores `changefreq` and `priority`.
       `/sitemap.xml` (200, XML content type as observed), `/sitemap.xml/`
       (301 → `/sitemap.xml`), `/robots.txt` body contains the `Sitemap:`
       line, `/ca/status/404` contains `<html lang="ca"`, and `/500`,
-      `/500.json`, `/status/500` unchanged. The test expects `text/xml`,
-      not yet confirmed against the container.
+      `/500.json`, `/status/500` unchanged. (2026-11-05: all 19 smoke
+      checks pass against the local container, which serves the sitemap as
+      `text/xml` with no `Cache-Control`; production still to do)
 - [ ] Manual: switching language with the footer link works in both
       directions, and the pages look the same as before. (2026-11-05: the
       exported HTML of the home, status, blog and not-found pages is
