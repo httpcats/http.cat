@@ -82,9 +82,9 @@ The `200` and `404` JSON responses have `Access-Control-Allow-Origin: *`.
 - Caching: Nginx marks HTML as already expired and images/CSS/JS as cached for
   the max duration (`Cache-Control: max-age=315360000`). In production,
   Cloudflare rewrites the HTML header to `Cache-Control: max-age=14400`, so
-  browsers may keep a page for up to 4 hours after a deploy. JSON gets no
-  `Cache-Control` from Nginx; Cloudflare caches it at the edge anyway and
-  sends browsers `max-age=14400`, as for HTML.
+  browsers may keep a page for up to 4 hours after a deploy. JSON and
+  `/sitemap.xml` get no `Cache-Control` from Nginx; Cloudflare caches them at
+  the edge anyway and sends browsers `max-age=14400`, as for HTML.
 - `http://` redirects to `https://` with a `301`.
 - After each deploy the Cloudflare cache is purged (`scripts/deploy.sh`).
 

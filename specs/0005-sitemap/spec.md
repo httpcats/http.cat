@@ -1,6 +1,6 @@
 # 0005: Sitemap and language tags
 
-- **Status:** approved
+- **Status:** implemented
 - **Issue:** —
 - **Affects:** site (Next.js), content
 - **Depends on:** 0004 (the blog pages are listed in the sitemap)
@@ -195,8 +195,9 @@ checkout), and Google ignores `changefreq` and `priority`.
   location (`^/\d+\.json$`) can't match it. Nginx's default `mime.types` maps
   `.xml` to `text/xml` (as for `/opensearch.xml` today), confirmed against
   the local container and asserted by the smoke test. `text/xml` isn't in the `expires` map, so Nginx sends no
-  `Cache-Control`; Cloudflare may cache it at the edge, which the purge after
-  each deploy already handles.
+  `Cache-Control`; Cloudflare caches it at the edge and sends browsers
+  `max-age=14400` (as for HTML and JSON), and the purge after each deploy
+  already handles it.
 
 ## Consequences in the repo
 
@@ -237,13 +238,15 @@ checkout), and Google ignores `changefreq` and `priority`.
       `out/_not-found.html` with the 404 cat, spec 0002). (2026-11-05)
 - [x] Build test: `public/robots.txt` contains
       `Sitemap: https://http.cat/sitemap.xml`. (2026-11-05)
-- [ ] Smoke test (local container, then production after deploy):
+- [x] Smoke test (local container, then production after deploy):
       `/sitemap.xml` (200, XML content type as observed), `/sitemap.xml/`
       (301 → `/sitemap.xml`), `/robots.txt` body contains the `Sitemap:`
       line, `/ca/status/404` contains `<html lang="ca"`, and `/500`,
       `/500.json`, `/status/500` unchanged. (2026-11-05: all 19 smoke
       checks pass against the local container, which serves the sitemap as
-      `text/xml` with no `Cache-Control`; production still to do)
+      `text/xml` with no `Cache-Control`; and against production after
+      the deploy, where Cloudflare caches it and sends `max-age=14400`, as
+      for HTML and JSON)
 - [x] Manual: switching language with the footer link works in both
       directions, and the pages look the same as before. (2026-11-05: the
       exported HTML of the home, status, blog and not-found pages is

@@ -44,4 +44,4 @@ spec too, so the specs always describe how the site behaves today.
 | [0002 Not-found page shows the 404 cat](0002-not-found-page/spec.md) | implemented |
 | [0003 JSON responses](0003-json-responses/spec.md) | implemented |
 | [0004 Blog](0004-blog/spec.md) | approved |
-| [0005 Sitemap and language tags](0005-sitemap/spec.md) | approved |
+| [0005 Sitemap and language tags](0005-sitemap/spec.md) | implemented |
