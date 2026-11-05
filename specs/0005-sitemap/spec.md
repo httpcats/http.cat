@@ -206,9 +206,6 @@ checkout), and Google ignores `changefreq` and `priority`.
 - `specs/0002-not-found-page/spec.md`: the implementation note says
   `app/global-not-found.tsx` instead of `app/not-found.tsx`.
 - `tests/build.test.mjs` and `tests/smoke/urls.test.mjs`: the new checks.
-- After the first deploy, the maintainer may want to submit the sitemap in
-  Google Search Console / Bing Webmaster Tools (manual, optional: the
-  `robots.txt` line is enough for discovery).
 
 ## Out of scope
 
@@ -253,8 +250,6 @@ checkout), and Google ignores `changefreq` and `priority`.
       identical to the previous build apart from the new `<head>` tags and
       `lang`, and the language link was checked in a browser against the
       local container)
-- [ ] Manual: the production sitemap validates (e.g. Google Search
-      Console's sitemap report shows it read with no errors).
 - [x] Baseline, spec 0002, CLAUDE.md and smoke test updated. (2026-11-05)
 
 ## Open questions
