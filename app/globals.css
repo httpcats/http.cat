@@ -181,6 +181,17 @@ p {
     margin-bottom: 4rem;
   }
 
+  /* On phones the ad is in the page flow, above everything else, and its
+     script loads after the page has painted. Reserve its space (100px plus
+     its 2rem bottom margin) so it doesn't push the page down when it
+     arrives, which Google counts as a layout shift (CLS). flow-root keeps
+     the ad's margin inside the container. When there's no ad (e.g. an ad
+     blocker), the space stays empty. */
+  #carbon-container {
+    display: flow-root;
+    min-height: calc(100px + 2rem);
+  }
+
   #carbonads {
     float: initial;
     position: relative;
