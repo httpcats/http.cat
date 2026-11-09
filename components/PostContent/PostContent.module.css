@@ -1,13 +1,15 @@
+/* dark: a little darker than the page (#222) */
 .container code {
-  background-color: #ddd;
+  background-color: light-dark(#ddd, #1a1a1a);
   border-radius: 2px;
   padding: 0.125rem 0.25rem;
   font-size: 0.875rem;
 }
 
 .container pre {
-  /* lighter than inline code: the light highlighting colors need the contrast */
-  background-color: #f6f8fa;
+  /* light: lighter than inline code, the light highlighting colors need the
+     contrast */
+  background-color: light-dark(#f6f8fa, #1a1a1a);
   border-radius: 2px;
   padding: 0.75rem 1rem;
   overflow-x: auto;
@@ -21,7 +23,7 @@
 /* syntax highlighting: lib/markdown.ts puts each token's light and dark colors
    in CSS variables */
 .container pre span {
-  color: var(--shiki-light);
+  color: light-dark(var(--shiki-light), var(--shiki-dark));
 }
 
 .container a {
@@ -35,20 +37,4 @@
 
 .container time {
   font-size: 0.875rem;
-}
-
-@media (prefers-color-scheme: dark) {
-  /* a little darker than the page (#222) */
-  .container code,
-  .container pre {
-    background-color: #1a1a1a;
-  }
-
-  .container pre code {
-    background-color: transparent;
-  }
-
-  .container pre span {
-    color: var(--shiki-dark);
-  }
 }

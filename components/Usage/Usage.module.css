@@ -4,7 +4,7 @@
 
 .container pre,
 .container code {
-  background-color: #eee;
+  background-color: light-dark(#eee, var(--bg-color-elevation1));
 }
 
 .container pre {
@@ -59,12 +59,5 @@
   .container img {
     width: 1em;
     height: 1em;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .container pre,
-  .container code {
-    background-color: var(--bg-color-elevation1);
   }
 }

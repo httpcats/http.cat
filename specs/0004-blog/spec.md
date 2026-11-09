@@ -130,8 +130,9 @@ through Nginx, so the image would be broken in `npm run dev`.
   build time with Shiki (`@shikijs/rehype`, a new dependency; Next has no
   highlighter of its own). The output is static HTML with no client-side
   JavaScript. Each token gets its light and dark colors (GitHub's themes) as
-  CSS variables, and the post styles pick one with `prefers-color-scheme`,
-  like the rest of the site. Only the languages used are loaded, and an
+  CSS variables, and the post styles pick one with the site's theme, like
+  the rest of the site (the system's, or the one chosen in the settings,
+  spec 0006). Only the languages used are loaded, and an
   unknown language is shown as plain text. Status descriptions aren't
   highlighted.
 - **Nginx: no change expected.** `/blog` and `/blog/<slug>` are served by

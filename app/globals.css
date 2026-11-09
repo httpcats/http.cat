@@ -8,7 +8,14 @@
   box-sizing: border-box;
 }
 
+/* Light and dark theme (specs/0006-keyboard-navigation). Colors that differ
+   in dark mode are written once, as light-dark(<light>, <dark>), and
+   color-scheme picks the side: the system's theme by default, or the one
+   chosen in the settings (data-theme, set by lib/theme-setting.ts). Don't
+   use prefers-color-scheme: it would ignore the choice. */
 :root {
+  color-scheme: light dark;
+
   --bg-color-light: #fff;
   --text-color-light: #000;
   --bg-color-dark: #222;
@@ -16,15 +23,16 @@
   --bg-color-elevation1: #444;
   --interactive: #d0383e;
 
-  --text-color: var(--text-color-light);
-  --bg-color: var(--bg-color-light);
+  --text-color: light-dark(var(--text-color-light), var(--text-color-dark));
+  --bg-color: light-dark(var(--bg-color-light), var(--bg-color-dark));
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text-color: var(--text-color-dark);
-    --bg-color: var(--bg-color-dark);
-  }
+:root[data-theme='light'] {
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
 }
 
 body {
@@ -38,6 +46,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: var(--text-color);
   background-color: var(--bg-color);
+}
+
+/* keyboard focus (Tab, or h/j/k/l, specs/0006-keyboard-navigation): the
+   browser's ring, a little off the element so it doesn't touch the logo or
+   the text (the same gap as the thumbnails' own ring, see
+   components/Thumbnail). More would run into the next line of a list. */
+:focus-visible {
+  outline-offset: 2px;
 }
 
 code {
@@ -61,6 +77,8 @@ p {
 
 .warning {
   background-color: #f0e498;
+  /* the background is light in both themes */
+  color: #000;
 }
 
 .warning::before {
@@ -99,8 +117,7 @@ p {
 #carbonads {
   display: flex;
   max-width: 330px;
-  background-color: hsl(0, 0%, 98%);
-  background-color: var(--bg-color);
+  background-color: light-dark(var(--bg-color-light), var(--bg-color-elevation1));
   box-shadow: 0 1px 4px 1px hsla(0, 0%, 0%, 0.1);
   z-index: 100;
   position: absolute;
@@ -117,16 +134,6 @@ p {
 @media (min-width: 900px) {
   #carbonads {
     right: 8rem;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .warning {
-    color: #000;
-  }
-
-  #carbonads {
-    background-color: var(--bg-color-elevation1);
   }
 }
 
@@ -160,8 +167,8 @@ p {
 #carbonads .carbon-poweredby {
   display: block;
   padding: 6px 8px;
-  background: #f1f1f2;
-  color: var(--text-color-light);
+  background: light-dark(#f1f1f2, var(--interactive));
+  color: var(--text-color);
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -172,13 +179,6 @@ p {
   position: absolute;
   bottom: 0;
   right: 0;
-}
-
-@media (prefers-color-scheme: dark) {
-  #carbonads .carbon-poweredby {
-    background-color: var(--interactive);
-    color: var(--text-color);
-  }
 }
 
 @media only screen and (min-width: 320px) and (max-width: 759px) {

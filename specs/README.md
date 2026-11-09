@@ -45,3 +45,4 @@ spec too, so the specs always describe how the site behaves today.
 | [0003 JSON responses](0003-json-responses/spec.md) | implemented |
 | [0004 Blog](0004-blog/spec.md) | implemented |
 | [0005 Sitemap and language tags](0005-sitemap/spec.md) | implemented |
+| [0006 Keyboard navigation (h j k l), settings and command line](0006-keyboard-navigation/spec.md) | implemented |

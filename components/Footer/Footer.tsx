@@ -7,6 +7,7 @@ import FacebookButton from '@/components/FacebookButton';
 import GithubButton from '@/components/GithubButton';
 import BlueskyButton from '@/components/BlueskyButton';
 import MastodonButton from '@/components/MastodonButton';
+import Settings from '@/components/Settings';
 import TwitterButton from '@/components/TwitterButton';
 
 import styles from './Footer.module.css';
@@ -35,6 +36,8 @@ const Footer = ({ t }: FooterProps) => {
         {' · '}
         {/* the blog is English only, so both languages link to /blog */}
         <Link href="/blog">{t.BLOG_LINK_TEXT}</Link>
+        {' · '}
+        <Settings t={t} />
       </nav>
 
       <p>

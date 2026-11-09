@@ -7,7 +7,7 @@
     "build": "next build && node ./scripts/post-build.js",
     "start": "next start",
     "lint": "eslint .",
-    "test": "node --test tests/*.test.mjs",
+    "test": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test tests/*.test.mjs",
     "test:smoke": "node --test tests/smoke/*.test.mjs",
     "deploy": "./scripts/deploy.sh",
     "scrapper": "node ./scripts/scrapper.js",

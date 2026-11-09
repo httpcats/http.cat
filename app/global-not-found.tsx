@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
 
+import BackLink from '@/components/BackLink';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import SiteLayout, { siteMetadata, siteViewport } from '@/components/SiteLayout';
@@ -29,9 +29,7 @@ export default async function NotFound() {
     <SiteLayout lang="en">
       <Header t={t} />
       <main>
-        <nav>
-          <Link href="/" className="text-white">{`< ${t.BACK_TO_HOME}`}</Link>
-        </nav>
+        <BackLink href="/">{t.BACK_TO_HOME}</BackLink>
 
         <h1 className="text-center my-12">
           {statusObj.code} {statusObj.message}

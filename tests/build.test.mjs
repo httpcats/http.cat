@@ -76,6 +76,22 @@ describe('content', () => {
     const ca = Object.keys(require('../locales/ca/common.json')).sort();
     assert.deepEqual(ca, en);
   });
+
+  test('every translation key used in the code exists', () => {
+    // a missing key renders as undefined, e.g. an image with no alt text
+    const keys = Object.keys(require('../locales/en/common.json'));
+    const used = new Set(
+      ['app', 'components'].flatMap((dir) =>
+        readdirSync(path.join(root, dir), { recursive: true })
+          .filter((file) => /\.tsx?$/.test(file))
+          .flatMap((file) => [
+            ...readFileSync(path.join(root, dir, file), 'utf8').matchAll(/\bt\.([A-Z][A-Z0-9_]*)\b/g),
+          ])
+          .map(([, key]) => key),
+      ),
+    );
+    assert.deepEqual([...used].filter((key) => !keys.includes(key)), []);
+  });
 });
 
 describe('blog posts (spec 0004)', () => {
@@ -223,6 +239,60 @@ describe('build output', () => {
       const html = readFileSync(path.join(root, file), 'utf8');
       assert.ok(html.includes('href="/blog">Blog</a>'), `${file} has no blog link`);
     }
+  });
+
+  test('keyboard navigation: the lists are marked (spec 0006)', () => {
+    for (const file of ['out/index.html', 'out/ca.html', 'out/blog.html']) {
+      const html = readFileSync(path.join(root, file), 'utf8');
+      assert.ok(html.includes('data-keynav-list'), `${file} has no data-keynav-list`);
+    }
+  });
+
+  test('every page has the Settings link and window, and the theme script (spec 0006)', () => {
+    for (const [file, locale] of [
+      ['out/index.html', 'en'],
+      ['out/status/404.html', 'en'],
+      ['out/blog.html', 'en'],
+      ['out/404.html', 'en'],
+      ['out/ca.html', 'ca'],
+      ['out/ca/status/404.html', 'ca'],
+    ]) {
+      const t = JSON.parse(readFileSync(path.join(root, `locales/${locale}/common.json`), 'utf8'));
+      const html = readFileSync(path.join(root, file), 'utf8');
+
+      assert.ok(html.includes(`>${t.SETTINGS_LINK_TEXT}</button>`), `${file} has no Settings link`);
+      const dialog = html.match(/<dialog[^>]*aria-labelledby="settings-title"[^>]*>[\s\S]*?<\/dialog>/)?.[0] ?? '';
+      assert.ok(dialog.includes(t.SETTINGS_TITLE), `${file} has no settings window`);
+      for (const label of [t.SETTINGS_KEYNAV_LABEL, t.SETTINGS_DARK_THEME_LABEL]) {
+        assert.ok(
+          new RegExp(`role="switch"[^>]*><span>${label.replace(/[()]/g, '\\$&')}</span>`).test(dialog),
+          `${file} has no "${label}" switch`,
+        );
+      }
+
+      const head = html.slice(0, html.indexOf('</head>'));
+      assert.ok(head.includes("localStorage.getItem('theme')"), `${file} has no theme script in <head>`);
+
+      // the `:` command line (closed, so its list shows every command)
+      assert.ok(
+        new RegExp(`role="combobox"[^>]*placeholder="${t.COMMAND_PLACEHOLDER}"`).test(html),
+        `${file} has no command line`,
+      );
+      assert.ok(html.includes(`>${t.COMMAND_THEME}</span>`), `${file} has no command list`);
+    }
+  });
+
+  test('no stylesheet uses prefers-color-scheme for the theme (spec 0006)', () => {
+    // it would ignore the theme chosen in the settings; colors use light-dark()
+    const sources = ['app', 'components'].flatMap((dir) =>
+      readdirSync(path.join(root, dir), { recursive: true })
+        .filter((file) => file.endsWith('.css'))
+        .map((file) => path.join(dir, file)),
+    );
+    const offenders = sources.filter((file) =>
+      /@media[^{]*prefers-color-scheme/.test(readFileSync(path.join(root, file), 'utf8')),
+    );
+    assert.deepEqual(offenders, []);
   });
 
   test('every image is in the build output', () => {

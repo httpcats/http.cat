@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
-import Link from 'next/link';
 
+import BackLink from '@/components/BackLink';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import PostContent from '@/components/PostContent';
@@ -23,9 +23,7 @@ export default async function BlogPost(props: { params: Promise<{ slug: string }
     <>
       <Header t={t} />
       <main>
-        <nav>
-          <Link href="/blog" className="text-white">{'< Back to blog'}</Link>
-        </nav>
+        <BackLink href="/blog">Back to blog</BackLink>
 
         <section className="flex justify-center tracking-wider my-12">
           <PostContent>

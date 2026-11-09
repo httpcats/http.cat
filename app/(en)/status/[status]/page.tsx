@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
 
+import BackLink from '@/components/BackLink';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import StatusDescription from '@/components/StatusDescription';
@@ -22,13 +22,9 @@ export default async function Info(props: { params: Promise<{ status: string }> 
     <>
       <Header t={t} />
       <main>
-        <nav>
-          <Link
-            href="/"
-            className="text-white"
-            scroll={false}
-          >{`< ${t.BACK_TO_HOME}`}</Link>
-        </nav>
+        <BackLink href="/" scroll={false}>
+          {t.BACK_TO_HOME}
+        </BackLink>
 
         <h1 className="text-center my-12">
           {statusObj.code} {statusObj.message}

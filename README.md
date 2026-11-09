@@ -14,6 +14,8 @@ On v2.0.0 the website was built with React and pre-rendered with react-snap.
 
 As of v3.0.0 it's built with Next.js (currently version 16).
 
+The site can be navigated with the keyboard, vim style: `h` `j` `k` `l` move between the links (left, down, up, right) and Enter opens one, `gg` and `G` go to the top and the bottom of the page, and `:` opens a command line (e.g. `:status 404`, `:theme dark`). The vim keys can be turned off in the settings (in the footer), which also have a dark theme switch.
+
 ## Usage
 
 Every status code is an image: `https://http.cat/<code>` (or `https://http.cat/<code>.jpg`), e.g. [https://http.cat/404](https://http.cat/404).

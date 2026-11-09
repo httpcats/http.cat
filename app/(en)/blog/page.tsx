@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 
+import BackLink from '@/components/BackLink';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
@@ -23,14 +24,13 @@ export default async function Blog() {
     <>
       <Header t={t} />
       <main>
-        <nav>
-          <Link href="/" className="text-white">{`< ${t.BACK_TO_HOME}`}</Link>
-        </nav>
+        <BackLink href="/">{t.BACK_TO_HOME}</BackLink>
 
         <h1 className="text-center my-12">Latest Posts</h1>
 
         <section className="flex justify-center tracking-wider">
-          <ul className="max-w-3xl w-full list-disc">
+          {/* a keyboard navigation list, see specs/0006 */}
+          <ul data-keynav-list className="max-w-3xl w-full list-disc">
             {posts.map((post) => (
               <li key={post.slug} className="mb-2">
                 <Link href={`/blog/${post.slug}`} className="text-interactive">

@@ -3,7 +3,10 @@ import Script from 'next/script';
 
 import '@/app/globals.css';
 import CarbonAd from '@/components/CarbonAd';
+import CommandLine from '@/components/CommandLine';
+import KeyboardNav from '@/components/KeyboardNav';
 import { Locale, SITE_URL } from '@/lib/site';
+import { themeScript } from '@/lib/theme-setting';
 import { getTranslations } from '@/lib/translation';
 
 // The markup and metadata every page shares. Rendered by the two root
@@ -64,11 +67,16 @@ export default async function SiteLayout({
   const t = await getTranslations(lang);
 
   return (
-    <html lang={lang}>
+    // suppressHydrationWarning: the theme script may set data-theme on <html>
+    // before React hydrates
+    <html lang={lang} suppressHydrationWarning>
       {/* a root layout's <head>: the rule is for the Pages Router, and only
           fires because this file lives outside app/ */}
       {/* eslint-disable-next-line @next/next/no-head-element */}
       <head>
+        {/* first, so a saved theme applies before anything is painted
+            (specs/0006-keyboard-navigation) */}
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <link
           rel="search"
           type="application/opensearchdescription+xml"
@@ -79,6 +87,8 @@ export default async function SiteLayout({
       <body>
         <CarbonAd placeholder={t.AD_PLACEHOLDER_TEXT} />
         <div className="p-4 sm:px-16 sm:py-4 lg:px-32 lg:py-4">{children}</div>
+        <KeyboardNav />
+        <CommandLine t={t} />
         <Script id="google-analytics" strategy="afterInteractive">
           {`
           window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;

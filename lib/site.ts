@@ -27,6 +27,15 @@ const isTranslated = (pathname: string) => {
   return en === '/' || /^\/status\/\d+$/.test(en);
 };
 
+// The path of a page in `locale`: the same page if it's translated, else that
+// language's home page (e.g. the blog, which is English only). Used by the
+// `:lang` command, see specs/0006-keyboard-navigation.
+export function pathInLanguage(pathname: string, locale: Locale): string {
+  if (!isTranslated(pathname)) return locale === 'ca' ? '/ca' : '/';
+  const en = englishPath(pathname);
+  return locale === 'ca' ? catalanPath(en) : en;
+}
+
 export function alternatesFor(pathname: string): PageAlternates {
   const canonical = absoluteUrl(pathname);
   if (!isTranslated(pathname)) return { canonical };

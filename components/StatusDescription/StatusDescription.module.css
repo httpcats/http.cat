@@ -4,7 +4,7 @@
 }
 
 .container code {
-  background-color: #ddd;
+  background-color: light-dark(#ddd, #000);
   border-radius: 2px;
   padding: 0.125rem 0.25rem;
   font-size: 0.875rem;
@@ -19,10 +19,4 @@
   padding: 1rem 1rem 1rem 2rem;
   position: relative;
   border-radius: 0.3rem;
-}
-
-@media (prefers-color-scheme: dark) {
-  .container code {
-    background-color: #000;
-  }
 }

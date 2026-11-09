@@ -1,0 +1,35 @@
+/* some room between the pill and the header's logo */
+.nav {
+  margin-top: 1rem;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.4em 1em;
+  border: 2px solid var(--interactive);
+  border-radius: 999px;
+  color: var(--interactive);
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
+
+.link:hover,
+.link:focus-visible {
+  background-color: var(--interactive);
+  color: #fff;
+}
+
+.link svg {
+  flex: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .link {
+    transition: none;
+  }
+}

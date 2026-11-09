@@ -39,7 +39,9 @@ const Usage = ({ t }: UsageProps) => {
           {isValueCopied ? (
             t.COPIED
           ) : (
-            <Image src={copyIcon} alt={t.COPY_ICON_ALT_TEXT} />
+            // the icon is the button's only content, so its alt is the
+            // button's accessible name
+            <Image src={copyIcon} alt={t.COPY_TO_CLIPBOARD} />
           )}
         </button>
       </pre>
