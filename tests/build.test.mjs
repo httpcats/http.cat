@@ -235,9 +235,22 @@ describe('build output', () => {
   });
 
   test('every page links to the blog in the footer (spec 0004)', () => {
-    for (const file of ['out/index.html', 'out/ca.html', 'out/status/404.html', 'out/blog.html']) {
+    // the blog is English only: the link says so with hreflang, and its
+    // Catalan text says so too
+    const pages = [
+      ['out/index.html', 'Blog'],
+      ['out/ca.html', 'Blog (en anglès)'],
+      ['out/status/404.html', 'Blog'],
+      ['out/ca/status/404.html', 'Blog (en anglès)'],
+      ['out/blog.html', 'Blog'],
+    ];
+    for (const [file, text] of pages) {
       const html = readFileSync(path.join(root, file), 'utf8');
-      assert.ok(html.includes('href="/blog">Blog</a>'), `${file} has no blog link`);
+      const links = [...html.matchAll(/<a\b[^>]*\bhref="\/blog"[^>]*>([^<]*)<\/a>/g)];
+      assert.ok(
+        links.some(([a, linkText]) => /\bhreflang="en"/i.test(a) && linkText === text),
+        `${file} has no "${text}" blog link with hreflang="en"`,
+      );
     }
   });
 

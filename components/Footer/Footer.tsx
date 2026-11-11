@@ -34,8 +34,11 @@ const Footer = ({ t }: FooterProps) => {
       <nav>
         <Link href={localeHref}>{t.LANGUAGE_LINK_TEXT}</Link>
         {' · '}
-        {/* the blog is English only, so both languages link to /blog */}
-        <Link href="/blog">{t.BLOG_LINK_TEXT}</Link>
+        {/* the blog is English only, so both languages link to /blog, and
+            hreflang says so (spec 0004) */}
+        <Link href="/blog" hrefLang="en">
+          {t.BLOG_LINK_TEXT}
+        </Link>
         {' · '}
         <Settings t={t} />
       </nav>

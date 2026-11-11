@@ -58,7 +58,12 @@ The page has the same header and footer as the rest of the site, and a
 A "Blog" link in the footer, next to the language link, on every page,
 including the Catalan ones. The blog itself is English only, so the link
 points to `/blog` in both languages. It needs a new `BLOG_LINK_TEXT` key in
-both `locales/en/common.json` and `locales/ca/common.json` (`Blog` in both).
+both `locales/en/common.json` and `locales/ca/common.json`: `Blog` in
+English and `Blog (en anglès)` ("Blog (in English)") in Catalan, so Catalan
+readers know before clicking that it isn't translated. The link has
+`hreflang="en"` in both languages, since the page it opens is English.
+(The Catalan text and `hreflang` were added 2026-11-11; the link was `Blog`
+in both languages before.)
 
 ### Content
 
@@ -188,7 +193,9 @@ through Nginx, so the image would be broken in `npm run dev`.
       `out/<digits>.*` introduced by the blog). (2026-11-02)
 - [x] Build test: both locale files have `BLOG_LINK_TEXT` (the existing
       same-keys check), and the home, Catalan home, status and blog pages
-      link to `/blog`. (2026-11-02)
+      link to `/blog`. (2026-11-02; 2026-11-11: the link has
+      `hreflang="en"`, and its text is `Blog (en anglès)` on the Catalan
+      home and status pages)
 - [x] Smoke test (local container, then production after deploy):
       `/blog` (200 html), `/blog/<slug>` for every post (200 html), `/blog/`
       (301 → `/blog`), `/blog/<slug>/` (301), `/blog/nope` (404 jpeg), and
@@ -206,7 +213,9 @@ through Nginx, so the image would be broken in `npm run dev`.
 None. Resolved 2026-11-02:
 
 - **Posts:** not part of the spec; they're content (decided 2026-11-04).
-- **Catalan:** English only for now; the Catalan pages link to `/blog`.
+- **Catalan:** English only for now; the Catalan pages link to `/blog`,
+  labelled `Blog (en anglès)` (decided 2026-11-11, instead of removing the
+  link from the Catalan pages, which would hide the blog from them).
 - **Feed:** no RSS or Atom for now.
 - **Link:** in the footer.
 - **Post metadata:** plain Markdown, no front matter and no index file like
