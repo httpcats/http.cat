@@ -23,11 +23,12 @@ export default async function Home() {
       <main>
         <Usage t={t} />
         <ThumbnailGrid>
-          {Object.values(statuses).map((status) => (
+          {Object.values(statuses).map((status, index) => (
             <Thumbnail
               code={status.code}
               key={status.code}
               description={status.message}
+              index={index}
               t={t}
             />
           ))}

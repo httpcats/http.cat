@@ -6,10 +6,17 @@ import Image from 'next/image';
 type ThumbnailProps = {
   code: number;
   description: string;
+  // position in the grid, to load the first row's images right away
+  index: number;
   t: { [key: string]: string };
 };
 
-const Thumbnail = ({ code, description, t }: ThumbnailProps) => {
+// The first row of the grid (three columns on desktop) is on screen when the
+// page opens, and its first image is the page's Largest Contentful Paint, so
+// those load eagerly. The rest stay lazy.
+const EAGER_THUMBNAILS = 3;
+
+const Thumbnail = ({ code, description, index, t }: ThumbnailProps) => {
   const hrefBase = t.LOCALE === 'ca' ? '/ca' : '';
 
   const saveScrollPosition = () => {
@@ -29,7 +36,8 @@ const Thumbnail = ({ code, description, t }: ThumbnailProps) => {
           <Image
             src={`/images/${code}.jpg`}
             alt=""
-            loading="lazy"
+            loading={index < EAGER_THUMBNAILS ? 'eager' : 'lazy'}
+            fetchPriority={index === 0 ? 'high' : undefined}
             fill
             className="contrast-[70%] hover:contrast-100 group-focus-visible:contrast-100 transition duration-500 object-cover scale-[140%]"
           />
