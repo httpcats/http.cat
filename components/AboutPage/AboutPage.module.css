@@ -1,0 +1,16 @@
+/* a screenshot can have the same color as the page at its edges (white on
+   white, black on black); a thick border shows where it starts and ends in
+   both themes */
+.content img {
+  display: block;
+  border: 3px solid light-dark(#bbb, #666);
+  /* room around each screenshot and its caption (the paragraph after it), so
+     they stand apart from the text; the caption stays close to its image */
+  margin: 2.5rem 0 0.5rem;
+}
+
+.content img + p {
+  margin-top: 0.5rem;
+  margin-bottom: 2.5rem;
+  font-style: italic;
+}

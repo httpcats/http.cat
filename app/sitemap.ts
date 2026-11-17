@@ -30,6 +30,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     entry('/ca'),
     ...statusEntries(''),
     ...statusEntries('/ca'),
+    entry('/about'),
+    entry('/ca/about'),
     entry('/blog'),
     ...getPosts().map((post) => entry(`/blog/${post.slug}`)),
   ];

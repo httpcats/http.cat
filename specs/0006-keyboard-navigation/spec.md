@@ -41,9 +41,9 @@ unchanged.
 | `G` | go to the bottom of the page |
 | `:` | open the command line (see "Command line") |
 
-The keys work on every page: home, status, blog list, blog post,
-not-found, and the Catalan versions. They're on by default and can be
-turned off in the settings (see "Settings").
+The keys work on every page: home, status, blog list, blog post, about
+(spec 0007), not-found, and the Catalan versions. They're on by default
+and can be turned off in the settings (see "Settings").
 
 "Highlight" means **real keyboard focus**: the key calls `focus()` on the
 element. That way:
@@ -107,7 +107,7 @@ whose items are the candidates inside it.
 |---|---|
 | `/`, `/ca` | the cat thumbnails (`components/ThumbnailGrid`) |
 | `/blog` | the list of posts |
-| status pages, blog posts, not-found | none |
+| status pages, blog posts, about pages, not-found | none |
 
 Moving into a list from outside it lands on its first item in the row (or
 column) being entered. That's what makes `j` from the copy button go to
@@ -199,7 +199,9 @@ bottom.
 
 The footer gets a **Settings** link after the Blog link, on every page:
 
-> Versió Catalana · Blog · Settings
+> Versió Catalana · About · Blog · Settings
+
+(The About link was added by spec 0007.)
 
 It's a `<button type="button">` styled like the links next to it (it opens
 a window rather than going anywhere). Pressing it opens the **settings
@@ -335,7 +337,7 @@ big text field and the matching commands listed under it.
 #### Commands
 
 Commands take one argument, written after them with a space, as in vim
-(`:theme dark`), except `blog`, which takes none.
+(`:theme dark`), except `about` and `blog`, which take none.
 
 Arguments are written in vim's help notation (`:help notation`): `{}`
 around a required argument and `|` between alternatives, so `{code}` is a
@@ -345,8 +347,9 @@ which vim uses for keys (`<Esc>`, `<CR>`).
 | Command | Does |
 |---|---|
 | `status {code}` | navigates to the status page for `{code}`, e.g. `status 404` goes to `/status/404` (`/ca/status/404` on the Catalan pages), with client-side navigation like a link. `{code}` is any status in `lib/statuses.js` (not the hidden `0`) |
+| `about` | goes to the about page in the page's language, `/about` or `/ca/about`, like the footer's about link (added by spec 0007) |
 | `blog` | goes to the blog, `/blog` (English only, so from the Catalan pages too, like the footer's blog link) |
-| `lang {eng\|cat}` | the page in English or Catalan (ISO 639-2 codes): the same page if it's translated (the home and status pages, e.g. `/status/404` ↔ `/ca/status/404`), else that language's home page (from the blog, `lang cat` goes to `/ca`), like the footer's language link |
+| `lang {eng\|cat}` | the page in English or Catalan (ISO 639-2 codes): the same page if it's translated (the home, status and about pages, e.g. `/status/404` ↔ `/ca/status/404`, `/about` ↔ `/ca/about`), else that language's home page (from the blog, `lang cat` goes to `/ca`), like the footer's language link |
 | `theme {dark\|light}` | dark or light theme, like flipping the settings' dark theme switch on or off |
 | `vim {on\|off}` | the vim keys on or off, like the settings' switch. `vim off` includes `:` itself, so they're turned back on from the settings window |
 
@@ -371,6 +374,7 @@ descriptions, the placeholder and the error messages are translated
   | Row | Description |
   |---|---|
   | `status {code}` | Navigate to a given status |
+  | `about` | Go to the about page |
   | `blog` | Go to the blog |
   | `lang {eng\|cat}` | Switch the language |
   | `theme {dark\|light}` | Switch to the dark or light theme |
@@ -381,8 +385,8 @@ descriptions, the placeholder and the error messages are translated
   completion: `st` lists `status {code}`, `th` and `theme` list
   `theme {dark|light}`; `dark` lists nothing. Tab or Enter on one of these
   rows completes the field to the command and a space (`theme `), ready
-  for the argument; it doesn't run anything. `blog` takes no argument,
-  so its row runs it.
+  for the argument; it doesn't run anything. `about` and `blog` take no
+  argument, so their rows run them.
 - **Values.** Once the command and a space are typed, the list is the
   command's values that start with the argument, each with a description
   and in this order: `theme ` lists `theme dark` ("Use the dark theme")
@@ -393,7 +397,7 @@ descriptions, the placeholder and the error messages are translated
   with its name, `status 4` the 4xx, `status 40` 400 to 409, `status 404`
   just 404. A row says which value is the **current** state (the page's
   theme, whether the vim keys are on, the page's language, the status page
-  you're on, or `blog` on the blog). The list
+  you're on, `about` on the about page, or `blog` on the blog). The list
   scrolls when it's long (at most 20rem or half the viewport high),
   keeping the selected row in view.
 - Matching ignores case, spaces at the start and end, and repeated spaces:
@@ -410,8 +414,8 @@ descriptions, the placeholder and the error messages are translated
   - `E474: Invalid argument: <argument>` for a command with a value it
     doesn't take (`theme blue`, `vim yes`, `lang fr`, `status 999`,
     `status abc`)
-  - `E488: Trailing characters: <argument>` for `blog` with an argument
-    (`blog x`), since it takes none
+  - `E488: Trailing characters: <argument>` for `about` or `blog` with an
+    argument (`blog x`), since they take none
   - `E492: Not an editor command: <what was typed>` for anything that
     isn't the start of a command (`foo`, `dark`, `st 404`, `blogs`)
 
@@ -434,6 +438,7 @@ New keys in both `locales/en/common.json` and `locales/ca/common.json`:
 | `COMMAND_PLACEHOLDER` | `type a command` | `escriviu una ordre` |
 | `COMMAND_CURRENT` | `current` | `actual` |
 | `COMMAND_STATUS` | `Navigate to a given status` | `Navega fins a un estat` |
+| `COMMAND_ABOUT` | `Go to the about page` | `Ves a la pàgina Sobre` |
 | `COMMAND_BLOG` | `Go to the blog` | `Ves al blog` |
 | `COMMAND_LANG` | `Switch the language` | `Canvia l'idioma` |
 | `COMMAND_LANG_ENG` | `English` | `English` |
@@ -616,7 +621,8 @@ a real browser is checked by hand.
 - [x] Unit tests: `pickStart` returns the first candidate at least partly
       in the viewport, and the first candidate when none is.
 - [x] Unit tests (`tests/commands.test.mjs`): an empty input lists the
-      five commands in order (`status`, `blog`, `lang`, `theme`, `vim`)
+      five commands in order (`status`, `blog`, `lang`, `theme`, `vim`;
+      six since spec 0007, with `about` after `status`)
       with their arguments; `st`, `b`, `l`, `th`, `theme` and `V` list the
       right command; `theme `, `theme d`, `vim `, `vim o`, `vim off`,
       `lang `, `lang c`, `lang en`, `status `, `status 4`, `status 40` and

@@ -11,6 +11,8 @@ test('a translated page goes to the same page in the other language', () => {
   assert.equal(pathInLanguage('/ca', 'en'), '/');
   assert.equal(pathInLanguage('/status/404', 'ca'), '/ca/status/404');
   assert.equal(pathInLanguage('/ca/status/404', 'en'), '/status/404');
+  assert.equal(pathInLanguage('/about', 'ca'), '/ca/about');
+  assert.equal(pathInLanguage('/ca/about', 'en'), '/about');
 });
 
 test('a page in its own language stays where it is', () => {

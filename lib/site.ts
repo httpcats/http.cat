@@ -14,6 +14,9 @@ export type PageAlternates = {
 
 export const absoluteUrl = (pathname: string) => `${SITE_URL}${pathname}`;
 
+// The about page in each language (specs/0007-about-page)
+export const aboutPath = (locale: Locale) => (locale === 'ca' ? '/ca/about' : '/about');
+
 // The English path of a page, given its path in either language
 // (e.g. `/ca/status/404` -> `/status/404`, `/ca` -> `/`).
 const englishPath = (pathname: string) =>
@@ -21,10 +24,11 @@ const englishPath = (pathname: string) =>
 
 const catalanPath = (pathname: string) => (pathname === '/' ? '/ca' : `/ca${pathname}`);
 
-// Pages that exist in English and Catalan: the home page and the status pages.
+// Pages that exist in English and Catalan: the home page, the status pages
+// and the about page (specs/0007-about-page).
 const isTranslated = (pathname: string) => {
   const en = englishPath(pathname);
-  return en === '/' || /^\/status\/\d+$/.test(en);
+  return en === '/' || en === '/about' || /^\/status\/\d+$/.test(en);
 };
 
 // The path of a page in `locale`: the same page if it's translated, else that

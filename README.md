@@ -6,7 +6,7 @@
 
 This is the website that is hosted at [https://http.cat](https://http.cat).
 
-The code for the older version hosted at the heroku platform is at the [http-status-cats-api](https://github.com/rogeriopvl/http-status-cats-api) repo.
+The code for the older version hosted at the heroku platform is at the [http-status-cats-api](https://github.com/httpcats/http-status-cats-api) repo.
 
 This version does not need any server side code. The API behavior is provided by a Nginx server config.
 
@@ -131,6 +131,15 @@ The rest of the post...
 Post images go in `public/blog/<slug>/` (referenced as `/blog/<slug>/<file>`).
 For a cat, use `/images/<code>.jpg`. See
 [specs/0004-blog](specs/0004-blog/spec.md) for the details.
+
+## Editing the about page
+
+The about page ([/about](https://http.cat/about) and
+[/ca/about](https://http.cat/ca/about)) is Markdown in
+`content/pages/about.md`, with its Catalan translation in
+`content/ca/pages/about.md`: keep the two in sync. Its images go in
+`public/about/` (referenced as `/about/<file>`) and need alt text. See
+[specs/0007-about-page](specs/0007-about-page/spec.md).
 
 ## Credits
 

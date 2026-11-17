@@ -130,6 +130,35 @@ describe('blog posts (spec 0004)', () => {
   });
 });
 
+describe('about page (spec 0007)', () => {
+  const sources = ['content/pages/about.md', 'content/ca/pages/about.md'];
+
+  // the images a Markdown file shows, as Markdown (![alt](src)) or HTML (<img>)
+  const imagesIn = (markdown) => [
+    ...[...markdown.matchAll(/!\[([^\]]*)\]\(([^)\s]+)[^)]*\)/g)].map(([, alt, src]) => ({ src, alt })),
+    ...[...markdown.matchAll(/<img\b[^>]*>/g)].map(([tag]) => ({
+      src: /\bsrc="([^"]*)"/.exec(tag)?.[1],
+      alt: /\balt="([^"]*)"/.exec(tag)?.[1],
+    })),
+  ];
+
+  test('the content exists in English and Catalan', () => {
+    assert.deepEqual(missing(sources), []);
+  });
+
+  test('both languages show at least one image from public/about, with alt text', () => {
+    for (const source of sources) {
+      const images = imagesIn(readFileSync(path.join(root, source), 'utf8'));
+      assert.ok(images.some(({ src }) => src?.startsWith('/about/')), `${source} has no /about/ image`);
+      for (const { src, alt } of images) {
+        assert.ok(src?.startsWith('/about/'), `${source}: ${src} isn't in public/about`);
+        assert.ok(isFile(path.join(root, 'public', src)), `${source}: ${src} doesn't exist`);
+        assert.ok(alt?.trim(), `${source}: ${src} has no alt text`);
+      }
+    }
+  });
+});
+
 describe('nginx config', () => {
   // The config is deployed by hand, so this only asserts that the file the
   // repo calls the source of truth still carries the rules the site relies on.
@@ -234,6 +263,43 @@ describe('build output', () => {
     assert.deepEqual(linked, posts.map(({ slug }) => slug));
   });
 
+  test('the about pages exist and link to the Flickr set (spec 0007)', () => {
+    for (const [file, title] of [
+      ['out/about.html', 'About | HTTP Cats'],
+      ['out/ca/about.html', 'Sobre | HTTP Cats'],
+    ]) {
+      const html = readFileSync(path.join(root, file), 'utf8');
+      assert.ok(html.includes(`<title>${title}</title>`), `${file}: no "${title}" title`);
+      assert.ok(
+        html.includes('href="https://www.flickr.com/photos/girliemac/sets/72157628409467125"'),
+        `${file}: no link to the Flickr set`,
+      );
+    }
+  });
+
+  test('every page links to the about page in its language, before the blog (spec 0007)', () => {
+    const pages = [
+      ['out/index.html', '/about', 'About'],
+      ['out/status/404.html', '/about', 'About'],
+      ['out/blog.html', '/about', 'About'],
+      ['out/about.html', '/about', 'About'],
+      ['out/ca.html', '/ca/about', 'Sobre'],
+      ['out/ca/status/404.html', '/ca/about', 'Sobre'],
+      ['out/ca/about.html', '/ca/about', 'Sobre'],
+    ];
+    for (const [file, href, text] of pages) {
+      const html = readFileSync(path.join(root, file), 'utf8');
+      const footer = html.slice(html.lastIndexOf('<nav'));
+      const about = new RegExp(`<a\\b[^>]*\\bhref="${href}"[^>]*>${text}</a>`).exec(footer);
+      assert.ok(about, `${file} has no "${text}" link to ${href} in the footer`);
+      assert.ok(!/\bhreflang=/i.test(about[0]), `${file}: the about link has a hreflang`);
+      assert.ok(
+        /^ · <a\b[^>]*\bhref="\/blog"/.test(footer.slice(about.index + about[0].length).replace(/<!-- -->/g, '')),
+        `${file}: the about link isn't right before the blog link`,
+      );
+    }
+  });
+
   test('every page links to the blog in the footer (spec 0004)', () => {
     // the blog is English only: the link says so with hreflang, and its
     // Catalan text says so too
@@ -266,9 +332,11 @@ describe('build output', () => {
       ['out/index.html', 'en'],
       ['out/status/404.html', 'en'],
       ['out/blog.html', 'en'],
+      ['out/about.html', 'en'],
       ['out/404.html', 'en'],
       ['out/ca.html', 'ca'],
       ['out/ca/status/404.html', 'ca'],
+      ['out/ca/about.html', 'ca'],
     ]) {
       const t = JSON.parse(readFileSync(path.join(root, `locales/${locale}/common.json`), 'utf8'));
       const html = readFileSync(path.join(root, file), 'utf8');
@@ -331,6 +399,8 @@ describe('sitemap and language tags (spec 0005)', () => {
         { path: `/ca/status/${code}`, file: `out/ca/status/${code}.html`, lang: 'ca', languages, image },
       ];
     }),
+    { path: '/about', file: 'out/about.html', lang: 'en', languages: pair('/about', '/ca/about') },
+    { path: '/ca/about', file: 'out/ca/about.html', lang: 'ca', languages: pair('/about', '/ca/about') },
     { path: '/blog', file: 'out/blog.html', lang: 'en' },
     ...listPosts().map(({ slug }) => ({
       path: `/blog/${slug}`,

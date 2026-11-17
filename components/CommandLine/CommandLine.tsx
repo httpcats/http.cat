@@ -7,7 +7,7 @@ import { Entry, Status, matchCommands } from '@/lib/commands';
 import { isKeynavEnabled, setKeynavEnabled, subscribeKeynav } from '@/lib/keynav-setting';
 import { isShortcutAllowed } from '@/lib/shortcuts';
 import statuses from '@/lib/statuses';
-import { pathInLanguage } from '@/lib/site';
+import { aboutPath, pathInLanguage } from '@/lib/site';
 import { isDarkTheme, setDarkTheme, subscribeTheme } from '@/lib/theme-setting';
 import { useBackdropClose } from '@/lib/use-backdrop-close';
 
@@ -35,8 +35,9 @@ const CommandLine = ({ t }: CommandLineProps) => {
   const router = useRouter();
   const pathname = usePathname();
   const backdropClose = useBackdropClose(dialog);
+  const locale = t.LOCALE === 'ca' ? 'ca' : 'en';
   // status pages are in the page's language: /status/<code> or /ca/status/<code>
-  const statusPath = (code: number) => `${t.LOCALE === 'ca' ? '/ca' : ''}/status/${code}`;
+  const statusPath = (code: number) => `${locale === 'ca' ? '/ca' : ''}/status/${code}`;
 
   const dark = useSyncExternalStore(subscribeTheme, isDarkTheme, () => false);
   const keynav = useSyncExternalStore(subscribeKeynav, isKeynavEnabled, () => true);
@@ -45,6 +46,8 @@ const CommandLine = ({ t }: CommandLineProps) => {
     switch (entry.command) {
       case 'status':
         return pathname === statusPath(Number(entry.value));
+      case 'about':
+        return pathname === aboutPath(locale);
       case 'blog':
         return pathname === '/blog';
       case 'lang':
@@ -96,6 +99,9 @@ const CommandLine = ({ t }: CommandLineProps) => {
     switch (entry.command) {
       case 'status':
         return router.push(statusPath(Number(entry.value)));
+      case 'about':
+        // in the page's language, like the footer's about link (spec 0007)
+        return router.push(aboutPath(locale));
       case 'blog':
         // English only, like the footer's blog link
         return router.push('/blog');

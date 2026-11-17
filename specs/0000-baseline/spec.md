@@ -19,9 +19,9 @@ other sites depend on (e.g. issue #267). This spec describes the behavior as of
 ### Pages
 
 Every page in this table has a canonical link to its own URL. The English and
-Catalan home and status pages are `<html lang="en">` and `<html lang="ca">` respectively,
+Catalan home, status and about pages are `<html lang="en">` and `<html lang="ca">` respectively,
 and link to each other with `hreflang` alternates (`x-default` is the English
-one). The blog is `lang="en"`. See spec 0005.
+one). The blog is `lang="en"`. See specs 0005 and 0007.
 
 | Request | Response |
 |---|---|
@@ -29,6 +29,8 @@ one). The blog is `lang="en"`. See spec 0005.
 | `GET /status/<code>` | `200`, status page with the image and description |
 | `GET /ca` | `200`, home page in Catalan |
 | `GET /ca/status/<code>` | `200`, status page in Catalan |
+| `GET /about` | `200`, the about page: the story of HTTP Cats (spec 0007) |
+| `GET /ca/about` | `200`, the about page in Catalan |
 | `GET /blog` | `200`, the blog: every post, newest first (English only, see spec 0004) |
 | `GET /blog/<slug>` | `200`, a blog post, for every `content/blog/<YYYY-MM-DD>-<slug>.md` |
 
@@ -60,6 +62,7 @@ The `200` and `404` JSON responses have `Access-Control-Allow-Origin: *`.
 | Request | Response |
 |---|---|
 | Files in `public/` (e.g. `/robots.txt`, `/manifest.json`, `/opensearch.xml`, `/favicon.ico`) | `200`, the file. `/robots.txt` points to the sitemap |
+| `GET /about/<file>` for a file in `public/about/` | `200`, the file (images used by the about page, spec 0007) |
 | `GET /sitemap.xml` | `200`, `text/xml`, every page, with language alternates and the status pages' cat images (spec 0005) |
 | Any file in the build output by its exact path (e.g. `/ca.html`, `/status/404.html`, `/index`, `/_not-found`, `/404.html`) | `200`, the file. Not linked from anywhere; a side effect of how Nginx serves `out/`. `/404.html` and `/_not-found` are Next's not-found page, which shows the 404 cat (spec 0002) |
 
@@ -104,6 +107,9 @@ The `200` and `404` JSON responses have `Access-Control-Allow-Origin: *`.
   date, and a slug of lowercase letters, digits and hyphens that isn't all
   digits and is unique), and starts with a `# ` title followed by a
   paragraph. There's at least one post. See spec 0004.
+- `content/pages/about.md` and `content/ca/pages/about.md` exist and each
+  show at least one image from `public/about/`, with alt text. See spec
+  0007.
 
 ## Out of scope
 

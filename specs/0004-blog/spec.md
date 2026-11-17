@@ -55,7 +55,8 @@ The page has the same header and footer as the rest of the site, and a
 
 ### Getting to the blog
 
-A "Blog" link in the footer, next to the language link, on every page,
+A "Blog" link in the footer, after the language link (and, since spec 0007,
+the About link), on every page,
 including the Catalan ones. The blog itself is English only, so the link
 points to `/blog` in both languages. It needs a new `BLOG_LINK_TEXT` key in
 both `locales/en/common.json` and `locales/ca/common.json`: `Blog` in

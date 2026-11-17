@@ -106,6 +106,18 @@ describe('blog (spec 0004)', () => {
   });
 });
 
+describe('about page (spec 0007)', () => {
+  test('in English and Catalan', async () => {
+    await check('/about', { status: 200, type: 'text/html' });
+    await check('/ca/about', { status: 200, type: 'text/html' });
+  });
+
+  test('trailing slashes are stripped', async () => {
+    await check('/about/', { status: 301, location: '/about' });
+    await check('/ca/about/', { status: 301, location: '/ca/about' });
+  });
+});
+
 describe('sitemap and language tags (spec 0005)', () => {
   test('the sitemap', async () => {
     // Nginx's default mime.types serves .xml as text/xml
@@ -126,6 +138,8 @@ describe('sitemap and language tags (spec 0005)', () => {
       ['/status/404', 'en'],
       ['/ca/status/404', 'ca'],
       ['/ca', 'ca'],
+      ['/about', 'en'],
+      ['/ca/about', 'ca'],
     ]) {
       const res = await check(target, { status: 200, type: 'text/html' });
       assert.ok(res.body.toString().includes(`<html lang="${lang}"`), `${target}: <html lang>`);

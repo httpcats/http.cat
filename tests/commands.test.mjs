@@ -18,7 +18,7 @@ const rows = (input) =>
     entry.kind === 'hint' ? `${entry.command} ${entry.usage}` : entry.name,
   );
 const errorOf = (input) => matchCommands(input, statuses).error;
-const hints = ['status {code}', 'blog', 'lang {eng|cat}', 'theme {dark|light}', 'vim {on|off}'];
+const hints = ['status {code}', 'about', 'blog', 'lang {eng|cat}', 'theme {dark|light}', 'vim {on|off}'];
 const statusRows = (prefix) =>
   statuses.filter(({ code }) => String(code).startsWith(prefix)).map(({ code }) => `status ${code}`);
 
@@ -35,6 +35,7 @@ test('what is typed must be the start of a command', () => {
   assert.deepEqual(rows('V'), ['vim {on|off}']);
   assert.deepEqual(rows('l'), ['lang {eng|cat}']);
   assert.deepEqual(rows('b'), ['blog']);
+  assert.deepEqual(rows('a'), ['about']);
 });
 
 test('after the command and a space, the list is its values', () => {
@@ -64,6 +65,19 @@ test('blog with an argument is E488', () => {
   assert.deepEqual(errorOf('blog  hello world '), { key: 'COMMAND_TRAILING_CHARACTERS', text: 'hello world' });
 });
 
+test('about takes no argument: it is listed ready to run (spec 0007)', () => {
+  assert.deepEqual(rows('ab'), ['about']);
+  assert.deepEqual(rows('about'), ['about']);
+  assert.deepEqual(rows('ABOUT '), ['about']);
+  const [about] = matchCommands('about', statuses).entries;
+  assert.deepEqual(about, { kind: 'option', command: 'about', value: '', name: 'about', descriptionKey: 'COMMAND_ABOUT' });
+});
+
+test('about with an argument is E488 (spec 0007)', () => {
+  assert.deepEqual(rows('about x'), []);
+  assert.deepEqual(errorOf('about cats'), { key: 'COMMAND_TRAILING_CHARACTERS', text: 'cats' });
+});
+
 test('case, spaces at the ends and repeated spaces are ignored', () => {
   assert.deepEqual(rows('THEME D'), ['theme dark']);
   assert.deepEqual(rows('  vim   o '), ['vim on', 'vim off']);
@@ -79,7 +93,7 @@ test('options carry what the command line needs to show and run them', () => {
 });
 
 test('anything that is not the start of a command is E492', () => {
-  for (const input of ['dark', 'th d', 'foo', 'themes', 'statuses 404', 'st 404', 'blogs', 'language']) {
+  for (const input of ['dark', 'th d', 'foo', 'themes', 'statuses 404', 'st 404', 'blogs', 'abouts', 'language']) {
     assert.deepEqual(rows(input), [], input);
     assert.deepEqual(errorOf(input), { key: 'COMMAND_NOT_FOUND', text: input }, input);
   }

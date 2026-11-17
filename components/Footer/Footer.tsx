@@ -9,6 +9,7 @@ import BlueskyButton from '@/components/BlueskyButton';
 import MastodonButton from '@/components/MastodonButton';
 import Settings from '@/components/Settings';
 import TwitterButton from '@/components/TwitterButton';
+import { aboutPath } from '@/lib/site';
 
 import styles from './Footer.module.css';
 
@@ -20,6 +21,7 @@ const Footer = ({ t }: FooterProps) => {
   const pathname = usePathname();
 
   const localeHref = t.LOCALE === 'ca' ? '/' : '/ca';
+  const aboutHref = aboutPath(t.LOCALE === 'ca' ? 'ca' : 'en');
 
   return (
     <div className={styles.container}>
@@ -33,6 +35,9 @@ const Footer = ({ t }: FooterProps) => {
 
       <nav>
         <Link href={localeHref}>{t.LANGUAGE_LINK_TEXT}</Link>
+        {' · '}
+        {/* the about page is in both languages (spec 0007) */}
+        <Link href={aboutHref}>{t.ABOUT_LINK_TEXT}</Link>
         {' · '}
         {/* the blog is English only, so both languages link to /blog, and
             hreflang says so (spec 0004) */}

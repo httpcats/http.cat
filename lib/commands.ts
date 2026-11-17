@@ -3,13 +3,14 @@
 // unit tested in tests/commands.test.mjs; components/CommandLine runs them.
 // Erasable TypeScript only, so Node can run it without a build step.
 //
-// Most commands take one argument, e.g. `theme dark`; `blog` takes none.
+// Most commands take one argument, e.g. `theme dark`; `about` and `blog`
+// take none.
 // Names and values are what's typed, English in every language, like vim's
 // commands. Usage strings
 // follow vim's help notation (:help notation): {} for a required argument,
 // | between alternatives; not <>, which vim uses for keys (<Esc>).
 
-export type CommandName = 'status' | 'blog' | 'lang' | 'theme' | 'vim';
+export type CommandName = 'status' | 'about' | 'blog' | 'lang' | 'theme' | 'vim';
 
 export type Status = { code: number; message: string };
 
@@ -19,8 +20,8 @@ export type Entry =
   // completes to "theme "
   | { kind: 'hint'; command: CommandName; usage: string; descriptionKey: string }
   // a command with one of its values, e.g. `theme dark`, or a command that
-  // takes no argument (`blog`, value ''); runs it. The description is a
-  // locales key, or the text itself for a status (its name)
+  // takes no argument (`about`, `blog`, value ''); runs it. The description
+  // is a locales key, or the text itself for a status (its name)
   | {
       kind: 'option';
       command: CommandName;
@@ -59,6 +60,8 @@ export const COMMANDS: Command[] = [
     values: (statuses) =>
       statuses.map(({ code, message }) => ({ value: String(code), description: message })),
   },
+  // in the footer's order (spec 0007)
+  { name: 'about', descriptionKey: 'COMMAND_ABOUT' },
   { name: 'blog', descriptionKey: 'COMMAND_BLOG' },
   {
     name: 'lang',

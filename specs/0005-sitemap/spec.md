@@ -53,6 +53,7 @@ slash:
 | `https://http.cat/ca` | 1 |
 | `https://http.cat/status/<code>` | one per status in `lib/statuses.js` (78 today) |
 | `https://http.cat/ca/status/<code>` | one per status in `lib/statuses.js` |
+| `https://http.cat/about`, `https://http.cat/ca/about` | 1 each (added by spec 0007) |
 | `https://http.cat/blog` | 1 |
 | `https://http.cat/blog/<slug>` | one per post in `content/blog/` |
 
@@ -117,8 +118,8 @@ alternates.
 ### Pages
 
 Every page in the sitemap gets, in its `<head>`, a canonical link to its own
-sitemap URL, and the home and status pages also get their language
-alternates. For example, `/ca/status/404`:
+sitemap URL, and the home, status and about pages (spec 0007) also get their
+language alternates. For example, `/ca/status/404`:
 
 ```html
 <html lang="ca">
@@ -132,8 +133,8 @@ alternates. For example, `/ca/status/404`:
 
 | Page | `<html lang>` | canonical | alternates |
 |---|---|---|---|
-| `/`, `/status/<code>` | `en` | itself | `en`, `ca`, `x-default` |
-| `/ca`, `/ca/status/<code>` | `ca` (today: `en`) | itself | `en`, `ca`, `x-default` |
+| `/`, `/status/<code>`, `/about` | `en` | itself | `en`, `ca`, `x-default` |
+| `/ca`, `/ca/status/<code>`, `/ca/about` | `ca` (today: `en`) | itself | `en`, `ca`, `x-default` |
 | `/blog`, `/blog/<slug>` | `en` | itself | none |
 | not-found page (`/404.html`, `/_not-found`) | `en` | none | none |
 
@@ -223,7 +224,8 @@ checkout), and Google ignores `changefreq` and `priority`.
 
 - [x] Build test: `out/sitemap.xml` exists and parses; its set of `<loc>`
       URLs is exactly the set derived from `lib/statuses.js`,
-      `content/blog/` and the fixed pages (`/`, `/ca`, `/blog`), with no
+      `content/blog/` and the fixed pages (`/`, `/ca`, `/blog`, and
+      `/about`, `/ca/about` since spec 0007), with no
       `/0`, image, JSON or `.html` URLs; every home and status entry has
       `en`, `ca` and `x-default` alternates pointing at the right pair;
       every status entry has its `/images/<code>.jpg` image and no other
