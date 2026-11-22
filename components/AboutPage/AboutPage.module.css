@@ -1,3 +1,6 @@
+/* The about page's screenshots and their captions. The rest of the
+   typography is PostContent's. */
+
 /* a screenshot can have the same color as the page at its edges (white on
    white, black on black); a thick border shows where it starts and ends in
    both themes */
@@ -6,11 +9,14 @@
   border: 3px solid light-dark(#bbb, #666);
   /* room around each screenshot and its caption (the paragraph after it), so
      they stand apart from the text; the caption stays close to its image */
-  margin: 2.5rem 0 0.5rem;
+  margin: 2.25rem 0 0.5rem;
 }
 
+/* the caption: smaller and quieter than the text */
 .content img + p {
-  margin-top: 0.5rem;
-  margin-bottom: 2.5rem;
+  margin: 0 0 2.25rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
   font-style: italic;
+  color: light-dark(#555, #bbb);
 }

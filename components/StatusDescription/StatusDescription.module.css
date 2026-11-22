@@ -1,22 +1,27 @@
+/* What's specific to a status description. The typography (width, sizes,
+   spacing, links, inline code) is PostContent's. */
+
+/* the "Description" heading, right under the cat */
+.container h2:first-child {
+  margin-top: 2.5rem;
+}
+
+/* the source, the last line: a footnote */
 .container p:last-child {
   margin-top: 3rem;
   font-size: 0.875rem;
+  line-height: 1.5;
 }
 
-.container code {
-  background-color: light-dark(#ddd, #000);
-  border-radius: 2px;
-  padding: 0.125rem 0.25rem;
-  font-size: 0.875rem;
-}
-
-.container a {
-  color: var(--interactive);
-}
-
+/* the info, warning and alert boxes (colors in app/globals.css): a note
+   next to the description, so smaller than its text, and in the site's
+   font like the footer rather than the reading font */
 .container aside {
-  margin: 1rem 0;
+  font-family: var(--font-ui);
+  margin: 1rem 0 1.25rem;
   padding: 1rem 1rem 1rem 2rem;
   position: relative;
   border-radius: 0.3rem;
+  font-size: 0.875em;
+  line-height: 1.55;
 }

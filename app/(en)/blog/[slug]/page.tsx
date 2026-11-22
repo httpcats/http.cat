@@ -25,7 +25,7 @@ export default async function BlogPost(props: { params: Promise<{ slug: string }
       <main>
         <BackLink href="/blog">Back to blog</BackLink>
 
-        <section className="flex justify-center tracking-wider my-12">
+        <section className="flex justify-center my-12">
           <PostContent>
             <time dateTime={post.date}>{formatDate(post.date)}</time>
             <div dangerouslySetInnerHTML={{ __html: postHTML }} />

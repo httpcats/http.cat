@@ -37,7 +37,7 @@ export default async function Info(props: { params: Promise<{ status: string }> 
             className="w-full h-full max-w-3xl"
           />
         </div>
-        <section className="flex justify-center tracking-wider">
+        <section className="flex justify-center">
           <StatusDescription>
             <div dangerouslySetInnerHTML={{ __html: statusInfoHTML }} />
           </StatusDescription>

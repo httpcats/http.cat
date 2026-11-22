@@ -20,7 +20,7 @@ const AboutPage = async ({ locale }: { locale: Locale }) => {
       <main>
         <BackLink href={locale === 'ca' ? '/ca' : '/'}>{t.BACK_TO_HOME}</BackLink>
 
-        <section className="flex justify-center tracking-wider my-12">
+        <section className="flex justify-center my-12">
           <PostContent>
             <h1>{t.ABOUT_TITLE}</h1>
             <div className={styles.content} dangerouslySetInnerHTML={{ __html: aboutHTML }} />

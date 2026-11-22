@@ -82,9 +82,10 @@ The `200` and `404` JSON responses have `Access-Control-Allow-Origin: *`.
   returns the 404 cat).
 - Client-side navigation data (e.g. `/status/<code>/__next._tree.txt`) is served
   as `200` files.
-- Caching: Nginx marks HTML as already expired and images/CSS/JS as cached for
-  the max duration (`Cache-Control: max-age=315360000`). In production,
-  Cloudflare rewrites the HTML header to `Cache-Control: max-age=14400`, so
+- Caching: Nginx marks HTML as already expired and images/CSS/JS/fonts as
+  cached for the max duration (`Cache-Control: max-age=315360000`). In
+  production, Cloudflare rewrites the HTML header to
+  `Cache-Control: max-age=14400`, so
   browsers may keep a page for up to 4 hours after a deploy. JSON and
   `/sitemap.xml` get no `Cache-Control` from Nginx; Cloudflare caches them at
   the edge anyway and sends browsers `max-age=14400`, as for HTML.
