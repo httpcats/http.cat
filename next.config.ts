@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
   reactStrictMode: false,
   images: { unoptimized: true },
   // app/global-not-found.tsx: the site has two root layouts (specs/0005-sitemap)
-  experimental: { globalNotFound: true },
+  experimental: { globalNotFound: true, agentUpgrade: 'security' },
 };
 
 export default nextConfig;
