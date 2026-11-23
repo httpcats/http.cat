@@ -1,6 +1,6 @@
 # 0008: CORS headers on the images
 
-- **Status:** approved
+- **Status:** implemented
 - **Issue:** [#214](https://github.com/httpcats/http.cat/issues/214)
 - **Affects:** nginx, deploy
 - **Depends on:** spec 0001 (implemented)
@@ -192,13 +192,15 @@ There's only the Nginx side:
 
 ## Acceptance checks
 
-- [ ] Nginx config test in `tests/build.test.mjs`: the image location has
+- [x] Nginx config test in `tests/build.test.mjs`: the image location has
       `add_header Access-Control-Allow-Origin * always;` and
       `error_page 404 /404.jpg;`, and there's no server-level `add_header`
       (checked by indentation, like the existing server-level `error_page`
-      test).
-- [ ] Smoke checks in `tests/smoke/urls.test.mjs`, against the local
-      container and then production:
+      test). (2026-11-23)
+- [x] Smoke checks in `tests/smoke/urls.test.mjs`, against the local
+      container and then production (2026-11-23: all 24 smoke checks pass
+      against the local container; 2026-11-24: all 24 pass against
+      production after the deploy and a Cloudflare purge):
   - `Access-Control-Allow-Origin: *` on every `/<code>` and `/<code>.jpg`
     and on `/0` (200), and on `/999` and `/999.jpg` (404, `image/jpeg`, the
     404 cat's body).
@@ -207,13 +209,14 @@ There's only the Nginx side:
     `check` helper only asserts that the header is there (`cors: true`), so
     it also needs `cors: false` to assert that it isn't.
   - The JSON checks (spec 0003) still pass.
-- [ ] Manual, in a browser, from a page on another origin: an
+- [x] Manual, in a browser, from a page on another origin: an
       `<img crossorigin="anonymous" src="https://http.cat/404">` drawn on a
       `<canvas>` can be read back with `toDataURL()`, an
       `<img crossorigin="anonymous" src="https://http.cat/999">` shows the
       404 cat, and `fetch('https://http.cat/999')` resolves with `status`
-      `404`.
-- [ ] Baseline, spec 0001 note, README and `specs/README.md` updated.
+      `404`. (2026-11-24, against production)
+- [x] Baseline, spec 0001 note, README and `specs/README.md` updated.
+      (2026-11-23)
 
 ## Open questions
 

@@ -188,6 +188,17 @@ describe('nginx config', () => {
     assert.ok(block.includes('error_page 404 /404.json;'), 'JSON error_page missing');
     assert.ok(block.includes('try_files $uri =404;'), 'JSON try_files missing');
   });
+
+  test('serves the images with CORS, unknown codes included (spec 0008)', () => {
+    const start = conf.indexOf('location ~ ^/(\\d+)(\\.jpg)?$ {');
+    assert.ok(start !== -1, 'image location missing');
+    const block = conf.slice(start, conf.indexOf('}', start));
+    assert.ok(block.includes('add_header Access-Control-Allow-Origin * always;'), 'CORS header missing');
+    // the server-level error_page is served by `location /`, without the header
+    assert.ok(block.includes('error_page 404 /404.jpg;'), 'image error_page missing');
+    // 4-space indent = server level: it would put the header on every response
+    assert.ok(!/^ {4}add_header\b/m.test(conf), 'server-level add_header');
+  });
 });
 
 describe('build output', () => {

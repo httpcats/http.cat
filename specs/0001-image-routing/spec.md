@@ -69,7 +69,9 @@ Notes on the change:
 
 - `error_page` must move to the `server` block. A `location` that doesn't set
   its own inherits the server's; if it stayed inside `location /`, `/999` would
-  return Nginx's plain 404 page instead of the 404 cat.
+  return Nginx's plain 404 page instead of the 404 cat. (2026-11-23: the
+  image location now sets its own `error_page 404 /404.jpg`, so that the 404
+  cat for unknown codes like `/999` keeps the CORS header. See spec 0008.)
 - `/images/$uri` and `/images/$uri.jpg` are removed from the `location /`
   chain, since the regex location now covers every URL they served. Removing
   them is what makes the build output unable to shadow an image.

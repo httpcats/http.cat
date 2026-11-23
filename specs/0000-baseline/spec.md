@@ -44,6 +44,12 @@ one). The blog is `lang="en"`. See specs 0005 and 0007.
 | `GET /0` | `200`, `image/jpeg`, hidden grumpy cat memorial (not listed on the site) |
 | `GET /dog`, `GET /dog.jpg` | `302` to `/400`, `/400.jpg` respectively (easter egg) |
 
+The `200` responses for `/<code>`, `/<code>.jpg` and `/0`, and the `404` for
+any other `/<digits>` or `/<digits>.jpg` (see Not found), have
+`Access-Control-Allow-Origin: *`, so other sites can read them (spec 0008).
+The `301` and `302` above don't, and neither do `/images/<code>.jpg`, the
+pages or the 404 cat for non-numeric URLs.
+
 ### JSON
 
 See spec 0003 for the payload.
@@ -70,7 +76,7 @@ The `200` and `404` JSON responses have `Access-Control-Allow-Origin: *`.
 
 | Request | Response |
 |---|---|
-| Any other URL (e.g. `/999`, `/nope`, `/dog.json`, `/blog/nope`) | `404`, `image/jpeg`, the 404 cat. `/<digits>.json` is the exception: it gets the 404 JSON (see JSON) |
+| Any other URL (e.g. `/999`, `/nope`, `/dog.json`, `/blog/nope`) | `404`, `image/jpeg`, the 404 cat. `/<digits>.json` is the exception: it gets the 404 JSON (see JSON). `/<digits>` and `/<digits>.jpg` (e.g. `/999`) also have `Access-Control-Allow-Origin: *` (see Images) |
 | Directories without a page (e.g. `/status`, `/images`) | `404`, `image/jpeg`, the 404 cat |
 
 ### Other

@@ -20,6 +20,8 @@ The site can be navigated with the keyboard, vim style: `h` `j` `k` `l` move bet
 
 Every status code is an image: `https://http.cat/<code>` (or `https://http.cat/<code>.jpg`), e.g. [https://http.cat/404](https://http.cat/404).
 
+The images can be used from other sites, not just shown with an `<img>`: they're sent with `Access-Control-Allow-Origin: *`, so you can draw them on a `<canvas>`, `fetch()` them, or load them with `<img crossorigin>`. A code that doesn't exist, e.g. `/999`, returns a `404` with the 404 cat. If a browser already has an image cached from before the images had this header, a `crossorigin` request can fail on that cached copy; add a query string to skip it, e.g. `https://http.cat/404?v=1`.
+
 The same information as the status page is also available as JSON at `https://http.cat/<code>.json`:
 
     curl https://http.cat/500.json

@@ -65,8 +65,11 @@ async function check(target, expected, from = base) {
   if (expected.json) {
     assert.deepEqual(JSON.parse(res.body), expected.json, `${target}: body`);
   }
-  if (expected.cors) {
+  if (expected.cors === true) {
     assert.equal(res.headers['access-control-allow-origin'], '*', `${target}: CORS header`);
+  }
+  if (expected.cors === false) {
+    assert.equal(res.headers['access-control-allow-origin'], undefined, `${target}: unexpected CORS header`);
   }
   return res;
 }
@@ -163,6 +166,30 @@ describe('images (spec 0001)', () => {
     await check('/0', { status: 200, type: 'image/jpeg' });
     await check('/dog', { status: 302, location: '/400' });
     await check('/dog.jpg', { status: 302, location: '/400.jpg' });
+  });
+});
+
+describe('image CORS (spec 0008)', () => {
+  test('every status image has the header', async () => {
+    await checkAll(codes, async (code) => {
+      await check(`/${code}`, { status: 200, type: 'image/jpeg', cors: true });
+      await check(`/${code}.jpg`, { status: 200, type: 'image/jpeg', cors: true });
+    });
+    await check('/0', { status: 200, type: 'image/jpeg', cors: true });
+  });
+
+  test('unknown codes are the 404 cat, with the header', async () => {
+    for (const target of ['/999', '/999.jpg']) {
+      await check(target, { status: 404, type: 'image/jpeg', body: cat404, cors: true });
+    }
+  });
+
+  test('nothing else has the header', async () => {
+    await check('/nope', { status: 404, type: 'image/jpeg', body: cat404, cors: false });
+    await check('/images/404.jpg', { status: 200, type: 'image/jpeg', cors: false });
+    await check('/dog', { status: 302, location: '/400', cors: false });
+    await check('/404/', { status: 301, location: '/404', cors: false });
+    await check('/status/404', { status: 200, type: 'text/html', cors: false });
   });
 });
 
