@@ -27,8 +27,7 @@ authentication, so there's nothing to protect by withholding the header.
 
 The image URLs, the ones the image location in the Nginx config matches
 (spec 0001), get `Access-Control-Allow-Origin: *`, whatever their status.
-Nothing else gets it. Status, type, body and caching don't change for any
-URL.
+The random image redirect also gets it (spec 0009).
 
 `<code>` is any status code in `lib/statuses.js`.
 
@@ -40,6 +39,7 @@ URL.
 | `GET /nope` and other non-numeric not-found URLs | Unchanged: `404`, the 404 cat, **without the header** |
 | `GET /images/<code>.jpg` (the URL the site's own thumbnails use) | Unchanged: `200`, **without the header** |
 | `GET /dog`, `GET /dog.jpg` | Unchanged: `302` to `/400`, `/400.jpg`, **without the header** |
+| `GET /random` | `302` to a status image, **with the header** (spec 0009) |
 | `GET /<code>/` | Unchanged: `301` to `/<code>`, **without the header** |
 | Pages, other static files, `http://` URLs | Unchanged, **without the header** |
 

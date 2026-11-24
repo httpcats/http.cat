@@ -24,8 +24,8 @@ code can appear twice in a row. Every destination serves a JPEG, including
 
 ## Acceptance checks
 
-- [ ] `npm test` verifies that the generated Nginx table matches the catalog.
-- [ ] The local HTTPS smoke suite verifies the redirect, cache and CORS headers,
+- [x] `npm test` verifies that the generated Nginx table matches the catalog.
+- [x] The local HTTPS smoke suite verifies the redirect, cache and CORS headers,
       HEAD, and distinct selections from repeated GETs to the same URL. All
       selected targets resolve to listed JPEGs.
 - [ ] After deployment, purge the cached `/random` response and manually repeat
