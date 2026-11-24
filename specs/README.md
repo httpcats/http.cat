@@ -48,3 +48,4 @@ spec too, so the specs always describe how the site behaves today.
 | [0006 Keyboard navigation (h j k l), settings and command line](0006-keyboard-navigation/spec.md) | implemented |
 | [0007 About page](0007-about-page/spec.md) | implemented |
 | [0008 CORS headers on the images](0008-image-cors/spec.md) | implemented |
+| [0009 Random cat image endpoint](0009-random-image/spec.md) | draft |
