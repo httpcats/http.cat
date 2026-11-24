@@ -24,7 +24,9 @@ const Footer = ({ t }: FooterProps) => {
   const aboutHref = aboutPath(t.LOCALE === 'ca' ? 'ca' : 'en');
 
   return (
-    <div className={styles.container}>
+    // a <footer> outside <main> is the page's contentinfo landmark, so screen
+    // reader users can jump to it (idea from PR #144 by @Timmaaaa)
+    <footer className={styles.container}>
       <div className={styles.social}>
         <TwitterButton width={70} height={70} />
         <BlueskyButton width={70} height={70} />
@@ -56,7 +58,7 @@ const Footer = ({ t }: FooterProps) => {
         {t.IMAGES_BY} Tomomi Imura (
         <a href="https://twitter.com/girlie_mac">@girlie_mac</a>)
       </p>
-    </div>
+    </footer>
   );
 };
 
