@@ -7,7 +7,7 @@ import Footer from '@/components/Footer';
 import StatusDescription from '@/components/StatusDescription';
 
 import statuses from '@/lib/statuses';
-import { alternatesFor } from '@/lib/site';
+import { absoluteUrl, alternatesFor, openGraphFor } from '@/lib/site';
 import { getStatusInfo } from '@/lib/status-info';
 import { getTranslations } from '@/lib/translation';
 
@@ -60,24 +60,23 @@ export async function generateMetadata(
   const params = await props.params;
   const statusObj = statuses[params.status as unknown as keyof typeof statuses];
 
+  const title = `${statusObj.code} ${statusObj.message} | HTTP Cats`;
+  const description = `HTTP Cat for status ${statusObj.code} ${statusObj.message}`;
+  const pathname = `/ca/status/${statusObj.code}`;
+
   return {
-    title: `${statusObj.code} ${statusObj.message} | HTTP Cats`,
-    description: `HTTP Cat for status ${statusObj.code} ${statusObj.message}`,
-    alternates: alternatesFor(`/ca/status/${statusObj.code}`),
-    openGraph: {
-      title: `${statusObj.code} ${statusObj.message} | HTTP Cats`,
-      images: [
-        {
-          url: `https://http.cat/${statusObj.code}.jpg`,
-          alt: statusObj.message,
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      site: `https://http.cat/status/${statusObj.code}`,
-      title: `${statusObj.code} ${statusObj.message} | HTTP Cats`,
-      images: [`https://http.cat/${statusObj.code}`],
-    },
+    title,
+    description,
+    alternates: alternatesFor(pathname),
+    openGraph: openGraphFor({
+      pathname,
+      locale: 'ca',
+      title,
+      description,
+      image: {
+        url: absoluteUrl(`/${statusObj.code}.jpg`),
+        alt: `${statusObj.code} ${statusObj.message}`,
+      },
+    }),
   };
 }

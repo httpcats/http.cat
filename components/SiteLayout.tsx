@@ -5,9 +5,10 @@ import '@/app/globals.css';
 import CarbonAd from '@/components/CarbonAd';
 import CommandLine from '@/components/CommandLine';
 import KeyboardNav from '@/components/KeyboardNav';
-import { Locale, SITE_URL } from '@/lib/site';
+import { Locale, SITE_NAME, SITE_URL, twitterCard } from '@/lib/site';
 import { themeScript } from '@/lib/theme-setting';
 import { getTranslations } from '@/lib/translation';
+import en from '@/locales/en/common.json';
 
 // The markup and metadata every page shares. Rendered by the two root
 // layouts, app/(en)/layout.tsx and app/(ca)/layout.tsx, which only differ in
@@ -22,33 +23,13 @@ export const siteMetadata: Metadata = {
       { rel: 'apple-touch-icon-precomposed', url: '/apple-touch-icon.png' },
     ],
   },
-  title: 'HTTP Cats',
-  description:
-    'An API for the awesome HTTP Cats! Use it in your website to show funny error messages.',
+  title: SITE_NAME,
+  description: en.SITE_DESCRIPTION,
   keywords:
     'http, cats, http cats, http status cats, status cats, api, lolcats, error',
   authors: [{ name: 'Rogério Vicente', url: 'https://github.com/rogeriopvl' }],
-  openGraph: {
-    type: 'website',
-    title: 'HTTP Cats',
-    url: SITE_URL,
-    images: [
-      {
-        url: `${SITE_URL}/100.jpg`,
-        alt: 'HTTP Cats',
-      },
-    ],
-    siteName: 'HTTP Status Cats API',
-    description: 'API for HTTP Cats',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    site: SITE_URL,
-    creator: '@rogeriopvl',
-    title: 'HTTP Cats',
-    description: 'API for HTTP Cats',
-    images: [`${SITE_URL}/100`],
-  },
+  // no openGraph: each page sets its own, see openGraphFor in lib/site.ts
+  twitter: twitterCard,
 };
 
 export const siteViewport: Viewport = {

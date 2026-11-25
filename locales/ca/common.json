@@ -1,6 +1,7 @@
 {
   "LOCALE": "ca",
   "APP_TITLE": "HTTP Gats",
+  "SITE_DESCRIPTION": "Una API per als fantàstics HTTP Gats! Feu-la servir al vostre lloc web per mostrar missatges d’error divertits.",
   "USAGE_TITLE": "Instruccions",
   "USAGE_PARAM": "codi_d_estat",
   "USAGE_NOTE_LABEL": "Nota",

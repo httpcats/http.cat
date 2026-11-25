@@ -7,7 +7,7 @@ import PostContent from '@/components/PostContent';
 
 import { formatDate, getPost, getPosts, renderPost } from '@/lib/posts';
 import { getTranslations } from '@/lib/translation';
-import { alternatesFor } from '@/lib/site';
+import { alternatesFor, openGraphFor } from '@/lib/site';
 
 // A blog post, exported to out/blog/<slug>.html. See specs/0004-blog.
 export const dynamicParams = false;
@@ -54,19 +54,13 @@ export async function generateMetadata(
     title,
     description: post.description,
     alternates: alternatesFor(`/blog/${post.slug}`),
-    openGraph: {
+    openGraph: openGraphFor({
+      pathname: `/blog/${post.slug}`,
+      locale: 'en',
       type: 'article',
+      publishedTime: post.date,
       title,
       description: post.description,
-      url: `https://http.cat/blog/${post.slug}`,
-      images: [{ url: 'https://http.cat/100.jpg', alt: 'HTTP Cats' }],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      site: `https://http.cat/blog/${post.slug}`,
-      title,
-      description: post.description,
-      images: ['https://http.cat/100'],
-    },
+    }),
   };
 }

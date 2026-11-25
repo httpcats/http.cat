@@ -1,6 +1,7 @@
 {
   "LOCALE": "en",
   "APP_TITLE": "HTTP Cats",
+  "SITE_DESCRIPTION": "An API for the awesome HTTP Cats! Use it in your website to show funny error messages.",
   "USAGE_TITLE": "Usage",
   "USAGE_PARAM": "status_code",
   "USAGE_NOTE_LABEL": "Note",
