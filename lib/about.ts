@@ -16,7 +16,7 @@ export function renderAbout(locale: Locale) {
 
 export async function aboutMetadata(locale: Locale): Promise<Metadata> {
   const t = await getTranslations(locale);
-  const title = `${t.ABOUT_TITLE} | HTTP Cats`;
+  const title = `${t.ABOUT_TITLE} | ${t.APP_TITLE}`;
 
   return {
     title,

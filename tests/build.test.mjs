@@ -277,7 +277,7 @@ describe('build output', () => {
   test('the about pages exist and link to the Flickr set (spec 0007)', () => {
     for (const [file, title] of [
       ['out/about.html', 'About | HTTP Cats'],
-      ['out/ca/about.html', 'Sobre | HTTP Cats'],
+      ['out/ca/about.html', 'Sobre | HTTP Gats'],
     ]) {
       const html = readFileSync(path.join(root, file), 'utf8');
       assert.ok(html.includes(`<title>${title}</title>`), `${file}: no "${title}" title`);

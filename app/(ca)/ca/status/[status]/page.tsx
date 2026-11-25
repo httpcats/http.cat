@@ -59,8 +59,9 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const params = await props.params;
   const statusObj = statuses[params.status as unknown as keyof typeof statuses];
+  const t = await getTranslations('ca');
 
-  const title = `${statusObj.code} ${statusObj.message} | HTTP Cats`;
+  const title = `${statusObj.code} ${statusObj.message} | ${t.APP_TITLE}`;
   const description = `HTTP Cat for status ${statusObj.code} ${statusObj.message}`;
   const pathname = `/ca/status/${statusObj.code}`;
 
