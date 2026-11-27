@@ -47,7 +47,8 @@ New features and behavior changes start as a spec in `specs/`. Read
   is `app/global-not-found.tsx` (experimental `globalNotFound` flag).
   `app/[file]/route.ts` generates the JSON API (`out/<code>.json`) and
   `app/sitemap.ts` the sitemap. `lib/site.ts` has the site URL and each
-  page's canonical/language URLs, shared by the pages and the sitemap.
+  page's canonical/language URLs, shared by the pages and the sitemap, and
+  builds every page's Open Graph tags (`openGraphFor`) and X card.
 - `deploy/nginx/http.cat.conf`: production Nginx config, the source of truth.
   Its `try_files` order is load-bearing (see the comments in the file and
   issue #267). It isn't deployed automatically: changes have to be copied to

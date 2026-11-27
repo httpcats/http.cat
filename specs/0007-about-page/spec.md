@@ -39,7 +39,7 @@ Like the home and status pages, the two are translations of each other
 - A heading (`About` / `Sobre`), then the content rendered from Markdown
   with the same pipeline as the blog posts and status descriptions
   (`lib/markdown.ts`: external links open in a new tab).
-- `<title>`: `About | HTTP Cats` / `Sobre | HTTP Cats`
+- `<title>`: `About | HTTP Cats` / `Sobre | HTTP Gats`
 - `description`, Open Graph and Twitter metadata: a one-sentence summary in
   the page's language (e.g. "The story of HTTP Cats, from a Flickr set in
   2011 to http.cat."), and the site's default image

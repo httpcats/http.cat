@@ -8,13 +8,17 @@ import PostContent from '@/components/PostContent';
 
 import { formatDate, getPosts } from '@/lib/posts';
 import { getTranslations } from '@/lib/translation';
-import { alternatesFor } from '@/lib/site';
+import { alternatesFor, openGraphFor } from '@/lib/site';
 
 // The blog is English only. See specs/0004-blog.
+const title = 'Blog | HTTP Cats';
+const description = 'News about HTTP Cats, and the odd note about HTTP.';
+
 export const metadata: Metadata = {
-  title: 'Blog | HTTP Cats',
-  description: 'News about HTTP Cats, and the odd note about HTTP.',
+  title,
+  description,
   alternates: alternatesFor('/blog'),
+  openGraph: openGraphFor({ pathname: '/blog', locale: 'en', title, description }),
 };
 
 export default async function Blog() {
