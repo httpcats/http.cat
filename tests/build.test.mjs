@@ -169,6 +169,13 @@ describe('nginx config', () => {
     assert.ok(conf.includes('try_files /images/$1.jpg =404;'), 'image try_files missing');
   });
 
+  test('the random image table matches the status catalog (spec 0009)', () => {
+    const block = conf.match(/^split_clients \$request_id \$httpcat_random_code \{\n([^}]+)^\}/m)?.[1];
+    assert.ok(block, 'random image table missing');
+    const configured = [...block.matchAll(/^ +(?:\d+\.\d{2}%|\*) +(\d+);$/gm)].map(([, code]) => code);
+    assert.deepEqual(configured, codes, 'run npm run nginx:update-random');
+  });
+
   test('every 404 is the 404 cat', () => {
     // 4-space indent = server level, where all locations inherit it
     assert.ok(conf.includes('\n    error_page 404 /images/404.jpg;'), 'server-level error_page missing');

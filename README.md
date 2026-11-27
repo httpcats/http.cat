@@ -20,6 +20,8 @@ The site can be navigated with the keyboard, vim style: `h` `j` `k` `l` move bet
 
 Every status code is an image: `https://http.cat/<code>` (or `https://http.cat/<code>.jpg`), e.g. [https://http.cat/404](https://http.cat/404).
 
+`https://http.cat/random` redirects to a randomly chosen status image on each request.
+
 The images can be used from other sites, not just shown with an `<img>`: they're sent with `Access-Control-Allow-Origin: *`, so you can draw them on a `<canvas>`, `fetch()` them, or load them with `<img crossorigin>`. A code that doesn't exist, e.g. `/999`, returns a `404` with the 404 cat. If a browser already has an image cached from before the images had this header, a `crossorigin` request can fail on that cached copy; add a query string to skip it, e.g. `https://http.cat/404?v=1`.
 
 The same information as the status page is also available as JSON at `https://http.cat/<code>.json`:
@@ -105,6 +107,9 @@ We've prepared some templates to make this process easier.
 You can clone it, replace the information with the new one and export as a JPG image.
 
 Then, upload it to both `public/images` and `public/images-original` folders and update the [statuses.js](https://github.com/httpcats/http.cat/blob/master/lib/statuses.js) file.
+
+Run `npm run nginx:update-random` to update the selection for `/random`. Deploy
+the new image before reloading Nginx with the updated config.
 
 Finally you need to add a markdown file in `/content/<status-code>.md` with a
 description of the status code and links to official documentation. Please

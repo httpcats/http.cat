@@ -43,12 +43,14 @@ one). The blog is `lang="en"`. See specs 0005 and 0007.
 | `GET /<code>/` | `301` to `/<code>` |
 | `GET /0` | `200`, `image/jpeg`, hidden grumpy cat memorial (not listed on the site) |
 | `GET /dog`, `GET /dog.jpg` | `302` to `/400`, `/400.jpg` respectively (easter egg) |
+| `GET /random` | `302` to a randomly chosen `/<code>` image URL with `Cache-Control: no-store` (spec 0009) |
+| `HEAD /random` | Same redirect and headers as GET, with an empty body |
 
 The `200` responses for `/<code>`, `/<code>.jpg` and `/0`, and the `404` for
 any other `/<digits>` or `/<digits>.jpg` (see Not found), have
 `Access-Control-Allow-Origin: *`, so other sites can read them (spec 0008).
-The `301` and `302` above don't, and neither do `/images/<code>.jpg`, the
-pages or the 404 cat for non-numeric URLs.
+The `/random` redirect also has the header (spec 0009). The other redirects
+above, `/images/<code>.jpg`, pages and non-numeric 404s omit it.
 
 ### JSON
 

@@ -4,8 +4,8 @@
 //   npm run nginx:up && npm run test:smoke          the local container
 //   SMOKE_URL=https://http.cat npm run test:smoke   production
 //
-// Redirects aren't followed, so their Location can be checked. Only its path
-// is compared: Nginx builds the host and port from the request.
+// Redirects aren't followed, so their Location can be checked. For absolute
+// redirects only the path is compared: Nginx builds the host and port.
 
 import { test, describe } from 'node:test';
 import assert from 'node:assert/strict';
@@ -33,25 +33,26 @@ const httpBase = new URL(local ? `http://${base.hostname}:8080` : `http://${base
 const cat404 = readFileSync(path.join(root, 'public/images/404.jpg'));
 const json404 = expectedStatusJson(404);
 
-function get(target, from = base) {
+function request(target, from = base, method = 'GET') {
   const url = new URL(target, from);
   const client = url.protocol === 'https:' ? https : http;
   return new Promise((resolve, reject) => {
     // the local certificate is self-signed
     client
-      .get(url, { rejectUnauthorized: !local }, (res) => {
+      .request(url, { method, rejectUnauthorized: !local }, (res) => {
         const chunks = [];
         res.on('data', (chunk) => chunks.push(chunk));
         res.on('end', () =>
           resolve({ status: res.statusCode, headers: res.headers, body: Buffer.concat(chunks) }),
         );
       })
-      .on('error', reject);
+      .on('error', reject)
+      .end();
   });
 }
 
 async function check(target, expected, from = base) {
-  const res = await get(target, from);
+  const res = await request(target, from);
   assert.equal(res.status, expected.status, `${target}: status`);
   if (expected.type) {
     assert.equal(res.headers['content-type']?.split(';')[0], expected.type, `${target}: content type`);
@@ -169,6 +170,46 @@ describe('images (spec 0001)', () => {
   });
 });
 
+describe('random image (spec 0009)', () => {
+  function randomCode(res) {
+    assert.equal(res.status, 302, '/random: status');
+    assert.equal(res.headers['cache-control'], 'no-store', '/random: cache policy');
+    assert.equal(res.headers['access-control-allow-origin'], '*', '/random: CORS header');
+    assert.notEqual(res.headers['cf-cache-status'], 'HIT', '/random: cached redirect');
+    const location = res.headers.location;
+    assert.match(location, /^\/\d+$/, '/random: relative image URL');
+    const code = location.slice(1);
+    assert.ok(codes.includes(code), `/random: unknown image ${location}`);
+    return code;
+  }
+
+  test('repeated requests select different valid JPEGs', async () => {
+    const samples = await checkAll(Array.from({ length: 24 }), async () =>
+      randomCode(await request('/random')),
+    );
+    const targets = [...new Set(samples)];
+    assert.ok(targets.length > 1, '/random: every request chose the same image');
+    await checkAll(targets, (code) =>
+      check(`/${code}`, {
+        status: 200,
+        type: 'image/jpeg',
+        cors: true,
+        body: readFileSync(path.join(root, `public/images/${code}.jpg`)),
+      }),
+    );
+  });
+
+  test('HEAD returns the same headers without a body', async () => {
+    const res = await request('/random', base, 'HEAD');
+    randomCode(res);
+    assert.equal(res.body.length, 0);
+  });
+
+  test('trailing slash is stripped', async () => {
+    await check('/random/', { status: 301, location: '/random' });
+  });
+});
+
 describe('image CORS (spec 0008)', () => {
   test('every status image has the header', async () => {
     await checkAll(codes, async (code) => {
@@ -184,7 +225,7 @@ describe('image CORS (spec 0008)', () => {
     }
   });
 
-  test('nothing else has the header', async () => {
+  test('other pages and redirects omit the header', async () => {
     await check('/nope', { status: 404, type: 'image/jpeg', body: cat404, cors: false });
     await check('/images/404.jpg', { status: 200, type: 'image/jpeg', cors: false });
     await check('/dog', { status: 302, location: '/400', cors: false });

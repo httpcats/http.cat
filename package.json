@@ -11,6 +11,7 @@
     "test:smoke": "node --test tests/smoke/*.test.mjs",
     "deploy": "./scripts/deploy.sh",
     "scrapper": "node ./scripts/scrapper.js",
+    "nginx:update-random": "node scripts/update-random-codes.js",
     "nginx:up": "./scripts/local-nginx.sh up",
     "nginx:down": "./scripts/local-nginx.sh down"
   },
